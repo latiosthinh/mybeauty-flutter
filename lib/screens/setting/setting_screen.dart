@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
 import 'package:mybeauty/enums.dart';
 
-class MainScreen extends StatefulWidget {
-  static String routeName = "/home";
-
-  const MainScreen({Key? key, required this.title}) : super(key: key);
+class SettingScreen extends StatefulWidget {
+  static String routeName = "/setting";
+  const SettingScreen({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -19,23 +18,10 @@ class MainScreen extends StatefulWidget {
   final String title;
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<SettingScreen> createState() => _SettingScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -45,11 +31,6 @@ class _MainScreenState extends State<MainScreen> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MainScreen object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -68,23 +49,31 @@ class _MainScreenState extends State<MainScreen> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            ListView(
+                padding: const EdgeInsets.all(8),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                children: <Widget>[
+                  Container(
+                    height: 50,
+                    color: Colors.amber[600],
+                    child: const Center(child: Text('Entry A')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[500],
+                    child: const Center(child: Text('Entry B')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[100],
+                    child: const Center(child: Text('Entry C')),
+                  ),
+                ])
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
       bottomNavigationBar:
           const CustomBottomNavBar(selectedMenu: MenuState.myNails),
     );

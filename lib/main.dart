@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mybeauty/screens/main/main_screen.dart';
+import 'package:mybeauty/routes.dart';
+import 'package:mybeauty/screens/splash/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +26,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MainScreen(title: 'Flutter Demo Home Page'),
+      //home: const MainScreen(title: 'Flutter Demo Home Page'),
+      // We use routeName so that we dont need to remember the name
+      initialRoute: SplashScreen.routeName,
+      routes: routes,
     );
   }
 }

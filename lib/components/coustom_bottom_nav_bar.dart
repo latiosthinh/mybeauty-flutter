@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mybeauty/screens/setting/setting_screen.dart';
 
 import '../constants.dart';
 import '../enums.dart';
@@ -51,7 +52,8 @@ class CustomBottomNavBar extends StatelessWidget {
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/setting.svg"),
-                onPressed: () {},
+                onPressed: () =>
+                    {Navigator.pushNamed(context, SettingScreen.routeName)},
               ),
               IconButton(
                   icon: SvgPicture.asset(
