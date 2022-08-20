@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
+import 'package:mybeauty/enums.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key, required this.title}) : super(key: key);
@@ -81,6 +83,8 @@ class _MainScreenState extends State<MainScreen> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar:
+          const CustomBottomNavBar(selectedMenu: MenuState.myNails),
     );
   }
 }
