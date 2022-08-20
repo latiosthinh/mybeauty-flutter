@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
+import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
 
 class SettingScreen extends StatefulWidget {
   static String routeName = "/setting";
-  const SettingScreen({Key? key, required this.title}) : super(key: key);
+  const SettingScreen({Key? key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -15,7 +17,7 @@ class SettingScreen extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  final String? title;
 
   @override
   State<SettingScreen> createState() => _SettingScreenState();
@@ -24,31 +26,25 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: whiteColor,
+        title: const Text(
+          'Setting',
+          style: TextStyle(color: blackColor),
+        ),
+        centerTitle: true,
+        bottom: PreferredSize(
+          preferredSize: const Size.square(1),
+          child: Container(
+            color: pinkColor,
+            height: 4.0,
+          ),
+        ),
+        shadowColor: whiteColor,
+      ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           children: <Widget>[
             ListView(
                 padding: const EdgeInsets.all(8),
@@ -57,25 +53,63 @@ class _SettingScreenState extends State<SettingScreen> {
                 children: <Widget>[
                   Container(
                     height: 50,
-                    color: Colors.amber[600],
-                    child: const Center(child: Text('Entry A')),
+                    color: whiteColor,
+                    child: Row(
+                      children: [
+                        IconButton(
+                          icon: SvgPicture.asset(
+                              "assets/icons/exclamation-circle.svg"),
+                          onPressed: () {},
+                        ),
+                        const Text('Feedback and support'),
+                      ],
+                    ),
                   ),
                   Container(
                     height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
+                    color: whiteColor,
+                    child: Row(
+                      children: [
+                        IconButton(
+                          icon: SvgPicture.asset("assets/icons/legal.svg"),
+                          onPressed: () {},
+                        ),
+                        const Text('Legal'),
+                      ],
+                    ),
                   ),
                   Container(
                     height: 50,
-                    color: Colors.amber[100],
-                    child: const Center(child: Text('Entry C')),
+                    color: whiteColor,
+                    child: Row(
+                      children: [
+                        IconButton(
+                          icon: SvgPicture.asset("assets/icons/country.svg"),
+                          onPressed: () {},
+                        ),
+                        const Text('Country'),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 50,
+                    color: whiteColor,
+                    child: Row(
+                      children: [
+                        IconButton(
+                          icon: SvgPicture.asset("assets/icons/users.svg"),
+                          onPressed: () {},
+                        ),
+                        const Text('Content preference'),
+                      ],
+                    ),
                   ),
                 ])
           ],
         ),
       ),
       bottomNavigationBar:
-          const CustomBottomNavBar(selectedMenu: MenuState.myNails),
+          const CustomBottomNavBar(selectedMenu: MenuState.setting),
     );
   }
 }

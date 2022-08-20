@@ -18,16 +18,9 @@ class CustomBottomNavBar extends StatelessWidget {
     const Color inActiveIconColor = grayColor;
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            offset: const Offset(0, -15),
-            blurRadius: 20,
-            color: const Color(0xFFDADADA).withOpacity(0.15),
-          ),
-        ],
-      ),
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          border: Border(top: BorderSide(color: darkPinkColor, width: 1.0))),
       child: SafeArea(
           top: false,
           child: Row(
@@ -51,7 +44,10 @@ class CustomBottomNavBar extends StatelessWidget {
                 onPressed: () {},
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/setting.svg"),
+                icon: SvgPicture.asset("assets/icons/setting.svg",
+                    color: MenuState.setting == selectedMenu
+                        ? yellorColor
+                        : inActiveIconColor),
                 onPressed: () =>
                     {Navigator.pushNamed(context, SettingScreen.routeName)},
               ),
@@ -59,7 +55,7 @@ class CustomBottomNavBar extends StatelessWidget {
                   icon: SvgPicture.asset(
                     "assets/icons/calendar.svg",
                     color: MenuState.bookings == selectedMenu
-                        ? darkPinkColor
+                        ? yellorColor
                         : inActiveIconColor,
                   ),
                   onPressed: () =>
