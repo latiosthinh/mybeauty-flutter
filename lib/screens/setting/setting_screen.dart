@@ -6,18 +6,7 @@ import 'package:mybeauty/enums.dart';
 
 class SettingScreen extends StatefulWidget {
   static String routeName = "/setting";
-  const SettingScreen({Key? key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String? title;
+  const SettingScreen({Key? key}) : super(key: key);
 
   @override
   State<SettingScreen> createState() => _SettingScreenState();
@@ -35,13 +24,13 @@ class _SettingScreenState extends State<SettingScreen> {
         ),
         centerTitle: true,
         bottom: PreferredSize(
-          preferredSize: const Size.square(1),
+          preferredSize: const Size.square(0),
           child: Container(
             color: pinkColor,
-            height: 4.0,
+            height: 1.0,
           ),
         ),
-        shadowColor: whiteColor,
+        elevation: 0,
       ),
       body: Center(
         child: Column(

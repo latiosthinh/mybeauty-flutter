@@ -8,6 +8,8 @@ const yellorColor = Color.fromRGBO(241, 198, 155, 1);
 const whiteColor = Colors.white;
 const blackColor = Colors.black;
 const grayColor = Color.fromRGBO(189, 189, 189, 1);
+const blueColor = Color.fromRGBO(35, 116, 225, 1);
+const redColor = Color.fromRGBO(235, 87, 87, 1);
 const gardientColor = LinearGradient(colors: [
   Color.fromRGBO(184, 144, 78, 1),
   Color.fromRGBO(244, 213, 163, 1)

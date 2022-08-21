@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mybeauty/screens/beauty/beauty_screen.dart';
+import 'package:mybeauty/screens/bookings/booking_screen.dart';
+import 'package:mybeauty/screens/nails/nail_screen.dart';
 import 'package:mybeauty/screens/setting/setting_screen.dart';
 
 import '../constants.dart';
@@ -34,14 +37,14 @@ class CustomBottomNavBar extends StatelessWidget {
                         : inActiveIconColor,
                   ),
                   onPressed: () =>
-                      //Navigator.pushNamed(context, HomeScreen.routeName),
-                      {}),
+                      {Navigator.pushNamed(context, NailScreen.routeName)}),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/logo.svg",
                     color: MenuState.myBeauty == selectedMenu
-                        ? darkPinkColor
+                        ? greenColor
                         : inActiveIconColor),
-                onPressed: () {},
+                onPressed: () =>
+                    {Navigator.pushNamed(context, BeautyScreen.routeName)},
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/setting.svg",
@@ -52,15 +55,15 @@ class CustomBottomNavBar extends StatelessWidget {
                     {Navigator.pushNamed(context, SettingScreen.routeName)},
               ),
               IconButton(
-                  icon: SvgPicture.asset(
-                    "assets/icons/calendar.svg",
-                    color: MenuState.bookings == selectedMenu
-                        ? yellorColor
-                        : inActiveIconColor,
-                  ),
-                  onPressed: () =>
-                      //Navigator.pushNamed(context, ProfileScreen.routeName),
-                      {}),
+                icon: SvgPicture.asset(
+                  "assets/icons/calendar.svg",
+                  color: MenuState.booking == selectedMenu
+                      ? yellorColor
+                      : inActiveIconColor,
+                ),
+                onPressed: () =>
+                    Navigator.pushNamed(context, BookingScreen.routeName),
+              ),
             ],
           )),
     );

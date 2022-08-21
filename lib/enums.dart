@@ -1,1 +1,1 @@
-enum MenuState { myNails, myBeauty, setting, bookings }
+enum MenuState { myNails, myBeauty, setting, booking }
