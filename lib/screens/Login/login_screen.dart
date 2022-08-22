@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
@@ -18,9 +19,9 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: whiteColor,
-        title: const Text(
+        title: Text(
           'Log in with MyNails account',
-          style: TextStyle(color: blackColor),
+          style: GoogleFonts.robotoCondensed(fontSize: 18.0, color: blackColor),
         ),
         centerTitle: true,
         bottom: PreferredSize(
@@ -32,92 +33,106 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         elevation: 0,
       ),
-      body: Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.only(top: 38, left: 38, right: 38),
-            child: SizedBox(
+      body: Container(
+        margin: const EdgeInsets.only(left: 38, right: 38, top: 38),
+        child: Column(
+          children: [
+            SizedBox(
               width: double.infinity,
               height: 38,
-              child: TextButton(
+              child: TextButton.icon(
+                icon: const Icon(
+                  Icons.apple,
+                  size: 18,
+                ),
                 onPressed: () => {},
                 style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),
                     backgroundColor: pinkColor,
                     primary: blackColor),
-                child: const Text('Sign in with Apple'),
+                label: Text(
+                  'Sign in with Apple',
+                  style: GoogleFonts.robotoCondensed(),
+                ),
               ),
             ),
-          ),
-          Container(
-            margin:
-                const EdgeInsets.only(top: 9, left: 38, right: 38, bottom: 40),
-            child: SizedBox(
-              width: double.infinity,
-              height: 38,
-              child: TextButton(
-                onPressed: () => {},
-                style: TextButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5)),
-                    backgroundColor: blueColor,
-                    primary: whiteColor),
-                child: const Text('Sign in with Apple'),
+            Container(
+                margin: const EdgeInsets.only(top: 9, bottom: 40),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 38,
+                  child: TextButton.icon(
+                    icon: const Icon(
+                      Icons.facebook,
+                      size: 18,
+                    ),
+                    onPressed: () => {},
+                    style: TextButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        backgroundColor: blueColor,
+                        primary: whiteColor),
+                    label: Text(
+                      'Continue with Facebook',
+                      style: GoogleFonts.robotoCondensed(),
+                    ),
+                  ),
+                )),
+            Center(
+              child: Text(
+                'or use your email',
+                style: GoogleFonts.robotoCondensed(fontSize: 18.0),
               ),
             ),
-          ),
-          const Center(
-            child: Text('or use your email'),
-          ),
-          Column(children: [
-            TextFormField(
-              decoration: const InputDecoration(
-                  border: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: pinkColor,
-                          width: 1,
-                          style: BorderStyle.solid)),
-                  labelText: 'Email'),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                  border: UnderlineInputBorder(), labelText: 'Password'),
-            )
-          ]),
-          Container(
-            alignment: Alignment.centerLeft,
-            child: TextButton(
-              onPressed: () => {},
-              child: const Text(
+            Column(children: [
+              TextFormField(
+                decoration: const InputDecoration(
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: pinkColor, width: 1.0)),
+                    labelText: 'Email'),
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                    labelText: 'Password',
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: pinkColor, width: 1.0))),
+                style: GoogleFonts.robotoCondensed(),
+              )
+            ]),
+            Container(
+              alignment: Alignment.centerLeft,
+              margin: const EdgeInsets.only(top: 28.0),
+              child: Text(
                 'Forgot your password?',
-                style: TextStyle(color: redColor),
-                textAlign: TextAlign.left,
+                style: GoogleFonts.robotoCondensed(color: redColor),
               ),
             ),
-          ),
-          Container(
-            margin:
-                const EdgeInsets.only(top: 21, left: 38, right: 38, bottom: 13),
-            child: SizedBox(
-              width: double.infinity,
-              height: 38,
-              child: TextButton(
-                onPressed: () => {},
-                style: TextButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5)),
-                    backgroundColor: grayColor,
-                    primary: whiteColor),
-                child: const Text('Log in'),
+            Container(
+              margin: const EdgeInsets.only(top: 21, bottom: 13),
+              child: SizedBox(
+                width: double.infinity,
+                height: 38,
+                child: TextButton(
+                  onPressed: () => {},
+                  style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)),
+                      backgroundColor: grayColor,
+                      primary: whiteColor),
+                  child: Text(
+                    'Log in',
+                    style: GoogleFonts.robotoCondensed(),
+                  ),
+                ),
               ),
             ),
-          ),
-          const Text(
-            'By continuing you agree to our Terms & Conditions',
-            style: TextStyle(fontSize: 9, color: grayColor),
-          )
-        ],
+            Text(
+              'By continuing you agree to our Terms & Conditions',
+              style: GoogleFonts.robotoCondensed(fontSize: 9, color: grayColor),
+            )
+          ],
+        ),
       ),
       bottomNavigationBar:
           const CustomBottomNavBar(selectedMenu: MenuState.booking),

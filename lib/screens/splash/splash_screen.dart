@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
-import 'package:mybeauty/enums.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mybeauty/constants.dart';
+import 'package:mybeauty/screens/bookings/booking_screen.dart';
 import 'package:mybeauty/size_config.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -11,9 +12,17 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // You have to call it on your starting screen
     SizeConfig().init(context);
-    return const Scaffold(
-      body: Center(),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.myNails),
-    );
+    return Scaffold(
+        body: GestureDetector(
+      onTap: () => {Navigator.pushNamed(context, BookingScreen.routeName)},
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: pinkColor,
+        child: Center(
+          child: SvgPicture.asset('assets/images/full-logo.svg'),
+        ),
+      ),
+    ));
   }
 }

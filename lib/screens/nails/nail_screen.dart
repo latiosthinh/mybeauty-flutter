@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
@@ -37,18 +38,25 @@ class _NailScreenState extends State<NailScreen> {
             Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: pinkColor, borderRadius: BorderRadius.circular(5)),
-                height: 73,
+                    borderRadius: BorderRadius.circular(5),
+                    image: const DecorationImage(
+                        image: AssetImage('assets/images/spoil-someone.png'))),
                 margin: const EdgeInsets.only(top: 16, right: 12, left: 12),
-                child: Center(
+                child: Container(
+                  height: 70,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: pinkOpacityColor),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text(
                         'SPOIL SOMEONE',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: GoogleFonts.robotoCondensed(
+                            fontWeight: FontWeight.w700),
                       ),
-                      Text('The MyNails gift card is the perfect beauty treat')
+                      Text('The MyNails gift card is the perfect beauty treat',
+                          style: GoogleFonts.robotoCondensed())
                     ],
                   ),
                 ))

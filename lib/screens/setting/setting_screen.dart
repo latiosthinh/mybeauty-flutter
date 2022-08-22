@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
@@ -18,9 +19,9 @@ class _SettingScreenState extends State<SettingScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: whiteColor,
-        title: const Text(
-          'Setting',
-          style: TextStyle(color: blackColor),
+        title: Text(
+          'Settings',
+          style: GoogleFonts.robotoCondensed(color: blackColor),
         ),
         centerTitle: true,
         bottom: PreferredSize(
@@ -50,7 +51,10 @@ class _SettingScreenState extends State<SettingScreen> {
                               "assets/icons/exclamation-circle.svg"),
                           onPressed: () {},
                         ),
-                        const Text('Feedback and support'),
+                        Text(
+                          'Feedback and support',
+                          style: GoogleFonts.robotoCondensed(),
+                        ),
                       ],
                     ),
                   ),
@@ -63,7 +67,10 @@ class _SettingScreenState extends State<SettingScreen> {
                           icon: SvgPicture.asset("assets/icons/legal.svg"),
                           onPressed: () {},
                         ),
-                        const Text('Legal'),
+                        Text(
+                          'Legal',
+                          style: GoogleFonts.robotoCondensed(),
+                        ),
                       ],
                     ),
                   ),
@@ -76,7 +83,10 @@ class _SettingScreenState extends State<SettingScreen> {
                           icon: SvgPicture.asset("assets/icons/country.svg"),
                           onPressed: () {},
                         ),
-                        const Text('Country'),
+                        Text(
+                          'Country',
+                          style: GoogleFonts.robotoCondensed(),
+                        ),
                       ],
                     ),
                   ),
@@ -89,7 +99,10 @@ class _SettingScreenState extends State<SettingScreen> {
                           icon: SvgPicture.asset("assets/icons/users.svg"),
                           onPressed: () {},
                         ),
-                        const Text('Content preference'),
+                        Text(
+                          'Content preference',
+                          style: GoogleFonts.robotoCondensed(),
+                        ),
                       ],
                     ),
                   ),
