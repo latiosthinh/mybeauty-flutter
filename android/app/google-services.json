@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "604291702599",
+    "project_id": "mybeauty-f5b84",
+    "storage_bucket": "mybeauty-f5b84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604291702599:android:7c798aa7e2adcf228c7662",
+        "android_client_info": {
+          "package_name": "com.example.mybeauty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "604291702599-4taesk4fjbch6t7pi0s4kqp7tlem3221.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCqn3nPMhXJAi4kw9zMk9pXQ5nrzgrL30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "604291702599-4taesk4fjbch6t7pi0s4kqp7tlem3221.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
