@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
+import 'package:mybeauty/components/custom_app_bar.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
 
@@ -16,21 +17,9 @@ class _NailScreenState extends State<NailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: whiteColor,
-        title: const Text(
-          'MyNails',
-          style: TextStyle(color: blackColor),
-        ),
-        centerTitle: true,
-        bottom: PreferredSize(
-          preferredSize: const Size.square(0),
-          child: Container(
-            color: pinkColor,
-            height: 1.0,
-          ),
-        ),
-        elevation: 0,
+      appBar: const CustomAppBarFullNavBar(
+        logo: 'assets/images/mynails-logo.svg',
+        color: pinkColor,
       ),
       body: Center(
         child: Column(
@@ -40,7 +29,8 @@ class _NailScreenState extends State<NailScreen> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     image: const DecorationImage(
-                        image: AssetImage('assets/images/spoil-someone.png'))),
+                        image: AssetImage('assets/images/spoil-someone.png'),
+                        fit: BoxFit.cover)),
                 margin: const EdgeInsets.only(top: 16, right: 12, left: 12),
                 child: Container(
                   height: 70,
