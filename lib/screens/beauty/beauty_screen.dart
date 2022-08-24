@@ -4,6 +4,7 @@ import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
 import 'package:mybeauty/components/custom_app_bar.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
+import 'package:mybeauty/models/category.dart';
 
 class BeautyScreen extends StatefulWidget {
   static String routeName = "/beauty";
@@ -61,31 +62,11 @@ class _BeautyScreenState extends State<BeautyScreen> {
                 textAlign: TextAlign.left,
               ),
             ),
-            Container(
-              width: double.infinity,
-              height: 100,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  image: const DecorationImage(
-                      image: AssetImage('assets/images/threading.png'),
-                      fit: BoxFit.cover)),
-              child: Center(
-                child: TextButton(
-                  onPressed: () => {},
-                  style: TextButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5)),
-                      backgroundColor: greenColor,
-                      primary: blackColor,
-                      padding: const EdgeInsets.all(10.0)),
-                  child: Text(
-                    'THREADING',
-                    style: GoogleFonts.robotoCondensed(
-                      fontSize: 20.0,
-                      color: whiteColor,
-                    ),
-                  ),
-                ),
+            SizedBox(
+              height: 200,
+              child: ListView.builder(
+                itemBuilder: (context, index) => buildCategory(index),
+                itemCount: beautyCategories.length,
               ),
             )
           ],
@@ -95,4 +76,32 @@ class _BeautyScreenState extends State<BeautyScreen> {
           const CustomBottomNavBar(selectedMenu: MenuState.myBeauty),
     );
   }
+}
+
+Widget buildCategory(int i) {
+  return Container(
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        image: const DecorationImage(
+            image: AssetImage('assets/images/threading.png'),
+            fit: BoxFit.cover)),
+    padding: const EdgeInsets.all(25.0),
+    margin: const EdgeInsets.only(bottom: 20.0),
+    child: Center(
+      child: TextButton(
+        onPressed: () => {},
+        style: TextButton.styleFrom(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            backgroundColor: greenColor,
+            primary: blackColor,
+            padding: const EdgeInsets.all(10.0)),
+        child: Text(
+          beautyCategories[i].name,
+          style: GoogleFonts.robotoCondensed(
+              fontSize: 20.0, color: whiteColor, fontWeight: FontWeight.w700),
+        ),
+      ),
+    ),
+  );
 }

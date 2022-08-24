@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
+import 'package:mybeauty/models/setting.dart';
 
 class SettingScreen extends StatefulWidget {
   static String routeName = "/setting";
@@ -34,84 +35,34 @@ class _SettingScreenState extends State<SettingScreen> {
         elevation: 0,
       ),
       body: Center(
-        child: Column(
-          children: <Widget>[
-            ListView(
-                padding: const EdgeInsets.all(8),
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                children: <Widget>[
-                  Container(
-                    height: 50,
-                    color: whiteColor,
-                    child: Row(
-                      children: [
-                        IconButton(
-                          icon: SvgPicture.asset(
-                              "assets/icons/exclamation-circle.svg"),
-                          onPressed: () {},
-                        ),
-                        Text(
-                          'Feedback and support',
-                          style: GoogleFonts.robotoCondensed(),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 50,
-                    color: whiteColor,
-                    child: Row(
-                      children: [
-                        IconButton(
-                          icon: SvgPicture.asset("assets/icons/legal.svg"),
-                          onPressed: () {},
-                        ),
-                        Text(
-                          'Legal',
-                          style: GoogleFonts.robotoCondensed(),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 50,
-                    color: whiteColor,
-                    child: Row(
-                      children: [
-                        IconButton(
-                          icon: SvgPicture.asset("assets/icons/country.svg"),
-                          onPressed: () {},
-                        ),
-                        Text(
-                          'Country',
-                          style: GoogleFonts.robotoCondensed(),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 50,
-                    color: whiteColor,
-                    child: Row(
-                      children: [
-                        IconButton(
-                          icon: SvgPicture.asset("assets/icons/users.svg"),
-                          onPressed: () {},
-                        ),
-                        Text(
-                          'Content preference',
-                          style: GoogleFonts.robotoCondensed(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ])
-          ],
-        ),
-      ),
+          child: ListView.builder(
+        itemBuilder: (context, index) => buildSettingMenu(index),
+        itemCount: menuSettings.length,
+      )),
       bottomNavigationBar:
           const CustomBottomNavBar(selectedMenu: MenuState.setting),
     );
   }
+}
+
+Widget buildSettingMenu(int i) {
+  return GestureDetector(
+    onTap: () => {},
+    child: Container(
+      height: 50,
+      color: whiteColor,
+      child: Row(
+        children: [
+          IconButton(
+            icon: SvgPicture.asset(menuSettings[i].icon),
+            onPressed: () {},
+          ),
+          Text(
+            menuSettings[i].title,
+            style: GoogleFonts.robotoCondensed(),
+          ),
+        ],
+      ),
+    ),
+  );
 }
