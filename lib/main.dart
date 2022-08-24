@@ -30,7 +30,8 @@ class _AppState extends State<App> {
       future: _init,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return const Text('error');
+          return const Directionality(
+              textDirection: TextDirection.ltr, child: Text('error...'));
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
@@ -44,7 +45,8 @@ class _AppState extends State<App> {
           );
         }
 
-        return const Text('loading...');
+        return const Directionality(
+            textDirection: TextDirection.ltr, child: Text('loading...'));
       },
     );
   }
