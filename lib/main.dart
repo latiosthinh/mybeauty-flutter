@@ -3,6 +3,7 @@ import 'package:mybeauty/routes.dart';
 import 'package:mybeauty/screens/splash/splash_screen.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:mybeauty/theme.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -17,7 +18,7 @@ class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
 
   @override
-  _AppState createState() => _AppState();
+  State<App> createState() => _AppState();
 }
 
 class _AppState extends State<App> {
@@ -29,23 +30,21 @@ class _AppState extends State<App> {
       future: _init,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text('error');
+          return const Text('error');
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          //home: const MainScreen(title: 'Flutter Demo Home Page'),
-          // We use routeName so that we dont need to remember the name
-          initialRoute: SplashScreen.routeName,
-          routes: routes,
-        );
+            title: 'Flutter Demo',
+            theme: theme(),
+            //home: const MainScreen(title: 'Flutter Demo Home Page'),
+            // We use routeName so that we dont need to remember the name
+            initialRoute: SplashScreen.routeName,
+            routes: routes,
+          );
         }
 
-        return Text('loading...');
+        return const Text('loading...');
       },
     );
   }

@@ -18,8 +18,9 @@ class _NailScreenState extends State<NailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBarFullNavBar(
-        logo: 'assets/images/mynails-logo.svg',
-        color: pinkColor,
+        logo: 'MY NAILS',
+        color: darkPinkColor,
+        inputColor: pinkColor,
       ),
       body: Center(
         child: Column(
