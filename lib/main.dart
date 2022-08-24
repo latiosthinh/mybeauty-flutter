@@ -36,7 +36,7 @@ class _AppState extends State<App> {
 
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
-            title: 'Flutter Demo',
+            title: 'My Nails',
             theme: theme(),
             //home: const MainScreen(title: 'Flutter Demo Home Page'),
             // We use routeName so that we dont need to remember the name
