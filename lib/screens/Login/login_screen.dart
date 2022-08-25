@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
+import 'package:mybeauty/services/auth.dart';
+import 'package:mybeauty/components/primary_button.dart';
 
 class LoginScreen extends StatefulWidget {
   static String routeName = "/login";
@@ -37,48 +39,25 @@ class _LoginScreenState extends State<LoginScreen> {
         margin: const EdgeInsets.only(left: 38, right: 38, top: 38),
         child: Column(
           children: [
-            SizedBox(
-              width: double.infinity,
-              height: 38,
-              child: TextButton.icon(
-                icon: const Icon(
-                  Icons.apple,
-                  size: 18,
-                ),
-                onPressed: () => {},
-                style: TextButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5)),
-                    backgroundColor: pinkColor,
-                    primary: blackColor),
-                label: Text(
-                  'Sign in with Apple',
-                  style: GoogleFonts.robotoCondensed(),
-                ),
+            Flexible(
+              child: PrimaryButton(
+                icon: Icons.apple,
+                background: pinkColor,
+                color: blackColor,
+                text: 'Sign in with Apple',
+                login: AuthService().anonymousLogin,
               ),
             ),
             Container(
-                margin: const EdgeInsets.only(top: 9, bottom: 40),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 38,
-                  child: TextButton.icon(
-                    icon: const Icon(
-                      Icons.facebook,
-                      size: 18,
-                    ),
-                    onPressed: () => {},
-                    style: TextButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)),
-                        backgroundColor: blueColor,
-                        primary: whiteColor),
-                    label: Text(
-                      'Continue with Facebook',
-                      style: GoogleFonts.robotoCondensed(),
-                    ),
-                  ),
-                )),
+              margin: const EdgeInsets.only(top: 9, bottom: 40),
+              child: PrimaryButton(
+                icon: Icons.facebook,
+                background: blueColor,
+                color: whiteColor,
+                text: 'Sign in with Facebook',
+                login: AuthService().anonymousLogin,
+              ),
+            ),
             Center(
               child: Text(
                 'or use your email',
@@ -110,21 +89,11 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Container(
               margin: const EdgeInsets.only(top: 21, bottom: 13),
-              child: SizedBox(
-                width: double.infinity,
-                height: 38,
-                child: TextButton(
-                  onPressed: () => {},
-                  style: TextButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5)),
-                      backgroundColor: grayColor,
-                      primary: whiteColor),
-                  child: Text(
-                    'Log in',
-                    style: GoogleFonts.robotoCondensed(),
-                  ),
-                ),
+              child: PrimaryButton(
+                background: grayColor,
+                color: whiteColor,
+                text: 'Log in',
+                login: AuthService().anonymousLogin,
               ),
             ),
             Text(
