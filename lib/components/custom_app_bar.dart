@@ -32,7 +32,7 @@ class CustomAppBarFullNavBar extends StatelessWidget
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.only(top: 20, bottom: 10),
+                  padding: const EdgeInsets.only(bottom: 10),
                   child: Column(
                     children: [
                       SvgPicture.asset(

@@ -3,6 +3,7 @@
 import 'package:mybeauty/screens/Login/login_screen.dart';
 import 'package:mybeauty/screens/beauty/beauty_screen.dart';
 import 'package:mybeauty/screens/bookings/booking_screen.dart';
+import 'package:mybeauty/screens/bookings/order_screen.dart';
 import 'package:mybeauty/screens/import-booking/import_booking_screen.dart';
 import 'package:mybeauty/screens/main/main_screen.dart';
 import 'package:mybeauty/screens/nails/nail_screen.dart';
@@ -20,6 +21,7 @@ final Map<String, WidgetBuilder> routes = {
   RegisterScreen.routeName: (context) => const RegisterScreen(),
   SettingScreen.routeName: (context) => const SettingScreen(),
   ImportBooking.routeName: (context) => const ImportBooking(),
+  OrderScreen.routeName: (context) => const OrderScreen(),
   MainScreen.routeName: (context) => const MainScreen(
         title: 'Home',
       ),

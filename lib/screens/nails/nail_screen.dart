@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
 import 'package:mybeauty/components/custom_app_bar.dart';
+import 'package:mybeauty/components/jumbotron.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
 
@@ -24,34 +25,7 @@ class _NailScreenState extends State<NailScreen> {
       ),
       body: Center(
         child: Column(
-          children: [
-            Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    image: const DecorationImage(
-                        image: AssetImage('assets/images/spoil-someone.png'),
-                        fit: BoxFit.cover)),
-                margin: const EdgeInsets.only(top: 16, right: 12, left: 12),
-                child: Container(
-                  height: 70,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: pinkOpacityColor),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'SPOIL SOMEONE',
-                        style: GoogleFonts.robotoCondensed(
-                            fontWeight: FontWeight.w700),
-                      ),
-                      Text('The MyNails gift card is the perfect beauty treat',
-                          style: GoogleFonts.robotoCondensed())
-                    ],
-                  ),
-                ))
-          ],
+          children: [jumbotron(pinkOpacityColor)],
         ),
       ),
       bottomNavigationBar:
