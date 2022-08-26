@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
 import 'package:mybeauty/components/custom_app_bar.dart';
 import 'package:mybeauty/components/jumbotron.dart';
+import 'package:mybeauty/components/service_list.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
 
@@ -23,11 +23,13 @@ class _NailScreenState extends State<NailScreen> {
         color: darkPinkColor,
         inputColor: pinkColor,
       ),
-      body: Center(
+      body: SingleChildScrollView(
+          child: Container(
+        padding: const EdgeInsets.all(defaultPadding),
         child: Column(
           children: [jumbotron(pinkOpacityColor)],
         ),
-      ),
+      )),
       bottomNavigationBar:
           const CustomBottomNavBar(selectedMenu: MenuState.myNails),
     );

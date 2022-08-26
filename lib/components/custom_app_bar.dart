@@ -23,7 +23,7 @@ class CustomAppBarFullNavBar extends StatelessWidget
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-            padding: const EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(top: 16),
             height: double.infinity,
             decoration: const BoxDecoration(
                 color: Colors.white,
@@ -53,7 +53,7 @@ class CustomAppBarFullNavBar extends StatelessWidget
                       borderRadius: BorderRadius.circular(8),
                       color: inputColor),
                   margin: const EdgeInsets.only(
-                      top: 18, left: 60, right: 60, bottom: 10),
+                      top: 16, left: 60, right: 60, bottom: 10),
                   child: SizedBox(
                       width: double.infinity,
                       height: 36.0,

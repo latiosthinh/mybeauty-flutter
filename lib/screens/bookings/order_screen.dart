@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mybeauty/components/back_button.dart';
 import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
@@ -19,25 +20,23 @@ class _OrderScreenState extends State<OrderScreen> {
       body: Column(
         children: [
           Container(
-            padding: const EdgeInsets.all(defaultPadding),
+            padding:
+                const EdgeInsets.only(top: 30, right: 38, left: 38, bottom: 9),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: const EdgeInsets.only(bottom: 10.0),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                        backgroundColor: greenColor, primary: whiteColor),
-                    onPressed: (() => {}),
-                    child: const Icon(Icons.arrow_back),
+                    margin: const EdgeInsets.only(bottom: 20.0),
+                    child: backButton(greenColor, whiteColor)),
+                Container(
+                  margin: const EdgeInsets.only(bottom: 9.0),
+                  child: Text(
+                    'Eyebrow',
+                    style: GoogleFonts.robotoCondensed(
+                        color: greenColor,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16.0),
                   ),
-                ),
-                Text(
-                  'Eyebrow',
-                  style: GoogleFonts.robotoCondensed(
-                      color: greenColor,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16.0),
                 ),
                 Row(
                   children: [
@@ -56,6 +55,31 @@ class _OrderScreenState extends State<OrderScreen> {
           ),
           const Divider(
             color: pinkColor,
+            height: 2,
+          ),
+          Container(
+            padding: const EdgeInsets.all(defaultPadding),
+            child: Column(
+              children: [
+                SizedBox(
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        child: Row(
+                          children: const [Icon(Icons.schedule), Text('Time')],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  child: Container(
+                    decoration:
+                        BoxDecoration(border: Border.all(color: grayColor)),
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),
