@@ -66,12 +66,15 @@ class _OrderScreenState extends State<OrderScreen> {
               child: Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(bottom: 16.0),
+                    margin: const EdgeInsets.only(bottom: 16.0, left: 20),
                     child: Row(
                       children: [
                         Row(
                           children: const [
                             Icon(Icons.schedule),
+                            SizedBox(
+                              width: 10,
+                            ),
                             Text(
                               'Time',
                             )
@@ -110,7 +113,13 @@ class _OrderScreenState extends State<OrderScreen> {
                     child: Row(
                       children: [
                         Row(
-                          children: const [Icon(Icons.event), Text('Date')],
+                          children: const [
+                            Icon(Icons.event_outlined),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text('Date')
+                          ],
                         )
                       ],
                     ),
@@ -120,6 +129,9 @@ class _OrderScreenState extends State<OrderScreen> {
                     child: Row(
                       children: const [
                         Icon(Icons.person_outline),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Text('Team')
                       ],
                     ),
@@ -138,7 +150,7 @@ class _OrderScreenState extends State<OrderScreen> {
                             Text('Juliet'),
                             Text(
                               '★ 4.9',
-                              style: TextStyle(color: Colors.yellow),
+                              style: TextStyle(color: Colors.amber),
                             )
                           ],
                         )
