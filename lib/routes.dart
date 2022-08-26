@@ -22,7 +22,5 @@ final Map<String, WidgetBuilder> routes = {
   SettingScreen.routeName: (context) => const SettingScreen(),
   ImportBooking.routeName: (context) => const ImportBooking(),
   OrderScreen.routeName: (context) => const OrderScreen(),
-  MainScreen.routeName: (context) => const MainScreen(
-        title: 'Home',
-      ),
+  MainScreen.routeName: (context) => const MainScreen(),
 };

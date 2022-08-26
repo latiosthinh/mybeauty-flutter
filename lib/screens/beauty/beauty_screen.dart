@@ -6,6 +6,7 @@ import 'package:mybeauty/components/jumbotron.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
 import 'package:mybeauty/models/category.dart';
+import 'package:mybeauty/screens/bookings/order_screen.dart';
 
 class BeautyScreen extends StatefulWidget {
   static String routeName = "/beauty";
@@ -74,37 +75,69 @@ class _BeautyScreenState extends State<BeautyScreen> {
       }).toList(),
     );
   }
-}
 
-Widget _buildChild(List<Product> products) {
-  return SizedBox(
-    child: Container(
+  Widget _buildChild(List<Product> products) {
+    return Container(
         color: lightColor,
         padding:
             const EdgeInsets.only(top: 21, left: 25, bottom: 25, right: 25),
-        child: Column(
-          children: products.map((product) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(product.title,
-                    style: GoogleFonts.robotoCondensed(
-                        color: greenColor,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16.0)),
-                TextFormField(
-                  decoration: const InputDecoration(border: InputBorder.none),
+        child: SizedBox(
+          child: Column(
+            children: products.map((product) {
+              return SizedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(product.title,
+                        style: GoogleFonts.robotoCondensed(
+                            color: greenColor,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16.0)),
+                    SizedBox(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Flexible(
+                              child: TextFormField(
+                            decoration:
+                                const InputDecoration(border: InputBorder.none),
+                          )),
+                          ClipOval(
+                            child: Material(
+                              color: lightGreenColor,
+                              child: InkWell(
+                                onTap: () => {
+                                  Navigator.pushNamed(
+                                      context, OrderScreen.routeName)
+                                },
+                                child: const SizedBox(
+                                  height: 26,
+                                  width: 26,
+                                  child: Icon(
+                                    Icons.add,
+                                    size: 16,
+                                    color: greenColor,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 7.0,
+                      child: Container(
+                        color: grayColor,
+                        margin: const EdgeInsets.only(bottom: 5.0),
+                      ),
+                    )
+                  ],
                 ),
-                SizedBox(
-                  height: 7.0,
-                  child: Container(
-                    color: grayColor,
-                    margin: const EdgeInsets.only(bottom: 5.0),
-                  ),
-                )
-              ],
-            );
-          }).toList(),
-        )),
-  );
+              );
+            }).toList(),
+          ),
+        ));
+  }
 }

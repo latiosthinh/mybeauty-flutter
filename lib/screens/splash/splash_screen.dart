@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/screens/bookings/booking_screen.dart';
+import 'package:mybeauty/screens/main/main_screen.dart';
 import 'package:mybeauty/size_config.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -14,7 +15,7 @@ class SplashScreen extends StatelessWidget {
     SizeConfig().init(context);
 
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushNamed(context, BookingScreen.routeName);
+      Navigator.pushNamed(context, MainScreen.routeName);
     });
 
     return Scaffold(

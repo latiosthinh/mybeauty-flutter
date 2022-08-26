@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mybeauty/components/back_button.dart';
+import 'package:mybeauty/components/buttons/index.dart';
 import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
@@ -27,7 +27,8 @@ class _OrderScreenState extends State<OrderScreen> {
               children: [
                 Container(
                     margin: const EdgeInsets.only(bottom: 20.0),
-                    child: backButton(greenColor, whiteColor)),
+                    child: backButton(greenColor, whiteColor,
+                        () => {Navigator.pop(context)})),
                 Container(
                   margin: const EdgeInsets.only(bottom: 9.0),
                   child: Text(
