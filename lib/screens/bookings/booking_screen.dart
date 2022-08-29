@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
+import 'package:mybeauty/components/custom_bottom_nav_bar.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
 import 'package:mybeauty/screens/Login/login_screen.dart';
@@ -45,7 +45,7 @@ class _BookingScreenState extends State<BookingScreen> {
             child: Center(
               child: SvgPicture.asset(
                 'assets/icons/calendar.svg',
-                color: yellorColor,
+                color: yellowColor,
                 width: 61.03,
                 height: 68.0,
               ),
@@ -77,7 +77,7 @@ class _BookingScreenState extends State<BookingScreen> {
                 style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),
-                    backgroundColor: yellorColor,
+                    backgroundColor: yellowColor,
                     primary: blackColor),
                 child: Text(
                   'Import my booking',

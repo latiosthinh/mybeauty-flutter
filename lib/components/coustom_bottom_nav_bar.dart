@@ -32,124 +32,92 @@ class CustomBottomNavBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Material(
-                    color: whiteColor,
-                    child: InkWell(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/logo.svg",
-                            color: MenuState.myNails == selectedMenu
-                                ? pinkColor
-                                : inActiveIconColor,
-                            width: 30,
-                            height: 25,
-                          ),
-                          Text(
-                            'MyNails',
-                            style: GoogleFonts.metamorphous(
-                                color: MenuState.myNails == selectedMenu
-                                    ? darkPinkColor
-                                    : inActiveIconColor,
-                                height: 1.2,
-                                fontSize: 12),
-                          ),
-                        ],
-                      ),
-                      onTap: () =>
-                          {Navigator.pushNamed(context, NailScreen.routeName)},
-                    )),
-                Material(
-                    color: whiteColor,
-                    child: InkWell(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/logo.svg",
-                            color: MenuState.myBeauty == selectedMenu
-                                ? greenColor
-                                : inActiveIconColor,
-                            width: 30,
-                            height: 25,
-                          ),
-                          Text(
-                            'MyBeauty',
-                            style: GoogleFonts.metamorphous(
-                                color: MenuState.myBeauty == selectedMenu
-                                    ? greenColor
-                                    : inActiveIconColor,
-                                height: 1.2,
-                                fontSize: 12),
-                          ),
-                        ],
-                      ),
-                      onTap: () => {
-                        Navigator.pushNamed(context, BeautyScreen.routeName)
-                      },
-                    )),
-                Material(
-                    color: whiteColor,
-                    child: InkWell(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/setting.svg",
-                            color: MenuState.setting == selectedMenu
-                                ? yellorColor
-                                : inActiveIconColor,
-                            width: 30,
-                            height: 25,
-                          ),
-                          Text(
-                            'Setting',
-                            style: GoogleFonts.robotoCondensed(
-                                color: MenuState.setting == selectedMenu
-                                    ? yellorColor
-                                    : inActiveIconColor,
-                                height: 1.2,
-                                fontSize: 12),
-                          ),
-                        ],
-                      ),
-                      onTap: () => {
-                        Navigator.pushNamed(context, SettingScreen.routeName)
-                      },
-                    )),
-                Material(
-                    color: whiteColor,
-                    child: InkWell(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/calendar.svg",
-                            color: MenuState.booking == selectedMenu
-                                ? yellorColor
-                                : inActiveIconColor,
-                            width: 30,
-                            height: 25,
-                          ),
-                          Text(
-                            'Bookings',
-                            style: GoogleFonts.robotoCondensed(
-                                color: MenuState.booking == selectedMenu
-                                    ? yellorColor
-                                    : inActiveIconColor,
-                                height: 1.2,
-                                fontSize: 12),
-                          ),
-                        ],
-                      ),
-                      onTap: () => {
-                        Navigator.pushNamed(context, BookingScreen.routeName)
-                      },
-                    )),
+                NavIcon(
+                    alignment: MainAxisAlignment.center,
+                    svgPath: "assets/icons/logo.svg",
+                    selectedMenu: MenuState.setting,
+                    activeColor: pinkColor,
+                    text: "MyNails",
+                    tap: () =>
+                        {Navigator.pushNamed(context, NailScreen.routeName)}),
+                NavIcon(
+                    alignment: MainAxisAlignment.center,
+                    svgPath: "assets/icons/logo.svg",
+                    selectedMenu: MenuState.myBeauty,
+                    activeColor: greenColor,
+                    text: "MyBeauty",
+                    tap: () =>
+                        {Navigator.pushNamed(context, BeautyScreen.routeName)}),
+                NavIcon(
+                    alignment: MainAxisAlignment.center,
+                    svgPath: "assets/icons/setting.svg",
+                    selectedMenu: MenuState.setting,
+                    activeColor: yellowColor,
+                    text: "Settings",
+                    tap: () => {
+                          Navigator.pushNamed(context, SettingScreen.routeName)
+                        }),
+                NavIcon(
+                    alignment: MainAxisAlignment.center,
+                    svgPath: "assets/icons/calendar.svg",
+                    selectedMenu: MenuState.booking,
+                    activeColor: yellowColor,
+                    text: "Bookings",
+                    tap: () => {
+                          Navigator.pushNamed(context, BookingScreen.routeName)
+                        }),
               ],
             ),
           )),
     );
+  }
+}
+
+class NavIcon extends StatelessWidget {
+  final MainAxisAlignment? alignment;
+  final String? svgPath;
+  final MenuState? selectedMenu;
+  final Color activeColor;
+  final String text;
+  final Function tap;
+
+  const NavIcon(
+      {Key? key,
+      this.alignment,
+      this.svgPath,
+      this.selectedMenu,
+      required this.activeColor,
+      required this.text,
+      required this.tap})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+        color: whiteColor,
+        child: InkWell(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                svgPath!,
+                color:
+                    MenuState.setting == selectedMenu ? activeColor : grayColor,
+                width: 30,
+                height: 25,
+              ),
+              Text(
+                text,
+                style: GoogleFonts.robotoCondensed(
+                    color: MenuState.setting == selectedMenu
+                        ? activeColor
+                        : grayColor,
+                    height: 1.2,
+                    fontSize: 12),
+              ),
+            ],
+          ),
+          onTap: () => tap(),
+        ));
   }
 }

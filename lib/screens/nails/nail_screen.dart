@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
+import 'package:mybeauty/components/custom_bottom_nav_bar.dart';
 import 'package:mybeauty/components/custom_app_bar.dart';
 import 'package:mybeauty/components/jumbotron.dart';
 import 'package:mybeauty/components/service_list.dart';

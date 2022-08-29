@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mybeauty/components/buttons/index.dart';
-import 'package:mybeauty/components/coustom_bottom_nav_bar.dart';
+import 'package:mybeauty/components/custom_bottom_nav_bar.dart';
 import 'package:mybeauty/components/time_picker_spinner.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
