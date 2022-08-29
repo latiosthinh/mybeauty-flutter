@@ -19,7 +19,6 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color inActiveIconColor = grayColor;
     return Container(
       decoration: const BoxDecoration(
           color: Colors.white,
@@ -35,7 +34,8 @@ class CustomBottomNavBar extends StatelessWidget {
                 NavIcon(
                     alignment: MainAxisAlignment.center,
                     svgPath: "assets/icons/logo.svg",
-                    selectedMenu: MenuState.setting,
+                    selectedMenu: MenuState.myNails,
+                    activeMenu: selectedMenu,
                     activeColor: pinkColor,
                     text: "MyNails",
                     tap: () =>
@@ -44,6 +44,7 @@ class CustomBottomNavBar extends StatelessWidget {
                     alignment: MainAxisAlignment.center,
                     svgPath: "assets/icons/logo.svg",
                     selectedMenu: MenuState.myBeauty,
+                    activeMenu: selectedMenu,
                     activeColor: greenColor,
                     text: "MyBeauty",
                     tap: () =>
@@ -52,6 +53,7 @@ class CustomBottomNavBar extends StatelessWidget {
                     alignment: MainAxisAlignment.center,
                     svgPath: "assets/icons/setting.svg",
                     selectedMenu: MenuState.setting,
+                    activeMenu: selectedMenu,
                     activeColor: yellowColor,
                     text: "Settings",
                     tap: () => {
@@ -61,6 +63,7 @@ class CustomBottomNavBar extends StatelessWidget {
                     alignment: MainAxisAlignment.center,
                     svgPath: "assets/icons/calendar.svg",
                     selectedMenu: MenuState.booking,
+                    activeMenu: selectedMenu,
                     activeColor: yellowColor,
                     text: "Bookings",
                     tap: () => {
@@ -77,6 +80,7 @@ class NavIcon extends StatelessWidget {
   final MainAxisAlignment? alignment;
   final String? svgPath;
   final MenuState? selectedMenu;
+  final MenuState? activeMenu;
   final Color activeColor;
   final String text;
   final Function tap;
@@ -86,6 +90,7 @@ class NavIcon extends StatelessWidget {
       this.alignment,
       this.svgPath,
       this.selectedMenu,
+      this.activeMenu,
       required this.activeColor,
       required this.text,
       required this.tap})
@@ -102,16 +107,15 @@ class NavIcon extends StatelessWidget {
               SvgPicture.asset(
                 svgPath!,
                 color:
-                    MenuState.setting == selectedMenu ? activeColor : grayColor,
+                    selectedMenu == activeMenu ? activeColor : grayColor,
                 width: 30,
                 height: 25,
               ),
               Text(
                 text,
                 style: GoogleFonts.robotoCondensed(
-                    color: MenuState.setting == selectedMenu
-                        ? activeColor
-                        : grayColor,
+                    color:
+                        selectedMenu == activeMenu ? activeColor : grayColor,
                     height: 1.2,
                     fontSize: 12),
               ),
