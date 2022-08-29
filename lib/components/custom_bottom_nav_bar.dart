@@ -54,7 +54,7 @@ class CustomBottomNavBar extends StatelessWidget {
                     svgPath: "assets/icons/setting.svg",
                     selectedMenu: MenuState.setting,
                     activeMenu: selectedMenu,
-                    activeColor: yellowColor,
+                    activeColor: orangeColor,
                     text: "Settings",
                     tap: () => {
                           Navigator.pushNamed(context, SettingScreen.routeName)
@@ -64,7 +64,7 @@ class CustomBottomNavBar extends StatelessWidget {
                     svgPath: "assets/icons/calendar.svg",
                     selectedMenu: MenuState.booking,
                     activeMenu: selectedMenu,
-                    activeColor: yellowColor,
+                    activeColor: orangeColor,
                     text: "Bookings",
                     tap: () => {
                           Navigator.pushNamed(context, BookingScreen.routeName)
@@ -106,16 +106,14 @@ class NavIcon extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 svgPath!,
-                color:
-                    selectedMenu == activeMenu ? activeColor : grayColor,
+                color: selectedMenu == activeMenu ? activeColor : grayColor,
                 width: 30,
                 height: 25,
               ),
               Text(
                 text,
                 style: GoogleFonts.robotoCondensed(
-                    color:
-                        selectedMenu == activeMenu ? activeColor : grayColor,
+                    color: selectedMenu == activeMenu ? activeColor : grayColor,
                     height: 1.2,
                     fontSize: 12),
               ),

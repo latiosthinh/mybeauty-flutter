@@ -28,7 +28,7 @@ class CustomAppBarFullNavBar extends StatelessWidget
             decoration: const BoxDecoration(
                 color: Colors.white,
                 border:
-                    Border(bottom: BorderSide(color: yellowColor, width: 1.0))),
+                    Border(bottom: BorderSide(color: orangeColor, width: 1.0))),
             child: Column(
               children: [
                 Container(

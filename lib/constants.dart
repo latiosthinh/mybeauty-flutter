@@ -6,9 +6,13 @@ const lightGreenColor = Color.fromRGBO(220, 240, 226, 1);
 const lightGreenOpacityColor = Color.fromRGBO(220, 240, 226, 0.75);
 const pinkColor = Color.fromRGBO(220, 168, 170, 1);
 const pinkOpacityColor = Color.fromRGBO(220, 168, 170, 0.75);
-const yellowColor = Color.fromRGBO(241, 198, 155, 1);
+
+///* Orange: #F1C69B
+const orangeColor = Color.fromRGBO(241, 198, 155, 1);
 const whiteColor = Colors.white;
 const blackColor = Colors.black;
+
+///* Gray 4: #BDBDBD
 const grayColor = Color.fromRGBO(189, 189, 189, 1);
 const blueColor = Color.fromRGBO(35, 116, 225, 1);
 const redColor = Color.fromRGBO(235, 87, 87, 1);

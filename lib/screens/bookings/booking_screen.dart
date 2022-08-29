@@ -45,7 +45,7 @@ class _BookingScreenState extends State<BookingScreen> {
             child: Center(
               child: SvgPicture.asset(
                 'assets/icons/calendar.svg',
-                color: yellowColor,
+                color: orangeColor,
                 width: 61.03,
                 height: 68.0,
               ),
@@ -77,7 +77,7 @@ class _BookingScreenState extends State<BookingScreen> {
                 style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),
-                    backgroundColor: yellowColor,
+                    backgroundColor: orangeColor,
                     primary: blackColor),
                 child: Text(
                   'Import my booking',

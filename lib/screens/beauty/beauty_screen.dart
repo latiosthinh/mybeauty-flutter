@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mybeauty/components/buttons/index.dart';
 import 'package:mybeauty/components/custom_bottom_nav_bar.dart';
 import 'package:mybeauty/components/custom_app_bar.dart';
 import 'package:mybeauty/components/jumbotron.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
 import 'package:mybeauty/models/category.dart';
-import 'package:mybeauty/screens/bookings/order_screen.dart';
+import 'package:mybeauty/screens/bookings/appointment_screen.dart';
 
 class BeautyScreen extends StatefulWidget {
   static String routeName = "/beauty";
@@ -93,46 +94,15 @@ class _BeautyScreenState extends State<BeautyScreen> {
                             color: greenColor,
                             fontWeight: FontWeight.w700,
                             fontSize: 16.0)),
-                    SizedBox(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Flexible(
-                              child: TextFormField(
-                            decoration:
-                                const InputDecoration(border: InputBorder.none),
-                          )),
-                          ClipOval(
-                            child: Material(
-                              color: lightGreenColor,
-                              child: InkWell(
-                                onTap: () => {
+                    Container(
+                        margin: const EdgeInsets.only(bottom: 10.0),
+                        child: TextFormField(
+                            initialValue: '50',
+                            decoration: InputDecoration(
+                              suffixIcon: addSuffixIconButton(() =>
                                   Navigator.pushNamed(
-                                      context, OrderScreen.routeName)
-                                },
-                                child: const SizedBox(
-                                  height: 26,
-                                  width: 26,
-                                  child: Icon(
-                                    Icons.add,
-                                    size: 16,
-                                    color: greenColor,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 7.0,
-                      child: Container(
-                        color: grayColor,
-                        margin: const EdgeInsets.only(bottom: 5.0),
-                      ),
-                    )
+                                      context, AppointmentScreen.routeName)),
+                            )))
                   ],
                 ),
               );

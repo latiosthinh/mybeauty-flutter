@@ -14,9 +14,9 @@ class SplashScreen extends StatelessWidget {
     // You have to call it on your starting screen
     SizeConfig().init(context);
 
-    // Future.delayed(const Duration(seconds: 2), () {
-    //   Navigator.pushNamed(context, MainScreen.routeName);
-    // });
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.pushNamed(context, MainScreen.routeName);
+    });
 
     return Scaffold(
         body: Container(

@@ -49,3 +49,20 @@ Widget backButton(Color bgColor, Color iconColor, Function onTab,
     ),
   );
 }
+
+Widget addSuffixIconButton(Function onTap) {
+  return ClipOval(
+    child: InkWell(
+      onTap: () => onTap(),
+      child: const SizedBox(
+        height: 17,
+        width: 17,
+        child: Icon(
+          Icons.add,
+          size: 16,
+          color: greenColor,
+        ),
+      ),
+    ),
+  );
+}

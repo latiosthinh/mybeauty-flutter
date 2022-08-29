@@ -6,15 +6,15 @@ import 'package:mybeauty/components/time_picker_spinner.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
 
-class OrderScreen extends StatefulWidget {
+class AppointmentScreen extends StatefulWidget {
   static String routeName = "/order";
-  const OrderScreen({Key? key}) : super(key: key);
+  const AppointmentScreen({Key? key}) : super(key: key);
 
   @override
-  State<OrderScreen> createState() => _OrderScreenState();
+  State<AppointmentScreen> createState() => _AppointmentScreenScreenState();
 }
 
-class _OrderScreenState extends State<OrderScreen> {
+class _AppointmentScreenScreenState extends State<AppointmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,15 +111,19 @@ class _OrderScreenState extends State<OrderScreen> {
                   Container(
                     margin: const EdgeInsets.only(bottom: 20.0),
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
                       children: [
                         Row(
                           children: const [
-                            Icon(Icons.event_outlined),
+                            Icon(Icons.event),
                             SizedBox(
                               width: 10,
                             ),
                             Text('Date')
                           ],
+                        ),
+                        Row(
+                          children: const [Text('Today'), Icon(Icons.close)],
                         )
                       ],
                     ),
