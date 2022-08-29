@@ -6,7 +6,6 @@ import 'package:mybeauty/enums.dart';
 import 'package:mybeauty/screens/Login/login_screen.dart';
 import 'package:mybeauty/screens/import-booking/import_booking_screen.dart';
 import 'package:mybeauty/screens/register/register_screen.dart';
-import 'package:mybeauty/size_config.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BookingScreen extends StatefulWidget {
@@ -70,7 +69,6 @@ class _BookingScreenState extends State<BookingScreen> {
             margin: const EdgeInsets.only(bottom: 71, top: 38),
             child: SizedBox(
               width: double.infinity,
-              height: getProportionateScreenHeight(38),
               child: TextButton(
                 onPressed: () =>
                     {Navigator.pushNamed(context, ImportBooking.routeName)},

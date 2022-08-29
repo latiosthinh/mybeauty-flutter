@@ -111,7 +111,6 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                   Container(
                     margin: const EdgeInsets.only(bottom: 20.0),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
                       children: [
                         Row(
                           children: const [
