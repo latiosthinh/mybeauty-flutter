@@ -33,7 +33,7 @@ class CustomAppBarFullNavBar extends StatelessWidget
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.only(bottom: 30),
                   child: Column(
                     children: [
                       SvgPicture.asset(
@@ -50,6 +50,7 @@ class CustomAppBarFullNavBar extends StatelessWidget
                   ),
                 ),
                 SearchBox(
+                  backgroundColor: inputColor,
                   onChanged: (value) => {},
                 )
               ],
