@@ -23,37 +23,46 @@ class CustomAppBarFullNavBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-            padding: const EdgeInsets.only(top: 16),
-            height: double.infinity,
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                border:
-                    Border(bottom: BorderSide(color: orangeColor, width: 1.0))),
-            child: Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.only(bottom: 30),
+        resizeToAvoidBottomInset: false,
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              expandedHeight: 160,
+              flexibleSpace: Container(
+                  padding: const EdgeInsets.only(top: 16),
+                  height: double.infinity,
+                  decoration: const BoxDecoration(
+                      color: Colors.white,
+                      border: Border(
+                          bottom: BorderSide(color: orangeColor, width: 1.0))),
                   child: Column(
                     children: [
-                      SvgPicture.asset(
-                        'assets/icons/logo.svg',
-                        color: color,
-                        width: 36,
-                        height: 30,
+                      Container(
+                        padding: const EdgeInsets.only(bottom: 30),
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              'assets/icons/logo.svg',
+                              color: color,
+                              width: 36,
+                              height: 30,
+                            ),
+                            Text(
+                              logo,
+                              style: GoogleFonts.podkova(
+                                  fontSize: 32, color: color),
+                            )
+                          ],
+                        ),
                       ),
-                      Text(
-                        logo,
-                        style: GoogleFonts.podkova(fontSize: 32, color: color),
+                      SearchBox(
+                        backgroundColor: inputColor,
+                        onChanged: (value) => {},
                       )
                     ],
-                  ),
-                ),
-                SearchBox(
-                  backgroundColor: inputColor,
-                  onChanged: (value) => {},
-                )
-              ],
-            )));
+                  )),
+            )
+          ],
+        ));
   }
 }

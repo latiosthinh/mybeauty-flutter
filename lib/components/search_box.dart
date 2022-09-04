@@ -13,7 +13,6 @@ class SearchBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(left: 60.0, right: 60.0),
-      padding: const EdgeInsets.symmetric(horizontal: 13.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
@@ -24,14 +23,18 @@ class SearchBox extends StatelessWidget {
       height: 36.0,
       alignment: Alignment.bottomCenter,
       child: TextField(
-        onChanged: onChanged,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          icon: SvgPicture.asset("assets/icons/search.svg"),
-          hintText: "Find a treatment or venue",
-          hintStyle: const TextStyle(color: whiteColor),
-        ),
-      ),
+          onChanged: onChanged,
+          maxLines: 1,
+          decoration: const InputDecoration(
+              filled: true,
+              border: InputBorder.none,
+              prefixIcon: Icon(
+                Icons.search,
+                color: whiteColor,
+              ),
+              hintText: "Find a treatment or venue",
+              hintStyle: TextStyle(color: whiteColor),
+              contentPadding: EdgeInsets.zero)),
     );
   }
 }
