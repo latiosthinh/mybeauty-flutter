@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mybeauty/components/buttons/index.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/screens/beauty/beauty_screen.dart';

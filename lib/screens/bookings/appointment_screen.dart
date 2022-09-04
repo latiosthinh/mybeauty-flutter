@@ -5,6 +5,7 @@ import 'package:mybeauty/components/custom_bottom_nav_bar.dart';
 import 'package:mybeauty/components/time_picker_spinner.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
+import 'package:mybeauty/models/appointment_screen_arguments.dart';
 
 class AppointmentScreen extends StatefulWidget {
   static String routeName = "/order";
@@ -17,6 +18,8 @@ class AppointmentScreen extends StatefulWidget {
 class _AppointmentScreenScreenState extends State<AppointmentScreen> {
   @override
   Widget build(BuildContext context) {
+    final AppontmentScreenArguments agrs =
+        ModalRoute.of(context)!.settings.arguments as AppontmentScreenArguments;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -34,7 +37,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                   Container(
                     margin: const EdgeInsets.only(bottom: 9.0),
                     child: Text(
-                      'Eyebrow',
+                      agrs.title,
                       style: GoogleFonts.robotoCondensed(
                           color: greenColor,
                           fontWeight: FontWeight.w700,

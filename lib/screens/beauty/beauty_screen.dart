@@ -6,6 +6,7 @@ import 'package:mybeauty/components/custom_app_bar.dart';
 import 'package:mybeauty/components/jumbotron.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/enums.dart';
+import 'package:mybeauty/models/appointment_screen_arguments.dart';
 import 'package:mybeauty/models/category.dart';
 import 'package:mybeauty/screens/bookings/appointment_screen.dart';
 
@@ -101,7 +102,9 @@ class _BeautyScreenState extends State<BeautyScreen> {
                             decoration: InputDecoration(
                               suffixIcon: addSuffixIconButton(() =>
                                   Navigator.pushNamed(
-                                      context, AppointmentScreen.routeName)),
+                                      context, AppointmentScreen.routeName,
+                                      arguments: AppontmentScreenArguments(
+                                          product.title))),
                             )))
                   ],
                 ),
