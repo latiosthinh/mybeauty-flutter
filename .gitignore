@@ -54,3 +54,5 @@ macos/Flutter/GeneratedPluginRegistrant.swift
 macos/Flutter/ephemeral/flutter_export_environment.sh
 linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux
 .vscode/launch.json
+linux
+windows
