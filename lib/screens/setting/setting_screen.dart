@@ -17,7 +17,8 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+        home: Scaffold(
       appBar: AppBar(
         backgroundColor: whiteColor,
         title: Text(
@@ -39,7 +40,7 @@ class _SettingScreenState extends State<SettingScreen> {
         itemBuilder: (context, index) => buildSettingMenu(index),
         itemCount: menuSettings.length,
       )),
-    );
+    ));
   }
 }
 

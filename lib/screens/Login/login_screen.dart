@@ -18,7 +18,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+        home: Scaffold(
       appBar: AppBar(
         backgroundColor: whiteColor,
         title: Text(
@@ -103,6 +104,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
-    );
+    ));
   }
 }

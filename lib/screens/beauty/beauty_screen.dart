@@ -21,7 +21,9 @@ class BeautyScreen extends StatefulWidget {
 class _BeautyScreenState extends State<BeautyScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+      title: 'MY BEAUTY',
+        home: Scaffold(
       appBar: const CustomAppBarFullNavBar(
         logo: 'MY BEAUTY',
         color: greenColor,
@@ -49,7 +51,7 @@ class _BeautyScreenState extends State<BeautyScreen> {
           ),
         ),
       ),
-    );
+    ));
   }
 
   Widget _buildPanel() {

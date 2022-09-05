@@ -17,19 +17,20 @@ class NailScreen extends StatefulWidget {
 class _NailScreenState extends State<NailScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBarFullNavBar(
-        logo: 'MY NAILS',
-        color: darkPinkColor,
-        inputColor: pinkColor,
-      ),
-      body: SingleChildScrollView(
-          child: Container(
-        padding: const EdgeInsets.all(defaultPadding),
-        child: Column(
-          children: [jumbotron(pinkOpacityColor)],
+    return MaterialApp(
+      home: Scaffold(
+        appBar: const CustomAppBarFullNavBar(
+          logo: 'MY NAILS',
+          color: darkPinkColor,
+          inputColor: pinkColor,
         ),
-      )),
-    );
+        body: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(defaultPadding),
+            child: Column(
+              children: [jumbotron(pinkOpacityColor)],
+            ),
+        )),
+    ));
   }
 }

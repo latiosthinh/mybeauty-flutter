@@ -41,6 +41,7 @@ class _HomePageState extends State<HomePage> {
   Widget _showBottomNav() {
     return CustomBottomNavBar(
         selectedIndex: _selectedIndex,
+        screens: _screens,
         tap: _onTap);
   }
 }
