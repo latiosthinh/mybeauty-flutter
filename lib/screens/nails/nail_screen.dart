@@ -30,8 +30,6 @@ class _NailScreenState extends State<NailScreen> {
           children: [jumbotron(pinkOpacityColor)],
         ),
       )),
-      bottomNavigationBar:
-          const CustomBottomNavBar(selectedMenu: MenuState.myNails),
     );
   }
 }

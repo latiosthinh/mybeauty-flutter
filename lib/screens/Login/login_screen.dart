@@ -103,8 +103,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
-      bottomNavigationBar:
-          const CustomBottomNavBar(selectedMenu: MenuState.booking),
     );
   }
 }

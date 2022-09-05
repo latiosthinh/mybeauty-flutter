@@ -13,7 +13,7 @@ import 'package:flutter/widgets.dart';
 import 'package:mybeauty/screens/splash/splash_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
-  SplashScreen.routeName: (context) => const SplashScreen(),
+  // SplashScreen.routeName: (context) => const SplashScreen(),
   BookingScreen.routeName: (context) => const BookingScreen(),
   NailScreen.routeName: (context) => const NailScreen(),
   BeautyScreen.routeName: (context) => const BeautyScreen(),

@@ -49,8 +49,6 @@ class _BeautyScreenState extends State<BeautyScreen> {
           ),
         ),
       ),
-      bottomNavigationBar:
-          const CustomBottomNavBar(selectedMenu: MenuState.myBeauty),
     );
   }
 

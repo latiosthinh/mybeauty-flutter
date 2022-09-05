@@ -156,8 +156,6 @@ class RegisterScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar:
-          const CustomBottomNavBar(selectedMenu: MenuState.booking),
     );
   }
 }
