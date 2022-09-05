@@ -81,8 +81,6 @@ class _ImportBookingState extends State<ImportBooking> {
           ],
         ),
       ),
-      bottomNavigationBar:
-          const CustomBottomNavBar(selectedMenu: MenuState.booking),
     );
   }
 }

@@ -187,8 +187,6 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
           ],
         ),
       ),
-      bottomNavigationBar:
-          const CustomBottomNavBar(selectedMenu: MenuState.booking),
     );
   }
 }

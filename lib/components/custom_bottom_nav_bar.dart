@@ -5,121 +5,91 @@ import 'package:mybeauty/screens/beauty/beauty_screen.dart';
 import 'package:mybeauty/screens/bookings/booking_screen.dart';
 import 'package:mybeauty/screens/nails/nail_screen.dart';
 import 'package:mybeauty/screens/setting/setting_screen.dart';
-
 import '../constants.dart';
-import '../enums.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
+  final int selectedIndex;
+  final ValueChanged<int> tap;
+
   const CustomBottomNavBar({
     Key? key,
-    required this.selectedMenu,
+    required this.selectedIndex,
+    required this.tap,
   }) : super(key: key);
-
-  final MenuState selectedMenu;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          color: Colors.white,
-          border: Border(top: BorderSide(color: darkPinkColor, width: 1.0))),
-      child: SafeArea(
-          top: false,
-          child: SizedBox(
-            height: 80,
-            width: double.infinity,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                NavIcon(
-                    alignment: MainAxisAlignment.center,
-                    svgPath: "assets/icons/logo.svg",
-                    selectedMenu: MenuState.myNails,
-                    activeMenu: selectedMenu,
-                    activeColor: pinkColor,
-                    text: "MyNails",
-                    tap: () =>
-                        {Navigator.pushNamed(context, NailScreen.routeName)}),
-                NavIcon(
-                    alignment: MainAxisAlignment.center,
-                    svgPath: "assets/icons/logo.svg",
-                    selectedMenu: MenuState.myBeauty,
-                    activeMenu: selectedMenu,
-                    activeColor: greenColor,
-                    text: "MyBeauty",
-                    tap: () =>
-                        {Navigator.pushNamed(context, BeautyScreen.routeName)}),
-                NavIcon(
-                    alignment: MainAxisAlignment.center,
-                    svgPath: "assets/icons/setting.svg",
-                    selectedMenu: MenuState.setting,
-                    activeMenu: selectedMenu,
-                    activeColor: orangeColor,
-                    text: "Settings",
-                    tap: () => {
-                          Navigator.pushNamed(context, SettingScreen.routeName)
-                        }),
-                NavIcon(
-                    alignment: MainAxisAlignment.center,
-                    svgPath: "assets/icons/calendar.svg",
-                    selectedMenu: MenuState.booking,
-                    activeMenu: selectedMenu,
-                    activeColor: orangeColor,
-                    text: "Bookings",
-                    tap: () => {
-                          Navigator.pushNamed(context, BookingScreen.routeName)
-                        }),
-              ],
-            ),
-          )),
-    );
-  }
-}
-
-class NavIcon extends StatelessWidget {
-  final MainAxisAlignment? alignment;
-  final String? svgPath;
-  final MenuState? selectedMenu;
-  final MenuState? activeMenu;
-  final Color activeColor;
-  final String text;
-  final Function tap;
-
-  const NavIcon(
-      {Key? key,
-      this.alignment,
-      this.svgPath,
-      this.selectedMenu,
-      this.activeMenu,
-      required this.activeColor,
-      required this.text,
-      required this.tap})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-        color: whiteColor,
-        child: InkWell(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                svgPath!,
-                color: selectedMenu == activeMenu ? activeColor : grayColor,
-                width: 30,
-                height: 25,
+        decoration: const BoxDecoration(
+            color: Colors.white,
+            border: Border(top: BorderSide(color: darkPinkColor, width: 1.0))),
+        height: 80,
+        child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            items: [
+              BottomNavigationBarItem(
+                icon: SizedBox(
+                    width: 30,
+                    height: 25,
+                    child: SvgPicture.asset("assets/icons/logo.svg",
+                        color: grayColor)),
+                activeIcon: SizedBox(
+                    width: 30,
+                    height: 25,
+                    child: SvgPicture.asset("assets/icons/logo.svg",
+                        color: pinkColor)),
+                label: "MyNails",
               ),
-              Text(
-                text,
-                style: GoogleFonts.robotoCondensed(
-                    color: selectedMenu == activeMenu ? activeColor : grayColor,
-                    height: 1.2,
-                    fontSize: 12),
+              BottomNavigationBarItem(
+                icon: Container(
+                    width: 30,
+                    height: 25,
+                    margin: const EdgeInsets.only(bottom: 3),
+                    child: SvgPicture.asset("assets/icons/logo.svg",
+                        color: grayColor)),
+                activeIcon: Container(
+                    width: 30,
+                    height: 25,
+                    margin: const EdgeInsets.only(bottom: 3),
+                    child: SvgPicture.asset("assets/icons/logo.svg",
+                        color: greenColor)),
+                label: "MyBeauty",
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                    width: 30,
+                    height: 25,
+                    margin: const EdgeInsets.only(bottom: 3),
+                    child: SvgPicture.asset("assets/icons/setting.svg",
+                        color: grayColor)),
+                activeIcon: Container(
+                    width: 30,
+                    height: 25,
+                    margin: const EdgeInsets.only(bottom: 3),
+                    child: SvgPicture.asset("assets/icons/setting.svg",
+                        color: greenColor)),
+                label: "Settings",
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                    width: 30,
+                    height: 25,
+                    margin: const EdgeInsets.only(bottom: 3),
+                    child: SvgPicture.asset("assets/icons/calendar.svg",
+                        color: grayColor)),
+                activeIcon: Container(
+                    width: 30,
+                    height: 25,
+                    margin: const EdgeInsets.only(bottom: 3),
+                    child: SvgPicture.asset("assets/icons/calendar.svg",
+                        color: greenColor)),
+                label: "Bookings",
               ),
             ],
-          ),
-          onTap: () => tap(),
-        ));
+            currentIndex: selectedIndex,
+            onTap: tap,
+            unselectedItemColor: Colors.white,
+            selectedItemColor: Colors.black,
+            selectedFontSize: 12));
   }
 }

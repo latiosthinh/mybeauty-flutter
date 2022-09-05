@@ -39,8 +39,6 @@ class _SettingScreenState extends State<SettingScreen> {
         itemBuilder: (context, index) => buildSettingMenu(index),
         itemCount: menuSettings.length,
       )),
-      bottomNavigationBar:
-          const CustomBottomNavBar(selectedMenu: MenuState.setting),
     );
   }
 }
