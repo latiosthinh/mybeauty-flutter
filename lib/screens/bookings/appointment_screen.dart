@@ -128,6 +128,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                     Container(
                       margin: const EdgeInsets.only(bottom: 20.0),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: const [
@@ -139,13 +140,20 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                             ],
                           ),
                           Row(
-                            children: const [Text('Today'), Icon(Icons.close)],
+                            children: const [
+                              Text('Today'),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(Icons.cancel_outlined)
+                            ],
                           )
                         ],
                       ),
                     ),
+                    buildLineDate(),
                     Container(
-                      margin: const EdgeInsets.only(bottom: 10.0),
+                      margin: const EdgeInsets.only(bottom: 10.0, top: 20.0),
                       child: Row(
                         children: const [
                           Icon(Icons.person_outline),
@@ -194,9 +202,11 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                                 fontSize: 20.0)),
                         onPressed: () => {
                           db.collection('bookings').add({
-                            'name': 'TanDZ',
+                            'name': 'Đinh Công Tân',
                             'service': widget.title,
-                            'created': DateTime.now()
+                            'created': DateTime.now(),
+                            'phone': '0762559696',
+                            'email': 'f7deat@gmail.com'
                           })
                         },
                       ),
@@ -210,4 +220,33 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
       ),
     );
   }
+}
+
+final List<String> workDates = ['14', '15', '16', '17', '18', '19'];
+
+Widget buildLineDate() {
+  return Row(
+      mainAxisSize: MainAxisSize.max,
+      children: workDates.map((date) {
+        return Expanded(
+            child: Container(
+                padding: const EdgeInsets.all(5),
+                decoration: const BoxDecoration(
+                    border: Border(
+                        top: BorderSide(color: grayColor),
+                        bottom: BorderSide(color: grayColor))),
+                child: Row(
+                  children: [
+                    Column(
+                      children: [
+                        const Text('Today'),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        circleButton(() => {}, date)
+                      ],
+                    )
+                  ],
+                )));
+      }).toList());
 }
