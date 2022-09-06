@@ -66,3 +66,23 @@ Widget addSuffixIconButton(Function onTap) {
     ),
   );
 }
+
+Widget circleButton(Function onTap, String text) {
+  return ClipOval(
+    child: Material(
+      color: darkPinkColor,
+      child: InkWell(
+        onTap: () => onTap(),
+        child: SizedBox(
+          height: 28,
+          width: 28,
+          child: Text(
+            text,
+            textAlign: TextAlign.center,
+            style: const TextStyle(height: 1.6, color: whiteColor),
+          ),
+        ),
+      ),
+    ),
+  );
+}
