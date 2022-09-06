@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mybeauty/components/buttons/index.dart';
-import 'package:mybeauty/components/custom_bottom_nav_bar.dart';
 import 'package:mybeauty/components/custom_app_bar.dart';
 import 'package:mybeauty/components/jumbotron.dart';
 import 'package:mybeauty/constants.dart';
-import 'package:mybeauty/enums.dart';
-import 'package:mybeauty/models/appointment_screen_arguments.dart';
 import 'package:mybeauty/models/category.dart';
 import 'package:mybeauty/screens/bookings/appointment_screen.dart';
 
@@ -22,36 +19,36 @@ class _BeautyScreenState extends State<BeautyScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MY BEAUTY',
+        title: 'MY BEAUTY',
         home: Scaffold(
-      appBar: const CustomAppBarFullNavBar(
-        logo: 'MY BEAUTY',
-        color: greenColor,
-        inputColor: lightGreenColor,
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          margin: const EdgeInsets.only(left: 12, right: 12),
-          child: Column(
-            children: [
-              jumbotron(lightGreenOpacityColor),
-              Container(
-                alignment: Alignment.centerLeft,
-                margin: const EdgeInsets.only(top: 30, bottom: 30),
-                child: Text(
-                  'Browse treatments',
-                  style: GoogleFonts.robotoCondensed(fontSize: 20.0),
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              Container(
-                child: _buildPanel(),
-              ),
-            ],
+          appBar: const CustomAppBarFullNavBar(
+            logo: 'MY BEAUTY',
+            color: greenColor,
+            inputColor: lightGreenColor,
           ),
-        ),
-      ),
-    ));
+          body: SingleChildScrollView(
+            child: Container(
+              margin: const EdgeInsets.only(left: 12, right: 12),
+              child: Column(
+                children: [
+                  jumbotron(lightGreenOpacityColor),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.only(top: 30, bottom: 30),
+                    child: Text(
+                      'Browse treatments',
+                      style: GoogleFonts.robotoCondensed(fontSize: 20.0),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  Container(
+                    child: _buildPanel(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ));
   }
 
   Widget _buildPanel() {
@@ -95,17 +92,24 @@ class _BeautyScreenState extends State<BeautyScreen> {
                             color: greenColor,
                             fontWeight: FontWeight.w700,
                             fontSize: 16.0)),
-                    Container(
-                        margin: const EdgeInsets.only(bottom: 10.0),
-                        child: TextFormField(
-                            initialValue: '50',
-                            decoration: InputDecoration(
-                              suffixIcon: addSuffixIconButton(() =>
-                                  Navigator.pushNamed(
-                                      context, AppointmentScreen.routeName,
-                                      arguments: AppontmentScreenArguments(
-                                          product.title))),
-                            )))
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('50'),
+                        IconButton(
+                            onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AppointmentScreen(
+                                          title: product.title,
+                                        ))),
+                            icon: SvgPicture.asset(
+                                'assets/icons/plus-circle.svg'))
+                      ],
+                    ),
+                    const Divider(
+                      height: 1,
+                    )
                   ],
                 ),
               );

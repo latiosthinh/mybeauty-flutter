@@ -78,7 +78,7 @@ class TimePickerSpinner extends StatefulWidget {
   final bool isForce2Digits;
   final TimePickerCallback? onTimeChange;
 
-  TimePickerSpinner(
+  const TimePickerSpinner(
       {Key? key,
       this.time,
       this.minutesInterval = 1,
