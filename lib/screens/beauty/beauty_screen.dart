@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mybeauty/components/custom_app_bar.dart';
 import 'package:mybeauty/components/jumbotron.dart';
 import 'package:mybeauty/constants.dart';
@@ -18,37 +17,35 @@ class BeautyScreen extends StatefulWidget {
 class _BeautyScreenState extends State<BeautyScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'MY BEAUTY',
-        home: Scaffold(
-          appBar: const CustomAppBarFullNavBar(
-            logo: 'MY BEAUTY',
-            color: greenColor,
-            inputColor: lightGreenColor,
-          ),
-          body: SingleChildScrollView(
-            child: Container(
-              margin: const EdgeInsets.only(left: 12, right: 12),
-              child: Column(
-                children: [
-                  jumbotron(lightGreenOpacityColor),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    margin: const EdgeInsets.only(top: 30, bottom: 30),
-                    child: Text(
-                      'Browse treatments',
-                      style: GoogleFonts.robotoCondensed(fontSize: 20.0),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Container(
-                    child: _buildPanel(),
-                  ),
-                ],
+    return Scaffold(
+      appBar: const CustomAppBarFullNavBar(
+        logo: 'MY BEAUTY',
+        color: greenColor,
+        inputColor: lightGreenColor,
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.only(left: 12, right: 12),
+          child: Column(
+            children: [
+              jumbotron(lightGreenOpacityColor),
+              Container(
+                alignment: Alignment.centerLeft,
+                margin: const EdgeInsets.only(top: 30, bottom: 30),
+                child: const Text(
+                  'Browse treatments',
+                  style: TextStyle(fontSize: 20.0),
+                  textAlign: TextAlign.left,
+                ),
               ),
-            ),
+              Container(
+                child: _buildPanel(),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   Widget _buildPanel() {
@@ -88,7 +85,7 @@ class _BeautyScreenState extends State<BeautyScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(product.title,
-                        style: GoogleFonts.robotoCondensed(
+                        style: const TextStyle(
                             color: greenColor,
                             fontWeight: FontWeight.w700,
                             fontSize: 16.0)),

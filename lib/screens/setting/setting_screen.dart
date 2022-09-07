@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mybeauty/components/custom_bottom_nav_bar.dart';
 import 'package:mybeauty/constants.dart';
-import 'package:mybeauty/enums.dart';
 import 'package:mybeauty/models/setting.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -17,13 +14,12 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: whiteColor,
-        title: Text(
+        title: const Text(
           'Settings',
-          style: GoogleFonts.robotoCondensed(color: blackColor),
+          style: TextStyle(color: blackColor),
         ),
         centerTitle: true,
         bottom: PreferredSize(
@@ -40,7 +36,7 @@ class _SettingScreenState extends State<SettingScreen> {
         itemBuilder: (context, index) => buildSettingMenu(index),
         itemCount: menuSettings.length,
       )),
-    ));
+    );
   }
 }
 
@@ -58,7 +54,6 @@ Widget buildSettingMenu(int i) {
           ),
           Text(
             menuSettings[i].title,
-            style: GoogleFonts.robotoCondensed(),
           ),
         ],
       ),

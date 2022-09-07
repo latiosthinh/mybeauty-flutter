@@ -42,7 +42,8 @@ class _AppState extends State<App> {
           return MaterialApp(
             title: 'My Nails',
             theme: theme(),
-            home: const SplashScreen(), debugShowCheckedModeBanner: false,
+            home: const SplashScreen(),
+            debugShowCheckedModeBanner: false,
             routes: routes,
           );
         }
