@@ -9,10 +9,11 @@ import 'package:mybeauty/screens/main/main_screen.dart';
 import 'package:mybeauty/screens/nails/nail_screen.dart';
 import 'package:mybeauty/screens/register/register_screen.dart';
 import 'package:mybeauty/screens/setting/setting_screen.dart';
+import 'package:mybeauty/screens/splash/splash_screen.dart';
 import 'package:flutter/widgets.dart';
 
 final Map<String, WidgetBuilder> routes = {
-  // SplashScreen.routeName: (context) => const SplashScreen(),
+  SplashScreen.routeName: (context) => const SplashScreen(),
   BookingScreen.routeName: (context) => const BookingScreen(),
   NailScreen.routeName: (context) => const NailScreen(),
   BeautyScreen.routeName: (context) => const BeautyScreen(),

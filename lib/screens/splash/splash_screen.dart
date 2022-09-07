@@ -5,6 +5,7 @@ import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/screens/home.dart';
 
 class SplashScreen extends StatefulWidget {
+  static String routeName = "/splash";
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
