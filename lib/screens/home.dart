@@ -8,6 +8,7 @@ import 'package:mybeauty/screens/nails/nail_screen.dart';
 import 'package:mybeauty/components/custom_bottom_nav_bar.dart';
 
 class HomePage extends StatefulWidget {
+  static String routeName = "/home";
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -32,23 +33,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-        stream: AuthService().userStream,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text('loading...');
-          } else if (snapshot.hasError) {
-            return const Text('error');
-          } else if (snapshot.hasData) {
-            return Scaffold(
-                body: Center(
-                  child: _screens.elementAt(_selectedIndex),
-                ),
-                bottomNavigationBar: _showBottomNav());
-          } else {
-            return const LoginScreen();
-          }
-        });
+    return Scaffold(
+        body: Center(
+          child: _screens.elementAt(_selectedIndex),
+        ),
+        bottomNavigationBar: _showBottomNav());
   }
 
   Widget _showBottomNav() {
