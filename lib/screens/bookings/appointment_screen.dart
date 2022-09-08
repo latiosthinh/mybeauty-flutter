@@ -2,8 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mybeauty/components/buttons/index.dart';
 import 'package:mybeauty/constants.dart';
+import 'package:mybeauty/screens/Login/login_screen.dart';
+import 'package:mybeauty/screens/bookings/booking_screen.dart';
+import 'package:mybeauty/services/auth.dart';
 import 'package:mybeauty/services/bookingService.dart';
 import 'package:mybeauty/services/models.dart';
+// ignore: depend_on_referenced_packages
+import 'package:intl/intl.dart';
 
 class AppointmentScreen extends StatefulWidget {
   final String title;
@@ -17,6 +22,7 @@ class AppointmentScreen extends StatefulWidget {
 }
 
 BookingService _bookingService = BookingService();
+AuthService _authService = AuthService();
 
 class _AppointmentScreenScreenState extends State<AppointmentScreen> {
   DateTime from = DateTime.now();
@@ -188,8 +194,23 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                               fontWeight: FontWeight.w700,
                               fontSize: 20.0)),
                       onPressed: () => {
-                        _bookingService.add(AddBookingModel(
-                            widget.title, selectedDate, from, to))
+                        if (_authService.isAuthenticated())
+                          {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const LoginScreen()))
+                          }
+                        else
+                          {
+                            _bookingService.add(AddBookingModel(
+                                widget.title, selectedDate, from, to)),
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const BookingScreen()))
+                          }
                       },
                     ),
                   )
@@ -252,7 +273,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                       children: [
                         Column(
                           children: [
-                            const Text('Today'),
+                            Text(DateFormat('EEEE').format(date)),
                             const SizedBox(
                               height: 5,
                             ),

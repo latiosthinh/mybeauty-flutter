@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybeauty/components/category/index.dart';
 import 'package:mybeauty/components/custom_app_bar.dart';
 import 'package:mybeauty/components/jumbotron.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/models/category.dart';
-import 'package:mybeauty/screens/bookings/appointment_screen.dart';
 
 class BeautyScreen extends StatefulWidget {
   static String routeName = "/beauty";

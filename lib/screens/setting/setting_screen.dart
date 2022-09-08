@@ -16,26 +16,27 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: whiteColor,
-        title: const Text(
-          'Settings',
-          style: TextStyle(color: blackColor),
-        ),
-        centerTitle: true,
-        bottom: PreferredSize(
-          preferredSize: const Size.square(0),
-          child: Container(
-            color: pinkColor,
-            height: 1.0,
+          backgroundColor: whiteColor,
+          title: const Text(
+            'Settings',
+            style: TextStyle(color: blackColor),
           ),
+          centerTitle: true,
+          bottom: PreferredSize(
+            preferredSize: const Size.square(0),
+            child: Container(
+              color: pinkColor,
+              height: 1.0,
+            ),
+          ),
+          elevation: 0),
+      body: Container(
+        padding: const EdgeInsets.only(left: 16, top: 20, right: 16),
+        child: ListView.builder(
+          itemBuilder: (context, index) => buildSettingMenu(index),
+          itemCount: menuSettings.length,
         ),
-        elevation: 0,
       ),
-      body: Center(
-          child: ListView.builder(
-        itemBuilder: (context, index) => buildSettingMenu(index),
-        itemCount: menuSettings.length,
-      )),
     );
   }
 }
@@ -47,14 +48,36 @@ Widget buildSettingMenu(int i) {
       height: 50,
       color: whiteColor,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          IconButton(
-            icon: SvgPicture.asset(menuSettings[i].icon),
-            onPressed: () {},
+          Row(
+            children: [
+              IconButton(
+                icon: SvgPicture.asset(menuSettings[i].icon),
+                onPressed: () {},
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                menuSettings[i].title,
+                style: const TextStyle(fontSize: 18.0),
+              ),
+            ],
           ),
-          Text(
-            menuSettings[i].title,
-          ),
+          Visibility(
+            visible: menuSettings[i].hasChild,
+            child: Row(
+              children: [
+                IconButton(
+                    onPressed: () => {},
+                    icon: const Icon(
+                      Icons.arrow_forward,
+                      color: grayColor,
+                    ))
+              ],
+            ),
+          )
         ],
       ),
     ),

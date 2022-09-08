@@ -19,7 +19,10 @@ class CategoryComponent extends StatefulWidget {
 class _CategoryComponentState extends State<CategoryComponent> {
   @override
   Widget build(BuildContext context) {
-    return _buildPanel();
+    return Container(
+      padding: const EdgeInsets.all(16),
+      child: _buildPanel(),
+    );
   }
 
   Widget _buildPanel() {
