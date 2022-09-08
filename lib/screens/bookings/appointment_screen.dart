@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mybeauty/components/buttons/index.dart';
@@ -8,29 +7,24 @@ import 'package:mybeauty/services/models.dart';
 
 class AppointmentScreen extends StatefulWidget {
   final String title;
+  final Color color;
 
-  const AppointmentScreen({Key? key, required this.title}) : super(key: key);
+  const AppointmentScreen({Key? key, required this.title, required this.color})
+      : super(key: key);
 
   @override
   State<AppointmentScreen> createState() => _AppointmentScreenScreenState();
 }
 
-final db = FirebaseFirestore.instance;
 BookingService _bookingService = BookingService();
 
 class _AppointmentScreenScreenState extends State<AppointmentScreen> {
-  late DateTime from;
-  late DateTime to;
+  DateTime from = DateTime.now();
+  DateTime to = DateTime.now().add(const Duration(hours: 1));
   DateTime selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
-    void setSelectedDate(DateTime day) {
-      setState(() {
-        selectedDate = day;
-      });
-    }
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -43,27 +37,27 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                 children: [
                   Container(
                       margin: const EdgeInsets.only(bottom: 20.0),
-                      child: backButton(greenColor, whiteColor,
+                      child: backButton(widget.color, whiteColor,
                           () => {Navigator.pop(context)})),
                   Container(
                     margin: const EdgeInsets.only(bottom: 9.0),
                     child: Text(
                       widget.title,
-                      style: const TextStyle(
-                          color: greenColor,
+                      style: TextStyle(
+                          color: widget.color,
                           fontWeight: FontWeight.w700,
                           fontSize: 16.0),
                     ),
                   ),
                   Row(
-                    children: const [
+                    children: [
                       Icon(
                         Icons.location_on_outlined,
-                        color: greenColor,
+                        color: widget.color,
                       ),
                       Text(
                         '306 St Paul\'s Road London N12LH',
-                        style: TextStyle(color: greenColor),
+                        style: TextStyle(color: widget.color),
                       )
                     ],
                   )
@@ -163,7 +157,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                       ],
                     ),
                   ),
-                  buildLineDate(selectedDate, setSelectedDate),
+                  buildLineDate(),
                   Container(
                     margin: const EdgeInsets.only(
                         bottom: 10.0, top: 20.0, left: 40.0, right: 40.0),
@@ -185,7 +179,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                     margin: const EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
-                        color: darkPinkColor),
+                        color: widget.color),
                     padding: const EdgeInsets.only(left: 100, right: 100),
                     child: TextButton(
                       child: const Text('APPLY',
@@ -207,75 +201,79 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
       ),
     );
   }
-}
 
-Widget buildStaff() {
-  return Container(
-    margin: const EdgeInsets.only(bottom: 10.0, left: 16.0),
-    child: Row(
-      children: [
-        Column(
-          children: const [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: NetworkImage('https://i.pravatar.cc/100'),
-            ),
-            Text('Juliet'),
-            Text(
-              '★ 4.9',
-              style: TextStyle(color: Colors.amber),
-            )
-          ],
-        )
-      ],
-    ),
-  );
-}
-
-List<DateTime> getDates() {
-  List<DateTime> returnValue = [];
-  for (int i = 0; i < 6; i++) {
-    returnValue.add(DateTime.now().add(Duration(days: i)));
+  Widget buildStaff() {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10.0, left: 16.0),
+      child: Row(
+        children: [
+          Column(
+            children: const [
+              CircleAvatar(
+                radius: 50,
+                backgroundImage: NetworkImage('https://i.pravatar.cc/100'),
+              ),
+              Text('Juliet'),
+              Text(
+                '★ 4.9',
+                style: TextStyle(color: Colors.amber),
+              )
+            ],
+          )
+        ],
+      ),
+    );
   }
-  return returnValue;
-}
 
-final List<DateTime> workDates = getDates();
+  static List<DateTime> getDates() {
+    List<DateTime> returnValue = [];
+    for (int i = 0; i < 6; i++) {
+      returnValue.add(DateTime.now().add(Duration(days: i)));
+    }
+    return returnValue;
+  }
 
-Widget buildLineDate(DateTime selectedDate, Function setSelectedDate) {
-  return Container(
-    padding: const EdgeInsets.only(left: 10, right: 10),
-    decoration: const BoxDecoration(
-        border: Border(
-            top: BorderSide(color: grayColor),
-            bottom: BorderSide(color: grayColor))),
-    child: Row(
-        mainAxisSize: MainAxisSize.max,
-        children: workDates.map((date) {
-          return Expanded(
-              child: Container(
-                  padding: const EdgeInsets.all(5),
-                  child: Row(
-                    children: [
-                      Column(
-                        children: [
-                          const Text('Today'),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          circleButton(
-                              () => {setSelectedDate(date)},
-                              date.day.toString(),
-                              selectedDate.day == date.day
-                                  ? darkPinkColor
-                                  : Colors.transparent,
-                              selectedDate.day == date.day
-                                  ? Colors.white
-                                  : Colors.black)
-                        ],
-                      )
-                    ],
-                  )));
-        }).toList()),
-  );
+  final List<DateTime> workDates = getDates();
+
+  Widget buildLineDate() {
+    return Container(
+      padding: const EdgeInsets.only(left: 10, right: 10),
+      decoration: const BoxDecoration(
+          border: Border(
+              top: BorderSide(color: grayColor),
+              bottom: BorderSide(color: grayColor))),
+      child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: workDates.map((date) {
+            return Expanded(
+                child: Container(
+                    padding: const EdgeInsets.all(5),
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+                            const Text('Today'),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            circleButton(
+                                () => {
+                                      setState(() {
+                                        selectedDate = date;
+                                      })
+                                    },
+                                date.day.toString(),
+                                selectedDate.day == date.day
+                                    ? widget.color
+                                    : Colors.transparent,
+                                selectedDate.day == date.day
+                                    ? Colors.white
+                                    : Colors.black)
+                          ],
+                        )
+                      ],
+                    )));
+          }).toList()),
+    );
+  }
 }

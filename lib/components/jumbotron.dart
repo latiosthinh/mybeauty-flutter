@@ -9,7 +9,7 @@ Widget jumbotron(Color color) {
           image: const DecorationImage(
               image: AssetImage('assets/images/spoil-someone.png'),
               fit: BoxFit.cover)),
-      margin: const EdgeInsets.only(top: 16),
+      margin: const EdgeInsets.only(top: 16, left: 12, right: 12, bottom: 30),
       child: Container(
         height: 70,
         decoration:
