@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/models/setting.dart';
-import 'package:mybeauty/screens/setting/country_screen.dart';
 
-class SettingScreen extends StatefulWidget {
-  static String routeName = "/setting";
-  const SettingScreen({Key? key}) : super(key: key);
+class CountryScreen extends StatefulWidget {
+  static String routeName = "/country";
+  const CountryScreen({Key? key}) : super(key: key);
 
   @override
-  State<SettingScreen> createState() => _SettingScreenState();
+  State<CountryScreen> createState() => _CountryScreenState();
 }
 
-class _SettingScreenState extends State<SettingScreen> {
+class _CountryScreenState extends State<CountryScreen> {
+  Country selected = listCountry.first;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,12 +29,13 @@ class _SettingScreenState extends State<SettingScreen> {
               height: 1.0,
             ),
           ),
+          iconTheme: const IconThemeData(color: Colors.black),
           elevation: 0),
       body: Container(
         padding: const EdgeInsets.only(left: 16, top: 20, right: 16),
         child: ListView.builder(
           itemBuilder: (context, index) => buildSettingMenu(index),
-          itemCount: menuSettings.length,
+          itemCount: listCountry.length,
         ),
       ),
     );
@@ -43,7 +43,11 @@ class _SettingScreenState extends State<SettingScreen> {
 
   Widget buildSettingMenu(int i) {
     return GestureDetector(
-      onTap: () => {},
+      onTap: () => {
+        setState(() {
+          selected = listCountry[i];
+        })
+      },
       child: Container(
         height: 50,
         color: whiteColor,
@@ -53,27 +57,27 @@ class _SettingScreenState extends State<SettingScreen> {
             Row(
               children: [
                 IconButton(
-                  icon: SvgPicture.asset(menuSettings[i].icon),
+                  icon: Image.asset(listCountry[i].icon),
                   onPressed: () {},
                 ),
                 const SizedBox(
                   width: 10,
                 ),
                 Text(
-                  menuSettings[i].title,
-                  style: const TextStyle(fontSize: 18.0),
+                  listCountry[i].name,
+                  style: const TextStyle(fontSize: 18.0, color: orangeColor),
                 ),
               ],
             ),
             Visibility(
-              visible: menuSettings[i].hasChild,
+              visible: listCountry[i] == selected,
               child: Row(
                 children: [
                   IconButton(
-                      onPressed: () => onTap(menuSettings[i].title),
+                      onPressed: () => {},
                       icon: const Icon(
-                        Icons.arrow_forward,
-                        color: grayColor,
+                        Icons.check,
+                        color: orangeColor,
                       ))
                 ],
               ),
@@ -82,14 +86,5 @@ class _SettingScreenState extends State<SettingScreen> {
         ),
       ),
     );
-  }
-
-  onTap(String name) {
-    switch (name) {
-      case 'Country':
-        Navigator.pushNamed(context, CountryScreen.routeName);
-        break;
-      default:
-    }
   }
 }
