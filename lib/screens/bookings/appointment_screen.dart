@@ -2,13 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mybeauty/components/buttons/index.dart';
 import 'package:mybeauty/constants.dart';
+import 'package:mybeauty/models/staff.dart';
 import 'package:mybeauty/screens/Login/login_screen.dart';
 import 'package:mybeauty/screens/bookings/booking_screen.dart';
-import 'package:mybeauty/services/auth.dart';
-import 'package:mybeauty/services/bookingService.dart';
-import 'package:mybeauty/services/models.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
+import 'package:mybeauty/services/services.dart';
 
 class AppointmentScreen extends StatefulWidget {
   final String title;
@@ -23,11 +22,29 @@ class AppointmentScreen extends StatefulWidget {
 
 BookingService _bookingService = BookingService();
 AuthService _authService = AuthService();
+StaffService _staffService = StaffService();
 
 class _AppointmentScreenScreenState extends State<AppointmentScreen> {
   DateTime from = DateTime.now();
   DateTime to = DateTime.now().add(const Duration(hours: 1));
   DateTime selectedDate = DateTime.now();
+  String selectedStaff = '';
+
+  List<Staff> _staffs = [];
+
+  _setupStaffs() async {
+    List<Staff> staffs = await _staffService.GetStaffs();
+    setState(() {
+      _staffs = staffs;
+      selectedStaff = staffs.first.name;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _setupStaffs();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -152,12 +169,12 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                           ],
                         ),
                         Row(
-                          children: const [
-                            Text('Today'),
-                            SizedBox(
+                          children: [
+                            Text(DateFormat('EEEE').format(selectedDate)),
+                            const SizedBox(
                               width: 10,
                             ),
-                            Icon(Icons.cancel_outlined)
+                            const Icon(Icons.cancel_outlined)
                           ],
                         )
                       ],
@@ -203,8 +220,8 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                           }
                         else
                           {
-                            _bookingService.add(AddBookingModel(
-                                widget.title, selectedDate, from, to)),
+                            _bookingService.add(AddBookingModel(widget.title,
+                                selectedDate, from, to, selectedStaff)),
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -225,23 +242,40 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
 
   Widget buildStaff() {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10.0, left: 16.0),
+      margin: const EdgeInsets.only(bottom: 10.0, left: 16.0, right: 16.0),
       child: Row(
-        children: [
-          Column(
-            children: const [
-              CircleAvatar(
-                radius: 50,
-                backgroundImage: NetworkImage('https://i.pravatar.cc/100'),
-              ),
-              Text('Juliet'),
-              Text(
-                '★ 4.9',
-                style: TextStyle(color: Colors.amber),
-              )
-            ],
-          )
-        ],
+        children: _staffs
+            .map((staff) => Container(
+                  margin: const EdgeInsets.only(right: 16),
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 50,
+                        backgroundImage: NetworkImage(staff.avatar),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(staff.name),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        staff.rate.toString(),
+                        style: const TextStyle(color: Colors.amber),
+                      ),
+                      Radio(
+                          value: staff.name,
+                          groupValue: selectedStaff,
+                          onChanged: ((String? value) => {
+                                setState(() {
+                                  selectedStaff = value ?? _staffs.first.name;
+                                })
+                              }))
+                    ],
+                  ),
+                ))
+            .toList(),
       ),
     );
   }
@@ -273,7 +307,9 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                       children: [
                         Column(
                           children: [
-                            Text(DateFormat('EEEE').format(date)),
+                            Text(DateFormat('EEEE')
+                                .format(date)
+                                .substring(0, 3)),
                             const SizedBox(
                               height: 5,
                             ),

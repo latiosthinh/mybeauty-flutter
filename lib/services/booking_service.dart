@@ -14,7 +14,8 @@ class BookingService {
       'email': 'f7deat@gmail.com',
       'bookingDate': model.bookingDate,
       'from': model.from,
-      'to': model.to
+      'to': model.to,
+      'staff': model.staff
     });
   }
 }
