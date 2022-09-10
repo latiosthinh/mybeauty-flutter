@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mybeauty/components/custom_bottom_nav_bar.dart';
 import 'package:mybeauty/constants.dart';
-import 'package:mybeauty/enums.dart';
 
 class RegisterScreen extends StatelessWidget {
   static String routeName = "/register";

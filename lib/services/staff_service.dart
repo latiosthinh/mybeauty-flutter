@@ -4,13 +4,14 @@ import 'package:mybeauty/models/staff.dart';
 class StaffService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<List<Staff>> GetStaffs() async {
+  Future<List<Staff>> getStaffs() async {
     List<Staff> returnValue = [];
     await _firestore.collection('staffs').get().then((value) => {
-          value.docs.forEach((element) {
-            returnValue.add(Staff(element.get('name'), element.get('avatar'),
-                element.get('rate')));
-          })
+          for (var staff in value.docs)
+            {
+              returnValue.add(Staff(
+                  staff.get('name'), staff.get('avatar'), staff.get('rate')))
+            }
         });
     return returnValue;
   }

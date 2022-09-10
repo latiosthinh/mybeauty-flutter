@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../constants.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
@@ -17,7 +16,6 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: const BoxDecoration(
-            color: Colors.white,
             border: Border(top: BorderSide(color: darkPinkColor, width: 1.0))),
         height: 80,
         child: BottomNavigationBar(
@@ -63,7 +61,7 @@ class CustomBottomNavBar extends StatelessWidget {
                     height: 25,
                     margin: const EdgeInsets.only(bottom: 3),
                     child: SvgPicture.asset("assets/icons/setting.svg",
-                        color: greenColor)),
+                        color: orangeColor)),
                 label: "Settings",
               ),
               BottomNavigationBarItem(
@@ -78,14 +76,14 @@ class CustomBottomNavBar extends StatelessWidget {
                     height: 25,
                     margin: const EdgeInsets.only(bottom: 3),
                     child: SvgPicture.asset("assets/icons/calendar.svg",
-                        color: greenColor)),
+                        color: orangeColor)),
                 label: "Bookings",
               ),
             ],
             currentIndex: selectedIndex,
             onTap: tap,
-            unselectedItemColor: Colors.white,
-            selectedItemColor: Colors.black,
+            unselectedItemColor: grayColor,
+            selectedItemColor: listColour[selectedIndex],
             selectedFontSize: 12));
   }
 }

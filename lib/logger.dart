@@ -8,7 +8,7 @@ class Logger {
     }());
   }
 
-  static void error(String msg) {
+  static void error(String? msg) {
     debugPrint('MyBeauty#$msg');
   }
 }

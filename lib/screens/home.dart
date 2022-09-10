@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mybeauty/services/auth.dart';
-import 'package:mybeauty/screens/login/login_screen.dart';
 import 'package:mybeauty/screens/bookings/booking_screen.dart';
 import 'package:mybeauty/screens/setting/setting_screen.dart';
 import 'package:mybeauty/screens/beauty/beauty_screen.dart';

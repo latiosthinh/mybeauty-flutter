@@ -33,10 +33,12 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
   List<Staff> _staffs = [];
 
   _setupStaffs() async {
-    List<Staff> staffs = await _staffService.GetStaffs();
+    List<Staff> staffs = await _staffService.getStaffs();
     setState(() {
       _staffs = staffs;
-      selectedStaff = staffs.first.name;
+      if (staffs.isNotEmpty) {
+        selectedStaff = staffs.first.name;
+      }
     });
   }
 
@@ -211,7 +213,11 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                               fontWeight: FontWeight.w700,
                               fontSize: 20.0)),
                       onPressed: () => {
-                        if (_authService.isAuthenticated())
+                        if (_staffs.isEmpty)
+                          {_showToast(context, 'Member of team not found!')}
+                        else if (from.isAfter(to))
+                          {_showToast(context, 'Please choose a valid time')}
+                        else if (_authService.isAuthenticated())
                           {
                             Navigator.push(
                                 context,
@@ -276,6 +282,17 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                   ),
                 ))
             .toList(),
+      ),
+    );
+  }
+
+  void _showToast(BuildContext context, String message) {
+    final scaffold = ScaffoldMessenger.of(context);
+    scaffold.showSnackBar(
+      SnackBar(
+        content: Text(message),
+        action: SnackBarAction(
+            label: 'Close', onPressed: scaffold.hideCurrentSnackBar),
       ),
     );
   }
