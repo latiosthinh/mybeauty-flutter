@@ -3,6 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/models/setting.dart';
 import 'package:mybeauty/screens/setting/country_screen.dart';
+import 'package:mybeauty/components/primary_button.dart';
+import 'package:mybeauty/screens/login/login_screen.dart';
+import 'package:mybeauty/services/auth.dart';
 
 class SettingScreen extends StatefulWidget {
   static String routeName = "/setting";
@@ -32,12 +35,27 @@ class _SettingScreenState extends State<SettingScreen> {
           ),
           elevation: 0),
       body: Container(
-        padding: const EdgeInsets.only(left: 16, top: 20, right: 16),
-        child: ListView.builder(
-          itemBuilder: (context, index) => buildSettingMenu(index),
-          itemCount: menuSettings.length,
-        ),
-      ),
+          padding:
+              const EdgeInsets.only(left: 16, top: 20, right: 16, bottom: 20),
+          child: Column(
+            children: [
+              Expanded(
+                  child: SizedBox(
+                child: ListView.builder(
+                    itemBuilder: (context, index) => buildSettingMenu(index),
+                    itemCount: menuSettings.length),
+              )),
+              PrimaryButton(
+                  icon: Icons.logout,
+                  background: blackColor,
+                  color: whiteColor,
+                  text: 'Sign out',
+                  func: () async {
+                    await AuthService().signOut();
+                    Navigator.pushNamed(context, LoginScreen.routeName);
+                  }),
+            ],
+          )),
     );
   }
 

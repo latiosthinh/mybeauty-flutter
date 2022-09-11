@@ -26,4 +26,4 @@ const gardientColor = LinearGradient(colors: [
 
 const defaultPadding = 16.0;
 
-const listColour = [darkPinkColor, greenColor, orangeColor, orangeColor];
+const listColour = [darkPinkColor, greenColor, orangeColor, blackColor];

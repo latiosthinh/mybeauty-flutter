@@ -6,7 +6,7 @@ class PrimaryButton extends StatelessWidget {
   final Color background;
   final IconData? icon;
   final String text;
-  final Function login;
+  final Function func;
 
   const PrimaryButton(
       {Key? key,
@@ -14,7 +14,7 @@ class PrimaryButton extends StatelessWidget {
       required this.color,
       required this.background,
       this.icon,
-      required this.login})
+      required this.func})
       : super(key: key);
 
   @override
@@ -27,7 +27,7 @@ class PrimaryButton extends StatelessWidget {
             icon,
             size: 18,
           ),
-          onPressed: () => login(),
+          onPressed: () => func(),
           style: TextButton.styleFrom(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5)),

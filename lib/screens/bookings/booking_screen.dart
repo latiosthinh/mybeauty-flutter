@@ -91,12 +91,8 @@ class _BookingScreenState extends State<BookingScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
-                      onPressed: () => {
-                            Navigator.of(context, rootNavigator: false).push(
-                                MaterialPageRoute(
-                                    builder: (context) => const LoginScreen(),
-                                    maintainState: false))
-                          },
+                      onPressed: () =>
+                          {Navigator.pushNamed(context, LoginScreen.routeName)},
                       child: Text(
                         'Log in',
                         style: GoogleFonts.robotoCondensed(

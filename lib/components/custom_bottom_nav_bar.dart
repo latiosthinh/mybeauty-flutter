@@ -54,21 +54,6 @@ class CustomBottomNavBar extends StatelessWidget {
                     width: 30,
                     height: 25,
                     margin: const EdgeInsets.only(bottom: 3),
-                    child: SvgPicture.asset("assets/icons/setting.svg",
-                        color: grayColor)),
-                activeIcon: Container(
-                    width: 30,
-                    height: 25,
-                    margin: const EdgeInsets.only(bottom: 3),
-                    child: SvgPicture.asset("assets/icons/setting.svg",
-                        color: orangeColor)),
-                label: "Settings",
-              ),
-              BottomNavigationBarItem(
-                icon: Container(
-                    width: 30,
-                    height: 25,
-                    margin: const EdgeInsets.only(bottom: 3),
                     child: SvgPicture.asset("assets/icons/calendar.svg",
                         color: grayColor)),
                 activeIcon: Container(
@@ -78,6 +63,21 @@ class CustomBottomNavBar extends StatelessWidget {
                     child: SvgPicture.asset("assets/icons/calendar.svg",
                         color: orangeColor)),
                 label: "Bookings",
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                    width: 30,
+                    height: 25,
+                    margin: const EdgeInsets.only(bottom: 3),
+                    child: SvgPicture.asset("assets/icons/setting.svg",
+                        color: grayColor)),
+                activeIcon: Container(
+                    width: 30,
+                    height: 25,
+                    margin: const EdgeInsets.only(bottom: 3),
+                    child: SvgPicture.asset("assets/icons/setting.svg",
+                        color: blackColor)),
+                label: "Settings",
               ),
             ],
             currentIndex: selectedIndex,

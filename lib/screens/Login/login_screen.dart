@@ -51,20 +51,30 @@ class _LoginScreenState extends State<LoginScreen> {
                     Flexible(
                       child: PrimaryButton(
                         icon: Icons.apple,
-                        background: pinkColor,
-                        color: blackColor,
+                        background: blackColor,
+                        color: whiteColor,
                         text: 'Sign in with Apple',
-                        login: AuthService().anonymousLogin,
+                        func: AuthService().anonymousLogin,
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 9, bottom: 40),
+                      margin: const EdgeInsets.only(top: 9),
                       child: PrimaryButton(
                         icon: Icons.facebook,
                         background: blueColor,
                         color: whiteColor,
                         text: 'Sign in with Facebook',
-                        login: AuthService().anonymousLogin,
+                        func: AuthService().anonymousLogin,
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 9, bottom: 40),
+                      child: PrimaryButton(
+                        icon: Icons.email,
+                        background: whiteColor,
+                        color: blackColor,
+                        text: 'Sign in with Google',
+                        func: AuthService().googleLogin,
                       ),
                     ),
                     Center(
@@ -104,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         background: grayColor,
                         color: whiteColor,
                         text: 'Log in',
-                        login: AuthService().anonymousLogin,
+                        func: AuthService().anonymousLogin,
                       ),
                     ),
                     Text(

@@ -21,7 +21,6 @@ class AppointmentScreen extends StatefulWidget {
 }
 
 BookingService _bookingService = BookingService();
-AuthService _authService = AuthService();
 StaffService _staffService = StaffService();
 
 class _AppointmentScreenScreenState extends State<AppointmentScreen> {
@@ -217,22 +216,12 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                           {_showToast(context, 'Member of team not found!')}
                         else if (from.isAfter(to))
                           {_showToast(context, 'Please choose a valid time')}
-                        else if (_authService.isAuthenticated())
-                          {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const LoginScreen()))
-                          }
                         else
                           {
                             _bookingService.add(AddBookingModel(widget.title,
                                 selectedDate, from, to, selectedStaff)),
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const BookingScreen()))
+                            Navigator.pushNamed(
+                                context, BookingScreen.routeName)
                           }
                       },
                     ),
