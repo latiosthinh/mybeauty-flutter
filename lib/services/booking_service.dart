@@ -7,11 +7,9 @@ class BookingService {
 
   void add(AddBookingModel model) {
     _firestore.collection('bookings').add({
-      'name': 'Đinh Công Tân',
+      'userId': model.user?.uid,
       'service': model.service,
       'created': DateTime.now(),
-      'phone': '0762559696',
-      'email': 'f7deat@gmail.com',
       'bookingDate': model.bookingDate,
       'from': model.from,
       'to': model.to,

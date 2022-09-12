@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:mybeauty/components/buttons/index.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/models/staff.dart';
-import 'package:mybeauty/screens/Login/login_screen.dart';
 import 'package:mybeauty/screens/bookings/booking_screen.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
@@ -22,6 +21,7 @@ class AppointmentScreen extends StatefulWidget {
 
 BookingService _bookingService = BookingService();
 StaffService _staffService = StaffService();
+AuthService _authService = AuthService();
 
 class _AppointmentScreenScreenState extends State<AppointmentScreen> {
   DateTime from = DateTime.now();
@@ -218,8 +218,13 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                           {_showToast(context, 'Please choose a valid time')}
                         else
                           {
-                            _bookingService.add(AddBookingModel(widget.title,
-                                selectedDate, from, to, selectedStaff)),
+                            _bookingService.add(AddBookingModel(
+                                widget.title,
+                                selectedDate,
+                                from,
+                                to,
+                                selectedStaff,
+                                _authService.user)),
                             Navigator.pushNamed(
                                 context, BookingScreen.routeName)
                           }
