@@ -56,7 +56,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
         child: SizedBox(
           child: Column(
             children: products.map((product) {
-              return SizedBox(
+              return InkWell(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -69,18 +69,10 @@ class _CategoryComponentState extends State<CategoryComponent> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text('50'),
-                        IconButton(
-                            onPressed: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AppointmentScreen(
-                                          title: product.title,
-                                          color: widget.color,
-                                        ))),
-                            icon: Icon(
-                              Icons.add_circle,
-                              color: widget.color,
-                            ))
+                        Icon(
+                          Icons.add_circle,
+                          color: widget.color,
+                        )
                       ],
                     ),
                     const Divider(
@@ -88,6 +80,13 @@ class _CategoryComponentState extends State<CategoryComponent> {
                     )
                   ],
                 ),
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AppointmentScreen(
+                              title: product.title,
+                              color: widget.color,
+                            ))),
               );
             }).toList(),
           ),

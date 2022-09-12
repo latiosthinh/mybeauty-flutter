@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mybeauty/components/search_box.dart';
+// import 'package:mybeauty/components/search_box.dart';
 import '../constants.dart';
 
 class CustomAppBarFullNavBar extends StatelessWidget
     implements PreferredSizeWidget {
   @override
-  Size get preferredSize => const Size.fromHeight(160);
+  Size get preferredSize => const Size.fromHeight(100);
 
   const CustomAppBarFullNavBar(
       {Key? key,
@@ -27,10 +27,10 @@ class CustomAppBarFullNavBar extends StatelessWidget
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
-              expandedHeight: 160,
+              expandedHeight: 100,
               flexibleSpace: Container(
                   padding: const EdgeInsets.only(top: 16),
-                  height: double.infinity,
+                  // height: double.infinity,
                   decoration: const BoxDecoration(
                       color: Colors.white,
                       border: Border(
@@ -38,7 +38,7 @@ class CustomAppBarFullNavBar extends StatelessWidget
                   child: Column(
                     children: [
                       Container(
-                        padding: const EdgeInsets.only(bottom: 30),
+                        // padding: const EdgeInsets.only(bottom: 30),
                         child: Column(
                           children: [
                             SvgPicture.asset(
@@ -55,10 +55,10 @@ class CustomAppBarFullNavBar extends StatelessWidget
                           ],
                         ),
                       ),
-                      SearchBox(
-                        backgroundColor: inputColor,
-                        onChanged: (value) => {},
-                      )
+                      // SearchBox( // save searchbox for release v2.0
+                      //   backgroundColor: inputColor,
+                      //   onChanged: (value) => {},
+                      // )
                     ],
                   )),
             )
