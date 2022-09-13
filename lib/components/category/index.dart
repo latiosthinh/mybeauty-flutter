@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/models/category.dart';
 import 'package:mybeauty/screens/bookings/appointment_screen.dart';
+import 'package:mybeauty/services/menu_service.dart';
+import 'package:mybeauty/services/models.dart';
 
 class CategoryComponent extends StatefulWidget {
   final Color color;
   final List<Category> categories;
+  final int type;
 
   const CategoryComponent(
-      {Key? key, required this.color, required this.categories})
+      {Key? key,
+      required this.color,
+      required this.categories,
+      required this.type})
       : super(key: key);
 
   @override
@@ -16,6 +22,22 @@ class CategoryComponent extends StatefulWidget {
 }
 
 class _CategoryComponentState extends State<CategoryComponent> {
+  final MenuService _menuService = MenuService();
+
+  List<MenuModel> _menus = [];
+  _setupMenu() async {
+    List<MenuModel> menus = await _menuService.getMenus(widget.type);
+    setState(() {
+      _menus = menus;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _setupMenu();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,10 +50,10 @@ class _CategoryComponentState extends State<CategoryComponent> {
     return ExpansionPanelList(
       expansionCallback: (int index, bool isExpanded) {
         setState(() {
-          widget.categories[index].isExpanded = !isExpanded;
+          _menus[index].isExpanded = !isExpanded;
         });
       },
-      children: widget.categories.map<ExpansionPanel>((Category item) {
+      children: _menus.map<ExpansionPanel>((MenuModel item) {
         return ExpansionPanel(
           headerBuilder: (BuildContext context, bool isExpanded) {
             return ListTile(
@@ -40,7 +62,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
           },
           body: Container(
             alignment: Alignment.centerLeft,
-            child: _buildChild(item.products),
+            child: _buildChild(item.services),
           ),
           isExpanded: item.isExpanded,
         );
@@ -48,7 +70,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
     );
   }
 
-  Widget _buildChild(List<Product> products) {
+  Widget _buildChild(List<ServiceModel> products) {
     return Container(
         color: lightColor,
         padding:
@@ -60,7 +82,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(product.title,
+                    Text(product.name,
                         style: TextStyle(
                             color: widget.color,
                             fontWeight: FontWeight.w700,
@@ -84,7 +106,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => AppointmentScreen(
-                              title: product.title,
+                              service: product,
                               color: widget.color,
                             ))),
               );

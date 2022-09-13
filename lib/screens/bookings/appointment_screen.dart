@@ -9,10 +9,11 @@ import 'package:intl/intl.dart';
 import 'package:mybeauty/services/services.dart';
 
 class AppointmentScreen extends StatefulWidget {
-  final String title;
+  final ServiceModel service;
   final Color color;
 
-  const AppointmentScreen({Key? key, required this.title, required this.color})
+  const AppointmentScreen(
+      {Key? key, required this.service, required this.color})
       : super(key: key);
 
   @override
@@ -66,7 +67,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                   Container(
                     margin: const EdgeInsets.only(bottom: 9.0),
                     child: Text(
-                      widget.title,
+                      widget.service.name,
                       style: TextStyle(
                           color: widget.color,
                           fontWeight: FontWeight.w700,
@@ -219,7 +220,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                         else
                           {
                             _bookingService.add(AddBookingModel(
-                                widget.title,
+                                widget.service.id,
                                 selectedDate,
                                 from,
                                 to,

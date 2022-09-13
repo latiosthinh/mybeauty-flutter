@@ -38,6 +38,7 @@ class _BeautyScreenState extends State<BeautyScreen> {
             CategoryComponent(
               color: greenColor,
               categories: beautyCategories,
+              type: 1,
             ),
           ],
         ),

@@ -10,7 +10,7 @@ class StaffService {
           for (var staff in value.docs)
             {
               returnValue.add(Staff(staff.get('name'), staff.get('avatar'),
-                  staff.get('rate'), staff.get('id')))
+                  staff.get('rate'), staff.id))
             }
         });
     return returnValue;

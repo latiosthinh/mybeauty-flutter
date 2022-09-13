@@ -39,6 +39,7 @@ class _NailScreenState extends State<NailScreen> {
             CategoryComponent(
               color: darkPinkColor,
               categories: nailCategories,
+              type: 2,
             )
           ],
         ),

@@ -12,3 +12,19 @@ class AddBookingModel {
   AddBookingModel(this.service, this.bookingDate, this.from, this.to,
       this.staff, this.user);
 }
+
+class MenuModel {
+  final String id;
+  final String name;
+  bool isExpanded = false;
+  final List<ServiceModel> services;
+
+  MenuModel(this.id, this.name, this.services);
+}
+
+class ServiceModel {
+  final String id;
+  final String name;
+
+  ServiceModel(this.id, this.name);
+}
