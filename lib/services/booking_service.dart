@@ -13,7 +13,7 @@ class BookingService {
       'bookingDate': model.bookingDate,
       'from': model.from,
       'to': model.to,
-      'staff': model.staff
+      'staff': model.staff.id
     });
   }
 }

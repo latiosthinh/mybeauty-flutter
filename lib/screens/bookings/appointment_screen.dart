@@ -27,7 +27,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
   DateTime from = DateTime.now();
   DateTime to = DateTime.now().add(const Duration(hours: 1));
   DateTime selectedDate = DateTime.now();
-  String selectedStaff = '';
+  late Staff selectedStaff;
 
   List<Staff> _staffs = [];
 
@@ -36,7 +36,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
     setState(() {
       _staffs = staffs;
       if (staffs.isNotEmpty) {
-        selectedStaff = staffs.first.name;
+        selectedStaff = staffs.first;
       }
     });
   }
@@ -265,11 +265,11 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                         style: const TextStyle(color: Colors.amber),
                       ),
                       Radio(
-                          value: staff.name,
+                          value: staff,
                           groupValue: selectedStaff,
-                          onChanged: ((String? value) => {
+                          onChanged: ((Staff? value) => {
                                 setState(() {
-                                  selectedStaff = value ?? _staffs.first.name;
+                                  selectedStaff = value ?? _staffs.first;
                                 })
                               }))
                     ],

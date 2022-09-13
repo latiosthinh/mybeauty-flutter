@@ -9,8 +9,8 @@ class StaffService {
     await _firestore.collection('staffs').get().then((value) => {
           for (var staff in value.docs)
             {
-              returnValue.add(Staff(
-                  staff.get('name'), staff.get('avatar'), staff.get('rate')))
+              returnValue.add(Staff(staff.get('name'), staff.get('avatar'),
+                  staff.get('rate'), staff.get('id')))
             }
         });
     return returnValue;
