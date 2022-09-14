@@ -4,9 +4,8 @@ import 'package:mybeauty/components/buttons/index.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/models/staff.dart';
 import 'package:mybeauty/screens/bookings/booking_screen.dart';
-// ignore: depend_on_referenced_packages
-import 'package:intl/intl.dart';
 import 'package:mybeauty/services/services.dart';
+import 'package:mybeauty/utils/datetime_utils.dart';
 
 class AppointmentScreen extends StatefulWidget {
   final ServiceModel service;
@@ -172,7 +171,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                         ),
                         Row(
                           children: [
-                            Text(DateFormat('EEEE').format(selectedDate)),
+                            Text(DateTimeUtils.getDayOfWeek(selectedDate)),
                             const SizedBox(
                               width: 10,
                             ),
@@ -292,15 +291,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
     );
   }
 
-  static List<DateTime> getDates() {
-    List<DateTime> returnValue = [];
-    for (int i = 0; i < 6; i++) {
-      returnValue.add(DateTime.now().add(Duration(days: i)));
-    }
-    return returnValue;
-  }
-
-  final List<DateTime> workDates = getDates();
+  final List<DateTime> workDates = DateTimeUtils.getWorkingDate();
 
   Widget buildLineDate() {
     return Container(
@@ -319,8 +310,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                       children: [
                         Column(
                           children: [
-                            Text(DateFormat('EEEE')
-                                .format(date)
+                            Text(DateTimeUtils.getDayOfWeek(date)
                                 .substring(0, 3)),
                             const SizedBox(
                               height: 5,

@@ -4,7 +4,6 @@ import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/screens/import-booking/import_booking_screen.dart';
 import 'package:mybeauty/screens/login/login_screen.dart';
 import 'package:mybeauty/screens/register/register_screen.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class BookingScreen extends StatefulWidget {
   static String routeName = "/booking";
@@ -20,10 +19,9 @@ class _BookingScreenState extends State<BookingScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: whiteColor,
-          title: Text(
+          title: const Text(
             'My Bookings',
-            style:
-                GoogleFonts.robotoCondensed(fontSize: 18.0, color: blackColor),
+            style: TextStyle(fontSize: 18.0, color: blackColor),
           ),
           centerTitle: true,
           bottom: PreferredSize(
@@ -51,16 +49,16 @@ class _BookingScreenState extends State<BookingScreen> {
             ),
             Container(
               margin: const EdgeInsets.only(bottom: 15),
-              child: Center(
+              child: const Center(
                 child: Text('Your bookings will appear here',
-                    style: GoogleFonts.robotoCondensed(
-                        fontWeight: FontWeight.w700, fontSize: 18.0)),
+                    style:
+                        TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0)),
               ),
             ),
-            Center(
+            const Center(
               child: Text(
                 'If you’re looking for a booking you’ve made before, you can import and manage it here',
-                style: GoogleFonts.robotoCondensed(fontSize: 18.0),
+                style: TextStyle(fontSize: 18.0),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -76,10 +74,9 @@ class _BookingScreenState extends State<BookingScreen> {
                           borderRadius: BorderRadius.circular(5)),
                       backgroundColor: orangeColor,
                       primary: blackColor),
-                  child: Text(
+                  child: const Text(
                     'Import my booking',
-                    style: GoogleFonts.robotoCondensed(
-                        fontWeight: FontWeight.w700),
+                    style: TextStyle(fontWeight: FontWeight.w700),
                   ),
                 ),
               ),
@@ -93,23 +90,20 @@ class _BookingScreenState extends State<BookingScreen> {
                   TextButton(
                       onPressed: () =>
                           {Navigator.pushNamed(context, LoginScreen.routeName)},
-                      child: Text(
+                      child: const Text(
                         'Log in',
-                        style: GoogleFonts.robotoCondensed(
+                        style: TextStyle(
                             color: blackColor, fontWeight: FontWeight.w700),
                       )),
-                  Text(
-                    'or',
-                    style: GoogleFonts.robotoCondensed(),
-                  ),
+                  const Text('or'),
                   TextButton(
                       onPressed: () => {
                             Navigator.pushNamed(
                                 context, RegisterScreen.routeName)
                           },
-                      child: Text(
+                      child: const Text(
                         'Create an account',
-                        style: GoogleFonts.robotoCondensed(
+                        style: TextStyle(
                             color: blackColor, fontWeight: FontWeight.w700),
                       ))
                 ],

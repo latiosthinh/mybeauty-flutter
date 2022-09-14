@@ -16,8 +16,7 @@ class NailScreen extends StatefulWidget {
 class _NailScreenState extends State<NailScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
+    return Scaffold(
       appBar: const CustomAppBarFullNavBar(
         logo: 'MY NAILS',
         color: darkPinkColor,
@@ -44,6 +43,6 @@ class _NailScreenState extends State<NailScreen> {
           ],
         ),
       ),
-    ));
+    );
   }
 }
