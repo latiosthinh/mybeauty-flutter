@@ -24,8 +24,8 @@ class MenuService {
                                     service.id, service.get('name')))
                               }
                           }),
-                  returnValue
-                      .add(MenuModel(menu.id, menu.get('name'), services))
+                  returnValue.add(MenuModel(
+                      menu.id, menu.get('name'), services, menu.get('image')))
                 }
             });
     return returnValue;

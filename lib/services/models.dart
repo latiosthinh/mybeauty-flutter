@@ -16,10 +16,11 @@ class AddBookingModel {
 class MenuModel {
   final String id;
   final String name;
+  final String image;
   bool isExpanded = false;
   final List<ServiceModel> services;
 
-  MenuModel(this.id, this.name, this.services);
+  MenuModel(this.id, this.name, this.services, this.image);
 }
 
 class ServiceModel {

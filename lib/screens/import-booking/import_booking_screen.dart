@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mybeauty/constants.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ImportBooking extends StatefulWidget {
   static String routeName = "/import-booking";
@@ -16,9 +15,9 @@ class _ImportBookingState extends State<ImportBooking> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: whiteColor,
-        title: Text(
+        title: const Text(
           'Import my booking',
-          style: GoogleFonts.robotoCondensed(fontSize: 18.0, color: blackColor),
+          style: TextStyle(fontSize: 18.0, color: blackColor),
         ),
         centerTitle: true,
         bottom: PreferredSize(
@@ -47,13 +46,12 @@ class _ImportBookingState extends State<ImportBooking> {
                         enabledBorder: UnderlineInputBorder(
                             borderSide:
                                 BorderSide(color: pinkColor, width: 1.0))),
-                    style: GoogleFonts.robotoCondensed(),
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 18.0),
-                    child: Text(
+                    child: const Text(
                       'Enter the email you used to make your booking',
-                      style: GoogleFonts.robotoCondensed(color: grayColor),
+                      style: TextStyle(color: grayColor),
                       textAlign: TextAlign.left,
                     ),
                   )
@@ -70,10 +68,7 @@ class _ImportBookingState extends State<ImportBooking> {
                         borderRadius: BorderRadius.circular(5)),
                     backgroundColor: grayColor,
                     primary: blackColor),
-                child: Text(
-                  'Create your account',
-                  style: GoogleFonts.robotoCondensed(),
-                ),
+                child: const Text('Create your account'),
               ),
             ),
           ],

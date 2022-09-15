@@ -214,7 +214,8 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                       onPressed: () => {
                         if (_staffs.isEmpty)
                           {_showToast(context, 'Member of team not found!')}
-                        else if (from.isAfter(to))
+                        else if (from.isAfter(to) ||
+                            from.isAfter(DateTime.now()))
                           {_showToast(context, 'Please choose a valid time')}
                         else
                           {
