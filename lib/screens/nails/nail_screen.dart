@@ -3,10 +3,10 @@ import 'package:mybeauty/components/category/index.dart';
 import 'package:mybeauty/components/custom_app_bar.dart';
 import 'package:mybeauty/components/jumbotron.dart';
 import 'package:mybeauty/constants.dart';
-import 'package:mybeauty/models/category.dart';
 
 class NailScreen extends StatefulWidget {
   static String routeName = "/nails";
+  static int type = 2;
   const NailScreen({Key? key}) : super(key: key);
 
   @override
@@ -37,8 +37,7 @@ class _NailScreenState extends State<NailScreen> {
             ),
             CategoryComponent(
               color: darkPinkColor,
-              categories: nailCategories,
-              type: 2,
+              type: NailScreen.type,
             )
           ],
         ),

@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:mybeauty/components/grayed_out/index.dart';
 import 'package:mybeauty/constants.dart';
-import 'package:mybeauty/models/category.dart';
 import 'package:mybeauty/screens/bookings/appointment_screen.dart';
 import 'package:mybeauty/services/menu_service.dart';
 import 'package:mybeauty/services/models.dart';
 
 class CategoryComponent extends StatefulWidget {
   final Color color;
-  final List<Category> categories;
   final int type;
 
-  const CategoryComponent(
-      {Key? key,
-      required this.color,
-      required this.categories,
-      required this.type})
+  const CategoryComponent({Key? key, required this.color, required this.type})
       : super(key: key);
 
   @override
@@ -69,7 +63,17 @@ class _CategoryComponentState extends State<CategoryComponent> {
                         child: InkWell(
                           child: Container(
                               padding: const EdgeInsets.all(10.0),
-                              child: Text(item.name)),
+                              child: Text(
+                                item.name,
+                                style: TextStyle(
+                                    color: item.isExpanded
+                                        ? whiteColor
+                                        : blackColor,
+                                    fontSize: 20.0,
+                                    fontWeight: item.isExpanded
+                                        ? FontWeight.w700
+                                        : FontWeight.w400),
+                              )),
                         ),
                       ),
                     )),
@@ -82,7 +86,15 @@ class _CategoryComponentState extends State<CategoryComponent> {
               )
             },
           ),
-          item.isExpanded ? _buildChild(item.services) : const SizedBox.shrink()
+          item.isExpanded
+              ? _buildChild(item.services)
+              : Container(
+                  padding: const EdgeInsets.only(bottom: 14.0, top: 14.0),
+                  child: const Divider(
+                    height: 2,
+                    color: grayColor,
+                  ),
+                )
         ]);
       }).toList(),
     );

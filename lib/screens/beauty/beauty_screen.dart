@@ -3,10 +3,10 @@ import 'package:mybeauty/components/category/index.dart';
 import 'package:mybeauty/components/custom_app_bar.dart';
 import 'package:mybeauty/components/jumbotron.dart';
 import 'package:mybeauty/constants.dart';
-import 'package:mybeauty/models/category.dart';
 
 class BeautyScreen extends StatefulWidget {
   static String routeName = "/beauty";
+  static int type = 1;
   const BeautyScreen({Key? key}) : super(key: key);
 
   @override
@@ -37,8 +37,7 @@ class _BeautyScreenState extends State<BeautyScreen> {
             ),
             CategoryComponent(
               color: greenColor,
-              categories: beautyCategories,
-              type: 1,
+              type: BeautyScreen.type,
             ),
           ],
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybeauty/components/buttons/index.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/models/staff.dart';
@@ -161,12 +162,16 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
-                          children: const [
-                            Icon(Icons.event),
-                            SizedBox(
+                          children: [
+                            SvgPicture.asset(
+                              'assets/icons/calendar.svg',
+                              color: blackColor,
+                              width: 24,
+                            ),
+                            const SizedBox(
                               width: 10,
                             ),
-                            Text('Date')
+                            const Text('Date')
                           ],
                         ),
                         Row(
@@ -175,7 +180,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                             const SizedBox(
                               width: 10,
                             ),
-                            const Icon(Icons.cancel_outlined)
+                            SvgPicture.asset('assets/icons/cancel.svg')
                           ],
                         )
                       ],
