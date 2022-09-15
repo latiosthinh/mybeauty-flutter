@@ -131,25 +131,35 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                                     border: Border(
                                         right: BorderSide(
                                             color: grayColor, width: 1.0))),
+                                child: CupertinoTheme(
+                                    data: CupertinoThemeData(
+                                        textTheme: CupertinoTextThemeData(
+                                            dateTimePickerTextStyle: TextStyle(
+                                                color: widget.color))),
+                                    child: CupertinoDatePicker(
+                                        mode: CupertinoDatePickerMode.time,
+                                        use24hFormat: true,
+                                        onDateTimeChanged: ((value) => {
+                                              setState(
+                                                () => from = value,
+                                              )
+                                            }))),
+                              )),
+                          Expanded(
+                            flex: 1,
+                            child: CupertinoTheme(
+                                data: CupertinoThemeData(
+                                    textTheme: CupertinoTextThemeData(
+                                        dateTimePickerTextStyle:
+                                            TextStyle(color: widget.color))),
                                 child: CupertinoDatePicker(
                                     mode: CupertinoDatePickerMode.time,
                                     use24hFormat: true,
                                     onDateTimeChanged: ((value) => {
                                           setState(
-                                            () => from = value,
+                                            () => to = value,
                                           )
-                                        })),
-                              )),
-                          Expanded(
-                            flex: 1,
-                            child: CupertinoDatePicker(
-                                mode: CupertinoDatePickerMode.time,
-                                use24hFormat: true,
-                                onDateTimeChanged: ((value) => {
-                                      setState(
-                                        () => to = value,
-                                      )
-                                    })),
+                                        }))),
                           )
                         ],
                       ),

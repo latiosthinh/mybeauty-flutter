@@ -36,7 +36,9 @@ class _CategoryComponentState extends State<CategoryComponent> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: _buildPanel(),
+      child: Container(
+          padding: const EdgeInsets.only(right: 16, left: 16),
+          child: _buildPanel()),
     );
   }
 
@@ -47,8 +49,8 @@ class _CategoryComponentState extends State<CategoryComponent> {
         return Column(mainAxisSize: MainAxisSize.max, children: [
           InkWell(
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              width: item.isExpanded ? 350 : 250,
+              duration: const Duration(milliseconds: 500),
+              width: item.isExpanded ? double.maxFinite : 250,
               height: 100,
               child: GrayedOut(
                 Container(
@@ -103,6 +105,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
   Widget _buildChild(List<ServiceModel> products) {
     return Container(
         color: lightColor,
+        margin: const EdgeInsets.only(bottom: 16.0),
         padding:
             const EdgeInsets.only(top: 21, left: 25, bottom: 25, right: 25),
         child: SizedBox(
@@ -117,10 +120,21 @@ class _CategoryComponentState extends State<CategoryComponent> {
                             color: widget.color,
                             fontWeight: FontWeight.w700,
                             fontSize: 16.0)),
+                    Text(
+                      product.meta,
+                      style: const TextStyle(fontSize: 10.0),
+                    ),
+                    const SizedBox(
+                      height: 5.0,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Text('50'),
+                        Text(
+                          '50',
+                          style: TextStyle(color: widget.color, fontSize: 16.0),
+                        ),
                         Icon(
                           Icons.add_circle,
                           color: widget.color,
@@ -128,7 +142,10 @@ class _CategoryComponentState extends State<CategoryComponent> {
                       ],
                     ),
                     const Divider(
-                      height: 1,
+                      height: 2,
+                    ),
+                    const SizedBox(
+                      height: 5,
                     )
                   ],
                 ),

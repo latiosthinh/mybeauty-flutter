@@ -10,11 +10,11 @@ class GrayedOut extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return grayedOut
-        ? ColorFiltered(
-            colorFilter: const ColorFilter.mode(
-              Colors.grey,
-              BlendMode.saturation,
-            ),
+        ? Container(
+            foregroundDecoration: BoxDecoration(
+                color: Colors.grey,
+                backgroundBlendMode: BlendMode.saturation,
+                borderRadius: BorderRadius.circular(10.0)),
             child: child)
         : child;
   }

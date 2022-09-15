@@ -14,7 +14,8 @@ class MenuService {
       var services =
           await _firestore.collection('menus/${menu.id}/services').get();
       for (var service in services.docs) {
-        childs.add(ServiceModel(service.id, service.get('name')));
+        childs.add(
+            ServiceModel(service.id, service.get('name'), service.get('meta')));
       }
       returnValue
           .add(MenuModel(menu.id, menu.get('name'), childs, menu.get('image')));
