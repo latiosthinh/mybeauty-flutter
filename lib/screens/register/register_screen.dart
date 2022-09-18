@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mybeauty/constants.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -11,9 +10,9 @@ class RegisterScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: whiteColor,
-        title: Text(
+        title: const Text(
           'Log in with MyNails account',
-          style: GoogleFonts.robotoCondensed(fontSize: 18.0, color: blackColor),
+          style: TextStyle(fontSize: 18.0, color: blackColor),
         ),
         centerTitle: true,
         bottom: PreferredSize(
@@ -44,10 +43,7 @@ class RegisterScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(5)),
                       backgroundColor: blackColor,
                       primary: whiteColor),
-                  label: Text(
-                    'Sign in with Apple',
-                    style: GoogleFonts.robotoCondensed(),
-                  ),
+                  label: const Text('Sign in with Apple'),
                 ),
               ),
               Container(
@@ -66,16 +62,13 @@ class RegisterScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(5)),
                           backgroundColor: blueColor,
                           primary: whiteColor),
-                      label: Text(
-                        'Continue with Facebook',
-                        style: GoogleFonts.robotoCondensed(),
-                      ),
+                      label: const Text('Continue with Facebook'),
                     ),
                   )),
-              Center(
+              const Center(
                 child: Text(
                   'or use your email',
-                  style: GoogleFonts.robotoCondensed(fontSize: 18.0),
+                  style: TextStyle(fontSize: 18.0),
                 ),
               ),
               Column(children: [
@@ -92,28 +85,26 @@ class RegisterScreen extends StatelessWidget {
                       labelText: 'Email'),
                 ),
                 TextFormField(
-                  decoration: const InputDecoration(
-                      labelText: 'Password',
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide:
-                              BorderSide(color: pinkColor, width: 1.0))),
-                  style: GoogleFonts.robotoCondensed(),
-                )
+                    decoration: const InputDecoration(
+                        labelText: 'Password',
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(color: pinkColor, width: 1.0))))
               ]),
               Container(
                 alignment: Alignment.centerLeft,
                 margin: const EdgeInsets.only(top: 28.0),
-                child: Text(
+                child: const Text(
                   'Please enter at least 8 characters',
-                  style: GoogleFonts.robotoCondensed(color: grayColor),
+                  style: TextStyle(color: grayColor),
                 ),
               ),
               CheckboxListTile(
                 onChanged: (value) {},
                 value: false,
-                title: Text(
+                title: const Text(
                   'Send me emails from MyNails with the latest offers & beauty news',
-                  style: GoogleFonts.robotoCondensed(fontSize: 10.0),
+                  style: TextStyle(fontSize: 10.0),
                 ),
                 controlAffinity: ListTileControlAffinity.leading,
                 contentPadding: const EdgeInsets.all(0),
@@ -121,9 +112,9 @@ class RegisterScreen extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 10.0),
                 width: double.infinity,
-                child: Text(
+                child: const Text(
                   'You can find out more about how MyNails stores uses and protects your data in our privacy policy.',
-                  style: GoogleFonts.robotoCondensed(fontSize: 10.0),
+                  style: TextStyle(fontSize: 10.0),
                 ),
               ),
               Container(
@@ -138,17 +129,13 @@ class RegisterScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5)),
                         backgroundColor: grayColor,
                         primary: blackColor),
-                    child: Text(
-                      'Create your account',
-                      style: GoogleFonts.robotoCondensed(),
-                    ),
+                    child: const Text('Create your account'),
                   ),
                 ),
               ),
-              Text(
+              const Text(
                 'By continuing you agree to our Terms & Conditions',
-                style:
-                    GoogleFonts.robotoCondensed(fontSize: 9, color: grayColor),
+                style: TextStyle(fontSize: 9, color: grayColor),
               )
             ],
           ),

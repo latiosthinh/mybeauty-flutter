@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mybeauty/screens/home.dart';
 import 'package:mybeauty/services/auth.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/components/primary_button.dart';
 
@@ -29,10 +28,9 @@ class _LoginScreenState extends State<LoginScreen> {
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: whiteColor,
-                title: Text(
+                title: const Text(
                   'Log in with MyNails account',
-                  style: GoogleFonts.robotoCondensed(
-                      fontSize: 18.0, color: blackColor),
+                  style: TextStyle(fontSize: 18.0, color: blackColor),
                 ),
                 centerTitle: true,
                 bottom: PreferredSize(
@@ -77,10 +75,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         func: AuthService().googleLogin,
                       ),
                     ),
-                    Center(
+                    const Center(
                       child: Text(
                         'or use your email',
-                        style: GoogleFonts.robotoCondensed(fontSize: 18.0),
+                        style: TextStyle(fontSize: 18.0),
                       ),
                     ),
                     Column(children: [
@@ -92,20 +90,18 @@ class _LoginScreenState extends State<LoginScreen> {
                             labelText: 'Email'),
                       ),
                       TextFormField(
-                        decoration: const InputDecoration(
-                            labelText: 'Password',
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: pinkColor, width: 1.0))),
-                        style: GoogleFonts.robotoCondensed(),
-                      )
+                          decoration: const InputDecoration(
+                              labelText: 'Password',
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: pinkColor, width: 1.0))))
                     ]),
                     Container(
                       alignment: Alignment.centerLeft,
                       margin: const EdgeInsets.only(top: 28.0),
-                      child: Text(
+                      child: const Text(
                         'Forgot your password?',
-                        style: GoogleFonts.robotoCondensed(color: redColor),
+                        style: TextStyle(color: redColor),
                       ),
                     ),
                     Container(
@@ -117,10 +113,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         func: AuthService().anonymousLogin,
                       ),
                     ),
-                    Text(
+                    const Text(
                       'By continuing you agree to our Terms & Conditions',
-                      style: GoogleFonts.robotoCondensed(
-                          fontSize: 9, color: grayColor),
+                      style: TextStyle(fontSize: 9, color: grayColor),
                     )
                   ],
                 ),
