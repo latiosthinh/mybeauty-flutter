@@ -26,7 +26,8 @@ class MenuModel {
 class ServiceModel {
   final String id;
   final String name;
-  final String meta;
+  final String description;
+  final String price;
 
-  ServiceModel(this.id, this.name, this.meta);
+  ServiceModel(this.id, this.name, this.description, this.price);
 }

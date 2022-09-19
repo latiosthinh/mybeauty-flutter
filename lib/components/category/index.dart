@@ -121,7 +121,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
                             fontWeight: FontWeight.w700,
                             fontSize: 16.0)),
                     Text(
-                      product.meta,
+                      product.description,
                       style: const TextStyle(fontSize: 10.0),
                     ),
                     const SizedBox(
@@ -132,7 +132,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          '50',
+                          product.price,
                           style: TextStyle(color: widget.color, fontSize: 16.0),
                         ),
                         Icon(
