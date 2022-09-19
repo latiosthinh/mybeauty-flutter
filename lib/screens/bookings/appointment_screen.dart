@@ -98,8 +98,10 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
               child: Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(bottom: 16.0, left: 20),
+                    margin: const EdgeInsets.only(
+                        bottom: 16.0, left: 20, right: 20.0),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: const [
@@ -112,6 +114,34 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                             )
                           ],
                         ),
+                        Row(
+                          children: [
+                            Text(DateTimeUtils.getTime(from)),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            const Text('to'),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(DateTimeUtils.getTime(to)),
+                            const SizedBox(
+                              width: 10.0,
+                            ),
+                            IconButton(
+                                padding: EdgeInsets.zero,
+                                constraints: const BoxConstraints(),
+                                onPressed: () => {
+                                      setState(() => {
+                                            from = DateTime.now(),
+                                            to = DateTime.now()
+                                                .add(const Duration(hours: 1))
+                                          })
+                                    },
+                                icon:
+                                    SvgPicture.asset('assets/icons/cancel.svg'))
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -190,7 +220,15 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                             const SizedBox(
                               width: 10,
                             ),
-                            SvgPicture.asset('assets/icons/cancel.svg')
+                            IconButton(
+                                padding: EdgeInsets.zero,
+                                constraints: const BoxConstraints(),
+                                onPressed: () => {
+                                      setState(
+                                          () => {selectedDate = DateTime.now()})
+                                    },
+                                icon:
+                                    SvgPicture.asset('assets/icons/cancel.svg'))
                           ],
                         )
                       ],

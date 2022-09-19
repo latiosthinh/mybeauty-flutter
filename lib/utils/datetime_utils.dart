@@ -22,6 +22,11 @@ class DateTimeUtils {
     return formatter.format(dateTime);
   }
 
+  static String getTime(DateTime dateTime) {
+    var formatter = DateFormat('HH:mm');
+    return formatter.format(dateTime);
+  }
+
   static List<DateTime> getWorkingDate() {
     List<DateTime> returnValue = [];
     for (int i = 0; i < 6; i++) {
