@@ -87,6 +87,16 @@ class _SettingScreenState extends State<SettingScreen> {
               visible: menuSettings[i].hasChild,
               child: Row(
                 children: [
+                  Visibility(
+                      visible: menuSettings[i].title == 'Country' ||
+                          menuSettings[i].title == 'Content preference',
+                      child: Text(
+                        menuSettings[i].title == 'Country'
+                            ? 'United Kingdom'
+                            : 'All',
+                        style:
+                            const TextStyle(color: orangeColor, fontSize: 18.0),
+                      )),
                   IconButton(
                       onPressed: () => onTap(menuSettings[i].title),
                       icon: const Icon(

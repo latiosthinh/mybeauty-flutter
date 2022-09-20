@@ -314,10 +314,18 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                       const SizedBox(
                         height: 5,
                       ),
-                      Text(
-                        staff.rate.toString(),
-                        style: const TextStyle(color: Colors.amber),
-                      ),
+                      Row(children: [
+                        const SizedBox(width: 2),
+                        const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 16.0,
+                        ),
+                        Text(
+                          staff.rate.toString(),
+                          style: const TextStyle(color: Colors.amber),
+                        )
+                      ]),
                       Radio(
                           value: staff,
                           groupValue: selectedStaff,
