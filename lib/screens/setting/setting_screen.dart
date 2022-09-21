@@ -5,6 +5,7 @@ import 'package:mybeauty/models/setting.dart';
 import 'package:mybeauty/screens/setting/country_screen.dart';
 import 'package:mybeauty/components/primary_button.dart';
 import 'package:mybeauty/screens/login/login_screen.dart';
+import 'package:mybeauty/screens/setting/term_screen.dart';
 import 'package:mybeauty/services/auth.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -20,20 +21,16 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: whiteColor,
           title: const Text(
             'Settings',
-            style: TextStyle(color: blackColor),
           ),
-          centerTitle: true,
           bottom: PreferredSize(
             preferredSize: const Size.square(0),
             child: Container(
               color: pinkColor,
               height: 1.0,
             ),
-          ),
-          elevation: 0),
+          )),
       body: Container(
           padding:
               const EdgeInsets.only(left: 16, top: 20, right: 16, bottom: 20),
@@ -88,17 +85,17 @@ class _SettingScreenState extends State<SettingScreen> {
               child: Row(
                 children: [
                   Visibility(
-                      visible: menuSettings[i].title == 'Country' ||
-                          menuSettings[i].title == 'Content preference',
+                      visible: menuSettings[i].key == 'country' ||
+                          menuSettings[i].key == 'content-preference',
                       child: Text(
-                        menuSettings[i].title == 'Country'
+                        menuSettings[i].key == 'country'
                             ? 'United Kingdom'
                             : 'All',
                         style:
                             const TextStyle(color: orangeColor, fontSize: 18.0),
                       )),
                   IconButton(
-                      onPressed: () => onTap(menuSettings[i].title),
+                      onPressed: () => onTap(menuSettings[i].key),
                       icon: const Icon(
                         Icons.arrow_forward,
                         color: grayColor,
@@ -112,10 +109,13 @@ class _SettingScreenState extends State<SettingScreen> {
     );
   }
 
-  onTap(String name) {
-    switch (name) {
-      case 'Country':
+  onTap(String key) {
+    switch (key) {
+      case 'country':
         Navigator.pushNamed(context, CountryScreen.routeName);
+        break;
+      case 'legal':
+        Navigator.pushNamed(context, TermScreen.routeName);
         break;
       default:
     }

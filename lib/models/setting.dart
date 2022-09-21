@@ -2,8 +2,10 @@ class Setting {
   final String icon;
   final String title;
   final bool hasChild;
+  final String key;
 
-  Setting(this.hasChild, {required this.icon, required this.title});
+  Setting(this.hasChild,
+      {required this.icon, required this.title, required this.key});
 }
 
 class Country {
@@ -17,10 +19,15 @@ class Country {
 List<Setting> menuSettings = [
   Setting(false,
       icon: 'assets/icons/exclamation-circle.svg',
-      title: 'Feedback and support'),
-  Setting(true, icon: 'assets/icons/legal.svg', title: 'Legal'),
-  Setting(true, icon: 'assets/icons/country.svg', title: 'Country'),
-  Setting(true, icon: 'assets/icons/users.svg', title: 'Content preference')
+      title: 'Feedback and support',
+      key: 'feedback-support'),
+  Setting(true, icon: 'assets/icons/legal.svg', title: 'Legal', key: 'legal'),
+  Setting(true,
+      icon: 'assets/icons/country.svg', title: 'Country', key: 'country'),
+  Setting(true,
+      icon: 'assets/icons/users.svg',
+      title: 'Content preference',
+      key: 'content-preference')
 ];
 
 List<Country> listCountry = [
@@ -30,4 +37,12 @@ List<Country> listCountry = [
   Country('assets/icons/be.png', 'Belgium', false),
   Country('assets/icons/it.png', 'Italy', false),
   Country('assets/icons/ca.png', 'Canada', false)
+];
+
+List<String> listTerm = [
+  'Booking Term and Conditions',
+  'MyNail’s Term and Policies',
+  'Privacy and Cookie Policy',
+  'MyNails & Partner Terms of Business',
+  'User Generated Content Policy'
 ];

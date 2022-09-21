@@ -9,6 +9,7 @@ import 'package:mybeauty/screens/nails/nail_screen.dart';
 import 'package:mybeauty/screens/register/register_screen.dart';
 import 'package:mybeauty/screens/setting/country_screen.dart';
 import 'package:mybeauty/screens/setting/setting_screen.dart';
+import 'package:mybeauty/screens/setting/term_screen.dart';
 import 'package:mybeauty/screens/splash/splash_screen.dart';
 import 'package:flutter/widgets.dart';
 
@@ -22,5 +23,6 @@ final Map<String, WidgetBuilder> routes = {
   SettingScreen.routeName: (context) => const SettingScreen(),
   ImportBooking.routeName: (context) => const ImportBooking(),
   CountryScreen.routeName: (context) => const CountryScreen(),
+  TermScreen.routeName: (context) => const TermScreen(),
   MainScreen.routeName: (context) => const MainScreen(),
 };
