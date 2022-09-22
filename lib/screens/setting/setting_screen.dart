@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/models/setting.dart';
+import 'package:mybeauty/screens/setting/content_perference_screen.dart';
 import 'package:mybeauty/screens/setting/country_screen.dart';
 import 'package:mybeauty/components/primary_button.dart';
 import 'package:mybeauty/screens/login/login_screen.dart';
@@ -116,6 +117,9 @@ class _SettingScreenState extends State<SettingScreen> {
         break;
       case 'legal':
         Navigator.pushNamed(context, TermScreen.routeName);
+        break;
+      case 'content-preference':
+        Navigator.pushNamed(context, ContentPreferenceScreen.routeName);
         break;
       default:
     }

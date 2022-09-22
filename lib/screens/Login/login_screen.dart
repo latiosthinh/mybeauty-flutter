@@ -27,12 +27,9 @@ class _LoginScreenState extends State<LoginScreen> {
           } else {
             return Scaffold(
               appBar: AppBar(
-                backgroundColor: whiteColor,
                 title: const Text(
                   'Log in with MyNails account',
-                  style: TextStyle(fontSize: 18.0, color: blackColor),
                 ),
-                centerTitle: true,
                 bottom: PreferredSize(
                   preferredSize: const Size.square(0),
                   child: Container(
@@ -40,7 +37,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 1.0,
                   ),
                 ),
-                elevation: 0,
               ),
               body: Container(
                 margin: const EdgeInsets.only(left: 38, right: 38, top: 38),

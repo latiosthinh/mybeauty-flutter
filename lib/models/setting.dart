@@ -46,3 +46,9 @@ List<String> listTerm = [
   'MyNails & Partner Terms of Business',
   'User Generated Content Policy'
 ];
+
+List<String> listContentPreference = [
+  'Show men’s treatments',
+  'Show women’s treatments',
+  'Show all treatments'
+];

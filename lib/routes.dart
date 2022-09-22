@@ -7,6 +7,7 @@ import 'package:mybeauty/screens/import-booking/import_booking_screen.dart';
 import 'package:mybeauty/screens/main/main_screen.dart';
 import 'package:mybeauty/screens/nails/nail_screen.dart';
 import 'package:mybeauty/screens/register/register_screen.dart';
+import 'package:mybeauty/screens/setting/content_perference_screen.dart';
 import 'package:mybeauty/screens/setting/country_screen.dart';
 import 'package:mybeauty/screens/setting/setting_screen.dart';
 import 'package:mybeauty/screens/setting/term_screen.dart';
@@ -24,5 +25,7 @@ final Map<String, WidgetBuilder> routes = {
   ImportBooking.routeName: (context) => const ImportBooking(),
   CountryScreen.routeName: (context) => const CountryScreen(),
   TermScreen.routeName: (context) => const TermScreen(),
+  ContentPreferenceScreen.routeName: (context) =>
+      const ContentPreferenceScreen(),
   MainScreen.routeName: (context) => const MainScreen(),
 };

@@ -14,12 +14,9 @@ class _ImportBookingState extends State<ImportBooking> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: whiteColor,
         title: const Text(
           'Import my booking',
-          style: TextStyle(fontSize: 18.0, color: blackColor),
         ),
-        centerTitle: true,
         bottom: PreferredSize(
           preferredSize: const Size.square(0),
           child: Container(
@@ -27,7 +24,6 @@ class _ImportBookingState extends State<ImportBooking> {
             height: 1.0,
           ),
         ),
-        elevation: 0,
       ),
       body: Container(
         margin: const EdgeInsets.all(38.0),

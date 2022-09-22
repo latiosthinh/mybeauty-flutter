@@ -16,21 +16,17 @@ class _CountryScreenState extends State<CountryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: whiteColor,
-          title: const Text(
-            'Settings',
-            style: TextStyle(color: blackColor),
+        title: const Text(
+          'Settings',
+        ),
+        bottom: PreferredSize(
+          preferredSize: const Size.square(0),
+          child: Container(
+            color: pinkColor,
+            height: 1.0,
           ),
-          centerTitle: true,
-          bottom: PreferredSize(
-            preferredSize: const Size.square(0),
-            child: Container(
-              color: pinkColor,
-              height: 1.0,
-            ),
-          ),
-          iconTheme: const IconThemeData(color: Colors.black),
-          elevation: 0),
+        ),
+      ),
       body: Container(
         padding: const EdgeInsets.only(left: 16, top: 20, right: 16),
         child: ListView.builder(
