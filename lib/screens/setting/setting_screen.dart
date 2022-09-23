@@ -8,6 +8,7 @@ import 'package:mybeauty/components/primary_button.dart';
 import 'package:mybeauty/screens/login/login_screen.dart';
 import 'package:mybeauty/screens/setting/term_screen.dart';
 import 'package:mybeauty/services/auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingScreen extends StatefulWidget {
   static String routeName = "/setting";
@@ -22,9 +23,7 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-            'Settings',
-          ),
+          title: Text(AppLocalizations.of(context)?.settings ?? 'Settings'),
           bottom: PreferredSize(
             preferredSize: const Size.square(0),
             child: Container(
@@ -48,10 +47,10 @@ class _SettingScreenState extends State<SettingScreen> {
                   background: blackColor,
                   color: whiteColor,
                   text: 'Sign out',
-                  func: () async {
-                    await AuthService().signOut();
-                    Navigator.pushNamed(context, LoginScreen.routeName);
-                  }),
+                  func: () async => {
+                        await AuthService().signOut(),
+                        Navigator.pushNamed(context, LoginScreen.routeName)
+                      }),
             ],
           )),
     );

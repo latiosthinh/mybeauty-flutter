@@ -5,6 +5,7 @@ import 'package:mybeauty/screens/splash/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mybeauty/theme.dart';
 import 'firebase_options.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +44,12 @@ class _AppState extends State<App> {
             theme: theme(),
             home: const SplashScreen(),
             debugShowCheckedModeBanner: false,
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate
+            ],
+            supportedLocales: const [Locale('en', ''), Locale('es', '')],
             routes: routes,
           );
         }
