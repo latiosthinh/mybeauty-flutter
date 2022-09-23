@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-Widget jumbotron(Color color) {
+Widget jumbotron(Color color, String customText) {
   return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -17,12 +16,11 @@ Widget jumbotron(Color color) {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'SPOIL SOMEONE',
-              style: GoogleFonts.robotoCondensed(fontWeight: FontWeight.w700),
+              style: TextStyle(fontWeight: FontWeight.w700),
             ),
-            Text('The MyNails gift card is the perfect beauty treat',
-                style: GoogleFonts.robotoCondensed())
+            Text('The $customText gift card is the perfect beauty treat')
           ],
         ),
       ));

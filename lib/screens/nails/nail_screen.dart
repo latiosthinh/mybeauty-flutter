@@ -25,7 +25,7 @@ class _NailScreenState extends State<NailScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            jumbotron(pinkOpacityColor),
+            jumbotron(pinkOpacityColor, 'MyNails'),
             Container(
               alignment: Alignment.centerLeft,
               margin: const EdgeInsets.only(bottom: 30, left: 12),

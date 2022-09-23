@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mybeauty/routes.dart';
 import 'package:mybeauty/screens/splash/splash_screen.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mybeauty/theme.dart';
 import 'firebase_options.dart';

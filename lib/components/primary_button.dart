@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class PrimaryButton extends StatelessWidget {
   final Color color;
@@ -35,7 +34,6 @@ class PrimaryButton extends StatelessWidget {
               primary: color),
           label: Text(
             text,
-            style: GoogleFonts.robotoCondensed(),
           ),
         ));
   }
