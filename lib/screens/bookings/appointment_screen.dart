@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mybeauty/components/buttons/circle_button.dart';
 import 'package:mybeauty/components/buttons/index.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/models/staff.dart';
 import 'package:mybeauty/screens/bookings/booking_screen.dart';
 import 'package:mybeauty/services/services.dart';
 import 'package:mybeauty/utils/datetime_utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppointmentScreen extends StatefulWidget {
   final ServiceModel service;
@@ -259,8 +261,9 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                         color: widget.color),
                     padding: const EdgeInsets.only(left: 100, right: 100),
                     child: TextButton(
-                      child: const Text('APPLY',
-                          style: TextStyle(
+                      child: Text(
+                          AppLocalizations.of(context)?.settings ?? 'APPLY',
+                          style: const TextStyle(
                               color: whiteColor,
                               fontWeight: FontWeight.w700,
                               fontSize: 20.0)),
@@ -377,17 +380,17 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                             const SizedBox(
                               height: 5,
                             ),
-                            circleButton(
-                                () => {
+                            CircleButton(
+                                onTap: () => {
                                       setState(() {
                                         selectedDate = date;
                                       })
                                     },
-                                date.day.toString(),
-                                selectedDate.day == date.day
+                                text: date.day.toString(),
+                                bgColor: selectedDate.day == date.day
                                     ? widget.color
                                     : Colors.transparent,
-                                selectedDate.day == date.day
+                                foreColor: selectedDate.day == date.day
                                     ? Colors.white
                                     : Colors.black)
                           ],

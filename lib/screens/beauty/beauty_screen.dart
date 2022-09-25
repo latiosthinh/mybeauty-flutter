@@ -25,7 +25,10 @@ class _BeautyScreenState extends State<BeautyScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            jumbotron(lightGreenOpacityColor, 'MyBeauty'),
+            const Jumbotron(
+              color: lightGreenOpacityColor,
+              customText: 'MyBeauty',
+            ),
             Container(
               alignment: Alignment.centerLeft,
               margin: const EdgeInsets.only(left: 12, bottom: 30),

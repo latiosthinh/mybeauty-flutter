@@ -49,24 +49,3 @@ Widget backButton(Color bgColor, Color iconColor, Function onTab,
     ),
   );
 }
-
-Widget circleButton(
-    Function onTap, String text, Color bgColor, Color foreColor) {
-  return ClipOval(
-    child: Material(
-      color: bgColor,
-      child: InkWell(
-        onTap: () => onTap(),
-        child: SizedBox(
-          height: 28,
-          width: 28,
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: TextStyle(height: 1.6, color: foreColor),
-          ),
-        ),
-      ),
-    ),
-  );
-}

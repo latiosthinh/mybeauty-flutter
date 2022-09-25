@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mybeauty/logger.dart';
 
 import 'models.dart';
 
@@ -15,5 +16,6 @@ class BookingService {
       'to': model.to,
       'staff': model.staff.id
     });
+    Logger.log('add booking');
   }
 }
