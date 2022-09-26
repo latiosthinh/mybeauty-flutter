@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mybeauty/components/avatar/index.dart';
-import 'package:mybeauty/components/buttons/circle_button.dart';
 import 'package:mybeauty/components/buttons/index.dart';
+import 'package:mybeauty/components/index.dart';
 import 'package:mybeauty/constants.dart';
-import 'package:mybeauty/logger.dart';
 import 'package:mybeauty/models/staff.dart';
 import 'package:mybeauty/screens/bookings/booking_screen.dart';
 import 'package:mybeauty/services/services.dart';

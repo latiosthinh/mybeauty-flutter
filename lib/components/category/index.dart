@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mybeauty/components/grayed_out/index.dart';
+import 'package:mybeauty/components/index.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/screens/bookings/appointment_screen.dart';
 import 'package:mybeauty/services/menu_service.dart';

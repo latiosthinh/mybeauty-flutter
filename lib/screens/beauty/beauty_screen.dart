@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mybeauty/components/category/index.dart';
 import 'package:mybeauty/components/custom_app_bar.dart';
-import 'package:mybeauty/components/jumbotron.dart';
+import 'package:mybeauty/components/index.dart';
 import 'package:mybeauty/constants.dart';
 
 class BeautyScreen extends StatefulWidget {
