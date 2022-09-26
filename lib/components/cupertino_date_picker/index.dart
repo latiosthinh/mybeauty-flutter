@@ -3,12 +3,8 @@ import 'package:flutter/cupertino.dart';
 class CustomCupertinoDatePicker extends StatefulWidget {
   final Color color;
   final Function onDateTimeChanged;
-  final DateTime value;
   const CustomCupertinoDatePicker(
-      {Key? key,
-      required this.color,
-      required this.onDateTimeChanged,
-      required this.value})
+      {Key? key, required this.color, required this.onDateTimeChanged})
       : super(key: key);
 
   @override
@@ -19,7 +15,7 @@ class CustomCupertinoDatePicker extends StatefulWidget {
 class _CustomCupertinoDatePickerState extends State<CustomCupertinoDatePicker> {
   @override
   Widget build(BuildContext context) {
-    throw CupertinoTheme(
+    return CupertinoTheme(
         data: CupertinoThemeData(
             textTheme: CupertinoTextThemeData(
                 dateTimePickerTextStyle: TextStyle(color: widget.color))),

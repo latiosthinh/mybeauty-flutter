@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybeauty/components/buttons/index.dart';
@@ -137,7 +136,6 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                                       setState(() => {
                                             from = DateTime.now(),
                                             to = DateTime.now()
-                                                .add(const Duration(hours: 1))
                                           })
                                     },
                                 icon:
@@ -163,35 +161,24 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                                     border: Border(
                                         right: BorderSide(
                                             color: grayColor, width: 1.0))),
-                                child: CupertinoTheme(
-                                    data: CupertinoThemeData(
-                                        textTheme: CupertinoTextThemeData(
-                                            dateTimePickerTextStyle: TextStyle(
-                                                color: widget.color))),
-                                    child: CupertinoDatePicker(
-                                        mode: CupertinoDatePickerMode.time,
-                                        use24hFormat: true,
-                                        onDateTimeChanged: ((value) => {
-                                              setState(
-                                                () => from = value,
-                                              )
-                                            }))),
+                                child: CustomCupertinoDatePicker(
+                                  color: widget.color,
+                                  onDateTimeChanged: (DateTime value) => {
+                                    setState(
+                                      () => from = value,
+                                    )
+                                  },
+                                ),
                               )),
                           Expanded(
                             flex: 1,
-                            child: CupertinoTheme(
-                                data: CupertinoThemeData(
-                                    textTheme: CupertinoTextThemeData(
-                                        dateTimePickerTextStyle:
-                                            TextStyle(color: widget.color))),
-                                child: CupertinoDatePicker(
-                                    mode: CupertinoDatePickerMode.time,
-                                    use24hFormat: true,
-                                    onDateTimeChanged: ((value) => {
-                                          setState(
-                                            () => to = value,
-                                          )
-                                        }))),
+                            child: CustomCupertinoDatePicker(
+                                color: widget.color,
+                                onDateTimeChanged: ((value) => {
+                                      setState(
+                                        () => to = value,
+                                      )
+                                    })),
                           )
                         ],
                       ),
