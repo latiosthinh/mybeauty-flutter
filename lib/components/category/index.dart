@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:mybeauty/components/index.dart';
 import 'package:mybeauty/constants.dart';
@@ -16,8 +18,11 @@ class CategoryComponent extends StatefulWidget {
   State<CategoryComponent> createState() => _CategoryComponentState();
 }
 
-class _CategoryComponentState extends State<CategoryComponent> {
+class _CategoryComponentState extends State<CategoryComponent>
+    with TickerProviderStateMixin {
   final MenuService _menuService = MenuService();
+  late AnimationController _controller;
+  late Animation<double> _animation;
 
   List<MenuModel> _menus = [];
   _setupMenu() async {
@@ -30,7 +35,22 @@ class _CategoryComponentState extends State<CategoryComponent> {
   @override
   void initState() {
     super.initState();
+
+    _controller = AnimationController(
+        duration: const Duration(milliseconds: 300), vsync: this);
+
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.fastOutSlowIn,
+    );
+
     _setupMenu();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -49,13 +69,18 @@ class _CategoryComponentState extends State<CategoryComponent> {
         return Column(mainAxisSize: MainAxisSize.max, children: [
           InkWell(
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 300),
               width: item.isExpanded ? 350 : 250,
+              curve: Curves.easeOut,
               height: 100,
               child: GrayedOut(
                 Container(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.0),
+                        borderRadius: item.isExpanded
+                            ? const BorderRadius.only(
+                                topLeft: Radius.circular(5.0),
+                                topRight: Radius.circular(5.0))
+                            : BorderRadius.circular(5.0),
                         image: DecorationImage(
                             image: AssetImage(item.image), fit: BoxFit.cover)),
                     child: Center(
@@ -84,19 +109,28 @@ class _CategoryComponentState extends State<CategoryComponent> {
             ),
             onTap: () => {
               setState(
-                () => item.isExpanded = !item.isExpanded,
+                () => {
+                  item.isExpanded = !item.isExpanded,
+                  item.isExpanded
+                      ? Future.delayed(const Duration(milliseconds: 250), () {
+                          _controller.forward();
+                        })
+                      : _controller.reverse()
+                },
               )
             },
           ),
-          item.isExpanded
-              ? _buildChild(item.services)
-              : Container(
-                  padding: const EdgeInsets.only(bottom: 14.0, top: 14.0),
-                  child: const Divider(
-                    height: 2,
-                    color: grayColor,
-                  ),
-                )
+          Container(
+            padding: item.isExpanded
+                ? null
+                : const EdgeInsets.only(bottom: 16.0),
+            
+          ),
+          SizeTransition(
+              sizeFactor: _animation,
+              axis: Axis.vertical,
+              axisAlignment: -1,
+              child: item.isExpanded ? _buildChild(item.services) : null),
         ]);
       }).toList(),
     );
