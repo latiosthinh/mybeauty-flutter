@@ -18,6 +18,7 @@ class MenuModel {
   final String name;
   final String image;
   bool isExpanded = false;
+  bool isListExpaned = false;
   final List<ServiceModel> services;
 
   MenuModel(this.id, this.name, this.services, this.image);
