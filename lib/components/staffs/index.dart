@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mybeauty/components/index.dart';
 import 'package:mybeauty/models/staff.dart';
 import 'package:mybeauty/services/services.dart';
+import 'package:mybeauty/widgets/spacer.dart';
 
 class StaffList extends StatefulWidget {
   final Function onSelected;
@@ -47,15 +48,11 @@ class _StaffListState extends State<StaffList> {
                       Avatar(
                         image: staff.avatar,
                       ),
-                      const SizedBox(
-                        height: 5,
-                      ),
+                      const VSpacer(5),
                       Text(staff.name),
-                      const SizedBox(
-                        height: 5,
-                      ),
+                      const VSpacer(5),
                       Row(children: [
-                        const SizedBox(width: 2),
+                        const HSpacer(2),
                         const Icon(
                           Icons.star,
                           color: Colors.amber,

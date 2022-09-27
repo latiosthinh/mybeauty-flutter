@@ -6,6 +6,7 @@ import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/screens/bookings/appointment_screen.dart';
 import 'package:mybeauty/services/menu_service.dart';
 import 'package:mybeauty/services/models.dart';
+import 'package:mybeauty/widgets/index.dart';
 
 class CategoryComponent extends StatefulWidget {
   final Color color;
@@ -158,9 +159,7 @@ class _CategoryComponentState extends State<CategoryComponent>
                       product.description,
                       style: const TextStyle(fontSize: 10.0),
                     ),
-                    const SizedBox(
-                      height: 5.0,
-                    ),
+                    const VSpacer(5),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,

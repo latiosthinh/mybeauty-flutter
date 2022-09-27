@@ -8,6 +8,7 @@ import 'package:mybeauty/screens/bookings/booking_screen.dart';
 import 'package:mybeauty/services/services.dart';
 import 'package:mybeauty/utils/datetime_utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mybeauty/widgets/index.dart';
 
 class AppointmentScreen extends StatefulWidget {
   final ServiceModel service;
@@ -88,9 +89,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                         Row(
                           children: const [
                             Icon(Icons.schedule),
-                            SizedBox(
-                              width: 10,
-                            ),
+                            HSpacer(10),
                             Text(
                               'Time',
                             )
@@ -99,17 +98,11 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                         Row(
                           children: [
                             Text(DateTimeUtils.getTime(from)),
-                            const SizedBox(
-                              width: 5,
-                            ),
+                            const HSpacer(5),
                             const Text('to'),
-                            const SizedBox(
-                              width: 5,
-                            ),
+                            const HSpacer(5),
                             Text(DateTimeUtils.getTime(to)),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
+                            const HSpacer(10),
                             IconButton(
                                 padding: EdgeInsets.zero,
                                 constraints: const BoxConstraints(),
@@ -178,18 +171,14 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                               color: blackColor,
                               width: 24,
                             ),
-                            const SizedBox(
-                              width: 10,
-                            ),
+                            const HSpacer(10),
                             const Text('Date')
                           ],
                         ),
                         Row(
                           children: [
                             Text(DateTimeUtils.getDayOfWeek(selectedDate)),
-                            const SizedBox(
-                              width: 10,
-                            ),
+                            const HSpacer(10),
                             IconButton(
                                 padding: EdgeInsets.zero,
                                 constraints: const BoxConstraints(),
@@ -216,9 +205,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                     child: Row(
                       children: const [
                         Icon(Icons.person_outline),
-                        SizedBox(
-                          width: 10,
-                        ),
+                        HSpacer(10),
                         Text('Team')
                       ],
                     ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/models/setting.dart';
+import 'package:mybeauty/widgets/index.dart';
 
 class CountryScreen extends StatefulWidget {
   static String routeName = "/country";
@@ -56,9 +57,7 @@ class _CountryScreenState extends State<CountryScreen> {
                   icon: Image.asset(listCountry[i].icon),
                   onPressed: () {},
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const HSpacer(10),
                 Text(
                   listCountry[i].name,
                   style: const TextStyle(fontSize: 18.0, color: orangeColor),

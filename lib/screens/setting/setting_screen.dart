@@ -9,6 +9,7 @@ import 'package:mybeauty/screens/login/login_screen.dart';
 import 'package:mybeauty/screens/setting/term_screen.dart';
 import 'package:mybeauty/services/auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mybeauty/widgets/index.dart';
 
 class SettingScreen extends StatefulWidget {
   static String routeName = "/setting";
@@ -71,9 +72,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   icon: SvgPicture.asset(menuSettings[i].icon),
                   onPressed: () {},
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const HSpacer(10),
                 Text(
                   menuSettings[i].title,
                   style: const TextStyle(fontSize: 18.0),
