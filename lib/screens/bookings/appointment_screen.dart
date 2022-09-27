@@ -22,7 +22,6 @@ class AppointmentScreen extends StatefulWidget {
 }
 
 BookingService _bookingService = BookingService();
-StaffService _staffService = StaffService();
 AuthService _authService = AuthService();
 
 class _AppointmentScreenScreenState extends State<AppointmentScreen> {
@@ -30,24 +29,6 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
   DateTime to = DateTime.now().add(const Duration(hours: 1));
   DateTime selectedDate = DateTime.now();
   late Staff selectedStaff;
-
-  List<Staff> _staffs = [];
-
-  _setupStaffs() async {
-    List<Staff> staffs = await _staffService.getStaffs();
-    setState(() {
-      _staffs = staffs;
-      if (staffs.isNotEmpty) {
-        selectedStaff = staffs.first;
-      }
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _setupStaffs();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -223,7 +204,12 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                       ],
                     ),
                   ),
-                  buildLineDate(),
+                  DateLine(
+                    color: widget.color,
+                    onSelected: (DateTime value) => {
+                      setState(() => {selectedDate = value})
+                    },
+                  ),
                   Container(
                     margin: const EdgeInsets.only(
                         bottom: 10.0, top: 20.0, left: 40.0, right: 40.0),
@@ -237,7 +223,12 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                       ],
                     ),
                   ),
-                  buildStaff(),
+                  StaffList(
+                      onSelected: (Staff value) => {
+                            setState(
+                              () => {selectedStaff = value},
+                            )
+                          }),
                   Container(
                     margin: const EdgeInsets.only(bottom: 10),
                   ),
@@ -255,10 +246,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                               fontWeight: FontWeight.w700,
                               fontSize: 20.0)),
                       onPressed: () => {
-                        if (_staffs.isEmpty)
-                          {_showToast(context, 'Member of team not found!')}
-                        else if (from.isAfter(to) ||
-                            from.isAfter(DateTime.now()))
+                        if (from.isAfter(to) || from.isAfter(DateTime.now()))
                           {_showToast(context, 'Please choose a valid time')}
                         else
                           {
@@ -284,53 +272,6 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
     );
   }
 
-  Widget buildStaff() {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10.0, left: 16.0, right: 16.0),
-      child: Row(
-        children: _staffs
-            .map((staff) => Container(
-                  margin: const EdgeInsets.only(right: 16),
-                  child: Column(
-                    children: [
-                      Avatar(
-                        image: staff.avatar,
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(staff.name),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Row(children: [
-                        const SizedBox(width: 2),
-                        const Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                          size: 16.0,
-                        ),
-                        Text(
-                          staff.rate.toString(),
-                          style: const TextStyle(color: Colors.amber),
-                        )
-                      ]),
-                      Radio(
-                          value: staff,
-                          groupValue: selectedStaff,
-                          onChanged: ((Staff? value) => {
-                                setState(() {
-                                  selectedStaff = value ?? _staffs.first;
-                                })
-                              }))
-                    ],
-                  ),
-                ))
-            .toList(),
-      ),
-    );
-  }
-
   void _showToast(BuildContext context, String message) {
     final scaffold = ScaffoldMessenger.of(context);
     scaffold.showSnackBar(
@@ -339,51 +280,6 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
         action: SnackBarAction(
             label: 'Close', onPressed: scaffold.hideCurrentSnackBar),
       ),
-    );
-  }
-
-  final List<DateTime> workDates = DateTimeUtils.getWorkingDate();
-
-  Widget buildLineDate() {
-    return Container(
-      padding: const EdgeInsets.only(left: 10, right: 10),
-      decoration: const BoxDecoration(
-          border: Border(
-              top: BorderSide(color: grayColor),
-              bottom: BorderSide(color: grayColor))),
-      child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: workDates.map((date) {
-            return Expanded(
-                child: Container(
-                    padding: const EdgeInsets.all(5),
-                    child: Row(
-                      children: [
-                        Column(
-                          children: [
-                            Text(DateTimeUtils.getDayOfWeek(date)
-                                .substring(0, 3)),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            CircleButton(
-                                onTap: () => {
-                                      setState(() {
-                                        selectedDate = date;
-                                      })
-                                    },
-                                text: date.day.toString(),
-                                bgColor: selectedDate.day == date.day
-                                    ? widget.color
-                                    : Colors.transparent,
-                                foreColor: selectedDate.day == date.day
-                                    ? Colors.white
-                                    : Colors.black)
-                          ],
-                        )
-                      ],
-                    )));
-          }).toList()),
     );
   }
 }

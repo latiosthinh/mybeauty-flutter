@@ -16,6 +16,7 @@ class BookingService {
       'to': model.to,
       'staff': model.staff.id
     });
-    Logger.log('add booking');
+    Logger.log(
+        '[add booking] userId:${model.user?.email}, service: ${model.service}, staff: ${model.staff.name}, date: ${model.bookingDate.day}');
   }
 }
