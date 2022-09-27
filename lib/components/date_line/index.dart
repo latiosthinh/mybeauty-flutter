@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mybeauty/components/index.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/utils/datetime_utils.dart';
+import 'package:mybeauty/widgets/index.dart';
 
 class DateLine extends StatefulWidget {
   final Color color;
@@ -36,9 +37,7 @@ class _DateLineState extends State<DateLine> {
                           children: [
                             Text(DateTimeUtils.getDayOfWeek(date)
                                 .substring(0, 3)),
-                            const SizedBox(
-                              height: 5,
-                            ),
+                            const VSpacer(5),
                             CircleButton(
                                 onTap: () => {
                                       widget.onSelected(date),
