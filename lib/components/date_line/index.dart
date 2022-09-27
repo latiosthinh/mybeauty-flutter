@@ -7,7 +7,12 @@ import 'package:mybeauty/widgets/index.dart';
 class DateLine extends StatefulWidget {
   final Color color;
   final Function onSelected;
-  const DateLine({Key? key, required this.color, required this.onSelected})
+  final DateTime selected;
+  const DateLine(
+      {Key? key,
+      required this.color,
+      required this.onSelected,
+      required this.selected})
       : super(key: key);
 
   @override
@@ -16,7 +21,6 @@ class DateLine extends StatefulWidget {
 
 class _DateLineState extends State<DateLine> {
   final List<DateTime> workDates = DateTimeUtils.getWorkingDate();
-  late DateTime selected = DateTime.now();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,13 +45,12 @@ class _DateLineState extends State<DateLine> {
                             CircleButton(
                                 onTap: () => {
                                       widget.onSelected(date),
-                                      setState(() => {selected = date})
                                     },
                                 text: date.day.toString(),
-                                bgColor: selected.day == date.day
+                                bgColor: widget.selected.day == date.day
                                     ? widget.color
                                     : Colors.transparent,
-                                foreColor: selected.day == date.day
+                                foreColor: widget.selected.day == date.day
                                     ? Colors.white
                                     : Colors.black)
                           ],

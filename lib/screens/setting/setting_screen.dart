@@ -38,11 +38,10 @@ class _SettingScreenState extends State<SettingScreen> {
           child: Column(
             children: [
               Expanded(
-                  child: SizedBox(
                 child: ListView.builder(
                     itemBuilder: (context, index) => buildSettingMenu(index),
                     itemCount: menuSettings.length),
-              )),
+              ),
               PrimaryButton(
                   icon: Icons.logout,
                   background: blackColor,

@@ -143,9 +143,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
                     const Divider(
                       height: 2,
                     ),
-                    const SizedBox(
-                      height: 5,
-                    )
+                    const VSpacer(5)
                   ],
                 ),
                 onTap: () => Navigator.push(

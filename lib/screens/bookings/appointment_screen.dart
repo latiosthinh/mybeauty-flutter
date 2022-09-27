@@ -198,6 +198,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                     onSelected: (DateTime value) => {
                       setState(() => {selectedDate = value})
                     },
+                    selected: selectedDate,
                   ),
                   Container(
                     margin: const EdgeInsets.only(
