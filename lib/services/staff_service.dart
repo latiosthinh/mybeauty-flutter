@@ -5,14 +5,7 @@ class StaffService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<List<Staff>> getStaffs() async {
-    List<Staff> returnValue = [];
-    await _firestore.collection('staffs').get().then((value) => {
-          for (var staff in value.docs)
-            {
-              returnValue.add(Staff(staff.get('name'), staff.get('avatar'),
-                  staff.get('rate'), staff.id))
-            }
-        });
-    return returnValue;
+    final snapshot = await _firestore.collection('staffs').get();
+    return snapshot.docs.map((e) => Staff.fromJson(e.data(), e.id)).toList();
   }
 }
