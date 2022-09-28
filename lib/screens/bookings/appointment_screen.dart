@@ -27,7 +27,7 @@ AuthService _authService = AuthService();
 
 class _AppointmentScreenScreenState extends State<AppointmentScreen> {
   DateTime from = DateTime.now();
-  DateTime to = DateTime.now().add(const Duration(hours: 1));
+  DateTime to = DateTime.now();
   DateTime selectedDate = DateTime.now();
   late Staff selectedStaff;
 
@@ -217,9 +217,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                               () => {selectedStaff = value},
                             )
                           }),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 10),
-                  ),
+                  const VSpacer(10),
                   Container(
                     margin: const EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(

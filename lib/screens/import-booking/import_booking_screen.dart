@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mybeauty/constants.dart';
+import 'package:mybeauty/widgets/index.dart';
 
 class ImportBooking extends StatefulWidget {
   static String routeName = "/import-booking";
@@ -43,13 +44,11 @@ class _ImportBookingState extends State<ImportBooking> {
                             borderSide:
                                 BorderSide(color: pinkColor, width: 1.0))),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 18.0),
-                    child: const Text(
-                      'Enter the email you used to make your booking',
-                      style: TextStyle(color: grayColor),
-                      textAlign: TextAlign.left,
-                    ),
+                  const VSpacer(18),
+                  const Text(
+                    'Enter the email you used to make your booking',
+                    style: TextStyle(color: grayColor),
+                    textAlign: TextAlign.left,
                   )
                 ],
               ),

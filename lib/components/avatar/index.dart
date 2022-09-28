@@ -3,7 +3,9 @@ import 'package:mybeauty/services/services.dart';
 
 class Avatar extends StatefulWidget {
   final String image;
-  const Avatar({Key? key, required this.image}) : super(key: key);
+  final String name;
+  const Avatar({Key? key, required this.image, required this.name})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _AvatarState();
@@ -11,7 +13,7 @@ class Avatar extends StatefulWidget {
 
 class _AvatarState extends State<Avatar> {
   final FireStore _fireStore = FireStore();
-  String avatar = 'https://i.pravatar.cc/100';
+  String avatar = 'https://placehold.jp/3d4070/ffffff/100x100.png?text=loading';
 
   @override
   void initState() {
@@ -30,9 +32,14 @@ class _AvatarState extends State<Avatar> {
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: 50,
-      backgroundImage: NetworkImage(avatar),
-    );
+    return widget.image.isNotEmpty
+        ? CircleAvatar(
+            radius: 50,
+            backgroundImage: NetworkImage(avatar),
+          )
+        : CircleAvatar(
+            radius: 50,
+            child: Text(widget.name.substring(0, 1)),
+          );
   }
 }

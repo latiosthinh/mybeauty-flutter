@@ -47,6 +47,7 @@ class _StaffListState extends State<StaffList> {
                     children: [
                       Avatar(
                         image: staff.avatar,
+                        name: staff.name,
                       ),
                       const VSpacer(5),
                       Text(staff.name),

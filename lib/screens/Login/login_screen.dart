@@ -3,6 +3,7 @@ import 'package:mybeauty/screens/home.dart';
 import 'package:mybeauty/services/auth.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/components/primary_button.dart';
+import 'package:mybeauty/widgets/index.dart';
 
 class LoginScreen extends StatefulWidget {
   static String routeName = "/login";
@@ -51,15 +52,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         func: AuthService().anonymousLogin,
                       ),
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 9),
-                      child: PrimaryButton(
-                        icon: Icons.facebook,
-                        background: blueColor,
-                        color: whiteColor,
-                        text: 'Sign in with Facebook',
-                        func: AuthService().anonymousLogin,
-                      ),
+                    const VSpacer(9),
+                    PrimaryButton(
+                      icon: Icons.facebook,
+                      background: blueColor,
+                      color: whiteColor,
+                      text: 'Sign in with Facebook',
+                      func: AuthService().anonymousLogin,
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 9, bottom: 40),

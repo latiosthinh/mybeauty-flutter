@@ -4,6 +4,7 @@ import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/screens/import-booking/import_booking_screen.dart';
 import 'package:mybeauty/screens/login/login_screen.dart';
 import 'package:mybeauty/screens/register/register_screen.dart';
+import 'package:mybeauty/widgets/index.dart';
 
 class BookingScreen extends StatefulWidget {
   static String routeName = "/booking";
@@ -77,34 +78,31 @@ class _BookingScreenState extends State<BookingScreen> {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(top: 50),
-              child: Center(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextButton(
-                      onPressed: () =>
-                          {Navigator.pushNamed(context, LoginScreen.routeName)},
-                      child: const Text(
-                        'Log in',
-                        style: TextStyle(
-                            color: blackColor, fontWeight: FontWeight.w700),
-                      )),
-                  const Text('or'),
-                  TextButton(
-                      onPressed: () => {
-                            Navigator.pushNamed(
-                                context, RegisterScreen.routeName)
-                          },
-                      child: const Text(
-                        'Create an account',
-                        style: TextStyle(
-                            color: blackColor, fontWeight: FontWeight.w700),
-                      ))
-                ],
-              )),
-            )
+            const VSpacer(50),
+            Center(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                    onPressed: () =>
+                        {Navigator.pushNamed(context, LoginScreen.routeName)},
+                    child: const Text(
+                      'Log in',
+                      style: TextStyle(
+                          color: blackColor, fontWeight: FontWeight.w700),
+                    )),
+                const Text('or'),
+                TextButton(
+                    onPressed: () => {
+                          Navigator.pushNamed(context, RegisterScreen.routeName)
+                        },
+                    child: const Text(
+                      'Create an account',
+                      style: TextStyle(
+                          color: blackColor, fontWeight: FontWeight.w700),
+                    ))
+              ],
+            ))
           ]),
         ));
   }
