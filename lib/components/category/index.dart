@@ -67,72 +67,70 @@ class _CategoryComponentState extends State<CategoryComponent>
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: _menus.map((MenuModel item) {
-        return Column(mainAxisSize: MainAxisSize.max, children: [
-          InkWell(
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              width: item.isExpanded ? 350 : 250,
-              curve: Curves.easeOut,
-              height: 100,
-              child: GrayedOut(
-                Container(
-                    decoration: BoxDecoration(
-                        borderRadius: item.isExpanded
-                            ? const BorderRadius.only(
-                                topLeft: Radius.circular(5.0),
-                                topRight: Radius.circular(5.0))
-                            : BorderRadius.circular(5.0),
-                        image: DecorationImage(
-                            image: AssetImage(item.image), fit: BoxFit.cover)),
-                    child: Center(
-                      child: Material(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: widget.color,
-                        child: InkWell(
-                          child: Container(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Text(
-                                item.name,
-                                style: TextStyle(
-                                    color: item.isExpanded
-                                        ? whiteColor
-                                        : blackColor,
-                                    fontSize: 20.0,
-                                    fontWeight: item.isExpanded
-                                        ? FontWeight.w700
-                                        : FontWeight.w400),
-                              )),
+        return Container(
+          margin: const EdgeInsets.only(bottom: 16.0),
+          child: Column(mainAxisSize: MainAxisSize.max, children: [
+            InkWell(
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                width: item.isExpanded ? 350 : 250,
+                curve: Curves.easeOut,
+                height: 100,
+                child: GrayedOut(
+                  Container(
+                      decoration: BoxDecoration(
+                          borderRadius: item.isExpanded
+                              ? const BorderRadius.only(
+                                  topLeft: Radius.circular(5.0),
+                                  topRight: Radius.circular(5.0))
+                              : BorderRadius.circular(5.0),
+                          image: DecorationImage(
+                              image: AssetImage(item.image),
+                              fit: BoxFit.cover)),
+                      child: Center(
+                        child: Material(
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: widget.color,
+                          child: InkWell(
+                            child: Container(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Text(
+                                  item.name,
+                                  style: TextStyle(
+                                      color: item.isExpanded
+                                          ? whiteColor
+                                          : blackColor,
+                                      fontSize: 20.0,
+                                      fontWeight: item.isExpanded
+                                          ? FontWeight.w700
+                                          : FontWeight.w400),
+                                )),
+                          ),
                         ),
-                      ),
-                    )),
-                grayedOut: !item.isExpanded,
+                      )),
+                  grayedOut: !item.isExpanded,
+                ),
               ),
+              onTap: () => {
+                setState(
+                  () => {
+                    item.isExpanded = !item.isExpanded,
+                    item.isExpanded
+                        ? Future.delayed(const Duration(milliseconds: 250), () {
+                            _controller.forward();
+                          })
+                        : _controller.reverse()
+                  },
+                )
+              },
             ),
-            onTap: () => {
-              setState(
-                () => {
-                  item.isExpanded = !item.isExpanded,
-                  item.isExpanded
-                      ? Future.delayed(const Duration(milliseconds: 250), () {
-                          _controller.forward();
-                        })
-                      : _controller.reverse()
-                },
-              )
-            },
-          ),
-          Container(
-            padding: item.isExpanded
-                ? null
-                : const EdgeInsets.only(bottom: 16.0),
-            
-          ),
-          SizeTransition(
-              sizeFactor: _animation,
-              axis: Axis.vertical,
-              axisAlignment: -1,
-              child: item.isExpanded ? _buildChild(item.services) : null),
-        ]);
+            SizeTransition(
+                sizeFactor: _animation,
+                axis: Axis.vertical,
+                axisAlignment: -1,
+                child: item.isExpanded ? _buildChild(item.services) : null),
+          ]),
+        );
       }).toList(),
     );
   }
