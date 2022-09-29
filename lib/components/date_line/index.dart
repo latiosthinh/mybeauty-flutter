@@ -24,39 +24,35 @@ class _DateLineState extends State<DateLine> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 10, right: 10),
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 5),
+      height: 60,
       decoration: const BoxDecoration(
           border: Border(
               top: BorderSide(color: grayColor),
               bottom: BorderSide(color: grayColor))),
-      child: Row(
-          mainAxisSize: MainAxisSize.max,
+      child: ListView(
+          scrollDirection: Axis.horizontal,
           children: workDates.map((date) {
-            return Expanded(
-                child: Container(
-                    padding: const EdgeInsets.all(5),
-                    child: Row(
-                      children: [
-                        Column(
-                          children: [
-                            Text(DateTimeUtils.getDayOfWeek(date)
-                                .substring(0, 3)),
-                            const VSpacer(5),
-                            CircleButton(
-                                onTap: () => {
-                                      widget.onSelected(date),
-                                    },
-                                text: date.day.toString(),
-                                bgColor: widget.selected.day == date.day
-                                    ? widget.color
-                                    : Colors.transparent,
-                                foreColor: widget.selected.day == date.day
-                                    ? Colors.white
-                                    : Colors.black)
-                          ],
-                        )
-                      ],
-                    )));
+            return SizedBox(
+                height: 55,
+                width: 55,
+                child: Column(
+                  children: [
+                    Text(DateTimeUtils.getDayOfWeek(date).substring(0, 3)),
+                    const VSpacer(5),
+                    CircleButton(
+                        onTap: () => {
+                              widget.onSelected(date),
+                            },
+                        text: date.day.toString(),
+                        bgColor: widget.selected.day == date.day
+                            ? widget.color
+                            : Colors.transparent,
+                        foreColor: widget.selected.day == date.day
+                            ? Colors.white
+                            : Colors.black)
+                  ],
+                ));
           }).toList()),
     );
   }
