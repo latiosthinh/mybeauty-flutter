@@ -24,8 +24,8 @@ class _DateLineState extends State<DateLine> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 10, right: 10, top: 5),
-      height: 60,
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 15),
+      height: 80,
       decoration: const BoxDecoration(
           border: Border(
               top: BorderSide(color: grayColor),

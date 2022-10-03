@@ -39,38 +39,21 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
           children: [
             Container(
               padding: const EdgeInsets.only(
-                  top: 30, right: 38, left: 38, bottom: 9),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                      margin: const EdgeInsets.only(bottom: 20.0),
-                      child: backButton(widget.color, whiteColor,
-                          () => {Navigator.pop(context)})),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 9.0),
-                    child: Text(
-                      widget.service.name,
-                      style: TextStyle(
-                          color: widget.color,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16.0),
-                    ),
-                  ),
-                  Row(
+                  top: 20, right: 16, left: 16, bottom: 20),
+              child: Row(
                     children: [
-                      Icon(
-                        Icons.location_on_outlined,
-                        color: widget.color,
-                      ),
+                      backButton(widget.color, whiteColor,
+                          () => {Navigator.pop(context)}),
+                      const SizedBox(width: 20),
                       Text(
-                        '306 St Paul\'s Road London N12LH',
-                        style: TextStyle(color: widget.color),
+                        widget.service.name,
+                        style: TextStyle(
+                            color: widget.color,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16.0),
                       )
                     ],
-                  )
-                ],
-              ),
+                  ),
             ),
             SizedBox(
               height: 1,
@@ -82,7 +65,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                 children: [
                   Container(
                     margin: const EdgeInsets.only(
-                        bottom: 16.0, left: 20, right: 20.0),
+                        bottom: 16.0, left: 16, right: 16.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -202,7 +185,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(
-                        bottom: 10.0, top: 20.0, left: 40.0, right: 40.0),
+                        bottom: 10.0, top: 20.0, left: 16.0, right: 16.0),
                     child: Row(
                       children: const [
                         Icon(Icons.person_outline),
