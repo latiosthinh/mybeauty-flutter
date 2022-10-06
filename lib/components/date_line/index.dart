@@ -24,13 +24,15 @@ class _DateLineState extends State<DateLine> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 10, right: 10, top: 15),
-      height: 80,
+      padding: const EdgeInsets.only(top: 10),
+      height: 70.0,
+      width: double.infinity,
       decoration: const BoxDecoration(
           border: Border(
               top: BorderSide(color: grayColor),
               bottom: BorderSide(color: grayColor))),
       child: ListView(
+          shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           children: workDates.map((date) {
             return SizedBox(

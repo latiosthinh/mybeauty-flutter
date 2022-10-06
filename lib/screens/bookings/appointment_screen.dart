@@ -28,8 +28,14 @@ AuthService _authService = AuthService();
 class _AppointmentScreenScreenState extends State<AppointmentScreen> {
   DateTime from = DateTime.now();
   DateTime to = DateTime.now();
-  DateTime selectedDate = DateTime.now();
+  DateTime selectedDate = initDate();
   late Staff selectedStaff;
+  late bool loading = false;
+
+  static DateTime initDate() {
+    final now = DateTime.now();
+    return DateTime(now.year, now.month, now.day);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,19 +47,19 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
               padding: const EdgeInsets.only(
                   top: 20, right: 16, left: 16, bottom: 20),
               child: Row(
-                    children: [
-                      backButton(widget.color, whiteColor,
-                          () => {Navigator.pop(context)}),
-                      const SizedBox(width: 20),
-                      Text(
-                        widget.service.name,
-                        style: TextStyle(
-                            color: widget.color,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16.0),
-                      )
-                    ],
-                  ),
+                children: [
+                  backButton(
+                      widget.color, whiteColor, () => {Navigator.pop(context)}),
+                  const SizedBox(width: 20),
+                  Text(
+                    widget.service.name,
+                    style: TextStyle(
+                        color: widget.color,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16.0),
+                  )
+                ],
+              ),
             ),
             SizedBox(
               height: 1,
@@ -63,6 +69,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
               padding: const EdgeInsets.only(top: 16, bottom: 30.0),
               child: Column(
                 children: [
+                  NetLoadingDialog(loading: loading),
                   Container(
                     margin: const EdgeInsets.only(
                         bottom: 16.0, left: 16, right: 16.0),
@@ -167,7 +174,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                                 constraints: const BoxConstraints(),
                                 onPressed: () => {
                                       setState(
-                                          () => {selectedDate = DateTime.now()})
+                                          () => {selectedDate = initDate()})
                                     },
                                 icon:
                                     SvgPicture.asset('assets/icons/cancel.svg'))
@@ -179,7 +186,10 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                   DateLine(
                     color: widget.color,
                     onSelected: (DateTime value) => {
-                      setState(() => {selectedDate = value})
+                      setState(() => {
+                            selectedDate =
+                                DateTime(value.year, value.month, value.day)
+                          })
                     },
                     selected: selectedDate,
                   ),
@@ -214,21 +224,24 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                               color: whiteColor,
                               fontWeight: FontWeight.w700,
                               fontSize: 20.0)),
-                      onPressed: () => {
-                        if (from.isAfter(to) || from.isAfter(DateTime.now()))
-                          {_showToast(context, 'Please choose a valid time')}
-                        else
-                          {
-                            _bookingService.add(AddBookingModel(
-                                widget.service.id,
-                                selectedDate,
-                                from,
-                                to,
-                                selectedStaff,
-                                _authService.user)),
-                            Navigator.pushNamed(
-                                context, BookingScreen.routeName)
-                          }
+                      onPressed: () async {
+                        setState(() {
+                          loading = true;
+                        });
+                        final model = AddBookingModel(
+                            widget.service.id,
+                            selectedDate,
+                            from,
+                            to,
+                            selectedStaff,
+                            _authService.user);
+                        if (await isValid(model)) {
+                          _bookingService.add(model);
+                          Navigator.pushNamed(context, BookingScreen.routeName);
+                        }
+                        setState(() {
+                          loading = false;
+                        });
                       },
                     ),
                   )
@@ -239,6 +252,18 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
         ),
       ),
     );
+  }
+
+  Future<bool> isValid(AddBookingModel model) async {
+    if (from.isAfter(to) || from.isAfter(DateTime.now())) {
+      _showToast(context, 'Please choose a valid time');
+      return false;
+    }
+    if (await _bookingService.isExist(model)) {
+      _showToast(context, 'Staff is busy in this select time');
+      return false;
+    }
+    return true;
   }
 
   void _showToast(BuildContext context, String message) {
