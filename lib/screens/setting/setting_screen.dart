@@ -89,8 +89,8 @@ class _SettingScreenState extends State<SettingScreen> {
                           menuSettings[i].key == 'content-preference',
                       child: Text(
                         menuSettings[i].key == 'country'
-                            ? _db.getActiveLanguage()?.name ?? 'United Kingdom'
-                            : 'All',
+                            ? _db.getActiveLanguage().name
+                            : _db.getActiveContent().id,
                         style:
                             const TextStyle(color: orangeColor, fontSize: 18.0),
                       )),

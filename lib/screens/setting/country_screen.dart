@@ -20,7 +20,7 @@ class _CountryScreenState extends State<CountryScreen> {
   @override
   void initState() {
     selected = listCountry
-        .where((element) => element.code == _db.getActiveLanguage()?.code)
+        .where((element) => element.code == _db.getActiveLanguage().code)
         .first;
     super.initState();
   }

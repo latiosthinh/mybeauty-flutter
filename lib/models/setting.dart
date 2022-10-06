@@ -56,7 +56,7 @@ List<String> listTerm = [
 ];
 
 List<ContentPreference> listContentPreference = [
-  ContentPreference('all', 'Show men’s treatments'),
+  ContentPreference('all', 'Show all treatments'),
   ContentPreference('women', 'Show women’s treatments'),
   ContentPreference('men', 'Show men’s treatments'),
 ];

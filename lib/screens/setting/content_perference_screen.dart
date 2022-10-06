@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mybeauty/constants.dart';
+import 'package:mybeauty/data/index.dart';
+import 'package:mybeauty/data/models/index.dart';
 import 'package:mybeauty/models/setting.dart';
 
 class ContentPreferenceScreen extends StatefulWidget {
@@ -12,6 +14,7 @@ class ContentPreferenceScreen extends StatefulWidget {
 
 class _ContentPreferenceState extends State<ContentPreferenceScreen> {
   ContentPreference _radioValue = listContentPreference[0];
+  final LocalDataStorage _db = LocalDataStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +48,10 @@ class _ContentPreferenceState extends State<ContentPreferenceScreen> {
         onChanged: ((ContentPreference? value) => {
               setState(() {
                 _radioValue = value ?? listContentPreference[0];
+                final content = ContentHive();
+                content.id = _radioValue.key;
+                content.name = _radioValue.name;
+                _db.setActiveContent(content);
               })
             }),
         groupValue: _radioValue,
