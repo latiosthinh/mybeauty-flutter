@@ -29,6 +29,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
   DateTime from = DateTime.now();
   DateTime to = DateTime.now();
   DateTime selectedDate = initDate();
+  DateTime bookingTime = DateTime.now();
   late Staff selectedStaff;
   late bool loading = false;
 
@@ -45,7 +46,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
           children: [
             Container(
               padding: const EdgeInsets.only(
-                  top: 20, right: 16, left: 16, bottom: 20),
+                  top: 20, right: 16, left: 16, bottom: 30),
               child: Row(
                 children: [
                   backButton(
@@ -87,19 +88,14 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                         ),
                         Row(
                           children: [
-                            Text(DateTimeUtils.getTime(from)),
-                            const HSpacer(5),
-                            const Text('to'),
-                            const HSpacer(5),
-                            Text(DateTimeUtils.getTime(to)),
+                            Text(DateTimeUtils.getTime(bookingTime)),
                             const HSpacer(10),
                             IconButton(
                                 padding: EdgeInsets.zero,
                                 constraints: const BoxConstraints(),
                                 onPressed: () => {
                                       setState(() => {
-                                            from = DateTime.now(),
-                                            to = DateTime.now()
+                                            bookingTime = DateTime.now(),
                                           })
                                     },
                                 icon:
@@ -113,7 +109,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                     height: 133.0,
                     child: Container(
                       margin: const EdgeInsets.only(
-                          bottom: 20.0, left: 16.0, right: 16.0),
+                          bottom: 30.0, left: 16.0, right: 16.0),
                       decoration:
                           BoxDecoration(border: Border.all(color: grayColor)),
                       child: Row(
@@ -129,21 +125,11 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                                   color: widget.color,
                                   onDateTimeChanged: (DateTime value) => {
                                     setState(
-                                      () => from = value,
+                                      () => bookingTime = value,
                                     )
                                   },
                                 ),
                               )),
-                          Expanded(
-                            flex: 1,
-                            child: CustomCupertinoDatePicker(
-                                color: widget.color,
-                                onDateTimeChanged: ((value) => {
-                                      setState(
-                                        () => to = value,
-                                      )
-                                    })),
-                          )
                         ],
                       ),
                     ),
@@ -195,7 +181,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(
-                        bottom: 10.0, top: 20.0, left: 16.0, right: 16.0),
+                        bottom: 10.0, top: 30.0, left: 16.0, right: 16.0),
                     child: Row(
                       children: const [
                         Icon(Icons.person_outline),
@@ -218,32 +204,31 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                         color: widget.color),
                     padding: const EdgeInsets.only(left: 100, right: 100),
                     child: TextButton(
-                      child: Text(
-                          AppLocalizations.of(context)?.settings ?? 'APPLY',
-                          style: const TextStyle(
-                              color: whiteColor,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 20.0)),
-                      onPressed: () async {
-                        setState(() {
-                          loading = true;
-                        });
-                        final model = AddBookingModel(
-                            widget.service.id,
-                            selectedDate,
-                            from,
-                            to,
-                            selectedStaff,
-                            _authService.user);
-                        if (await isValid(model)) {
-                          _bookingService.add(model);
-                          Navigator.pushNamed(context, BookingScreen.routeName);
-                        }
-                        setState(() {
-                          loading = false;
-                        });
-                      },
-                    ),
+                        child: Text(
+                            AppLocalizations.of(context)?.settings ?? 'APPLY',
+                            style: const TextStyle(
+                                color: whiteColor,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 20.0)),
+                        onPressed: () async {
+                          setState(() {
+                            loading = true;
+                          });
+                          final model = AddBookingModel(
+                              widget.service.id,
+                              selectedDate,
+                              bookingTime,
+                              selectedStaff,
+                              _authService.user);
+                          if (await isValid(model)) {
+                            _bookingService.add(model);
+                            Navigator.pushNamed(
+                                context, BookingScreen.routeName);
+                          }
+                          setState(() {
+                            loading = false;
+                          });
+                        }),
                   )
                 ],
               ),

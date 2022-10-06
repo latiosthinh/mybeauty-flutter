@@ -16,9 +16,9 @@ class BookingService {
       'service': model.service,
       'created': DateTime.now(),
       'bookingDate': model.bookingDate,
-      'from': model.from,
-      'to': model.to,
-      'staffId': model.staff.id
+      'staffId': model.staff.id,
+      'bookingTime': model.bookingTime,
+      'staff': model.staff.id
     });
     Logger.log(
         '[add booking] userId:${model.user?.email}, service: ${model.service}, staff: ${model.staff.name}, date: ${model.bookingDate.day}');
@@ -29,13 +29,13 @@ class BookingService {
         .collection(collection)
         .where('staffId', isEqualTo: model.staff.id)
         .where('bookingDate', isEqualTo: model.bookingDate)
-        .where('to', isGreaterThanOrEqualTo: model.from)
-        .where('to', isGreaterThanOrEqualTo: model.to)
+        .where('bookingTime', isGreaterThanOrEqualTo: model.bookingTime)
+        .where('bookingTime', isGreaterThanOrEqualTo: model.bookingTime)
         .get();
     if (snapshot.docs.isEmpty) {
       return false;
     }
-    Logger.log('[Valid booking time] ${model.staff.id}, ${model.to}');
+    Logger.log('[Valid booking time] ${model.staff.id}, ${model.bookingTime}');
     return true;
   }
 }
