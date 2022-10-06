@@ -9,11 +9,12 @@ class Setting {
 }
 
 class Country {
+  final String code;
   final String icon;
   final String name;
   final bool selected;
 
-  Country(this.icon, this.name, this.selected);
+  Country(this.icon, this.name, this.selected, this.code);
 }
 
 class ContentPreference {
@@ -38,12 +39,12 @@ List<Setting> menuSettings = [
 ];
 
 List<Country> listCountry = [
-  Country('assets/icons/uk.png', 'United Kingdom', true),
-  Country('assets/icons/ru.png', 'Russia', false),
-  Country('assets/icons/sp.png', 'Spain', false),
-  Country('assets/icons/be.png', 'Belgium', false),
-  Country('assets/icons/it.png', 'Italy', false),
-  Country('assets/icons/ca.png', 'Canada', false)
+  Country('assets/icons/uk.png', 'United Kingdom', true, 'uk'),
+  Country('assets/icons/ru.png', 'Russia', false, 'ru'),
+  Country('assets/icons/sp.png', 'Spain', false, 'sp'),
+  Country('assets/icons/be.png', 'Belgium', false, 'be'),
+  Country('assets/icons/it.png', 'Italy', false, 'it'),
+  Country('assets/icons/ca.png', 'Canada', false, 'ca')
 ];
 
 List<String> listTerm = [

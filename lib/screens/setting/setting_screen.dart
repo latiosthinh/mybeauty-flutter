@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybeauty/constants.dart';
+import 'package:mybeauty/data/index.dart';
 import 'package:mybeauty/models/setting.dart';
 import 'package:mybeauty/screens/setting/content_perference_screen.dart';
 import 'package:mybeauty/screens/setting/country_screen.dart';
@@ -20,6 +21,7 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
+  final LocalDataStorage _db = LocalDataStorage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +89,7 @@ class _SettingScreenState extends State<SettingScreen> {
                           menuSettings[i].key == 'content-preference',
                       child: Text(
                         menuSettings[i].key == 'country'
-                            ? 'United Kingdom'
+                            ? _db.getActiveLanguage()?.name ?? 'United Kingdom'
                             : 'All',
                         style:
                             const TextStyle(color: orangeColor, fontSize: 18.0),
