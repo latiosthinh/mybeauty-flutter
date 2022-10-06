@@ -15,8 +15,7 @@ class BookingService {
       'service': model.service,
       'created': DateTime.now(),
       'bookingDate': model.bookingDate,
-      'from': model.from,
-      'to': model.to,
+      'bookingTime': model.bookingTime,
       'staff': model.staff.id
     });
     Logger.log(

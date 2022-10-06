@@ -26,8 +26,7 @@ BookingService _bookingService = BookingService();
 AuthService _authService = AuthService();
 
 class _AppointmentScreenScreenState extends State<AppointmentScreen> {
-  DateTime from = DateTime.now();
-  DateTime to = DateTime.now();
+  DateTime bookingTime = DateTime.now();
   DateTime selectedDate = DateTime.now();
   late Staff selectedStaff;
 
@@ -39,21 +38,21 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
           children: [
             Container(
               padding: const EdgeInsets.only(
-                  top: 20, right: 16, left: 16, bottom: 20),
+                  top: 20, right: 16, left: 16, bottom: 30),
               child: Row(
-                    children: [
-                      backButton(widget.color, whiteColor,
-                          () => {Navigator.pop(context)}),
-                      const SizedBox(width: 20),
-                      Text(
-                        widget.service.name,
-                        style: TextStyle(
-                            color: widget.color,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16.0),
-                      )
-                    ],
-                  ),
+                children: [
+                  backButton(
+                      widget.color, whiteColor, () => {Navigator.pop(context)}),
+                  const SizedBox(width: 20),
+                  Text(
+                    widget.service.name,
+                    style: TextStyle(
+                        color: widget.color,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16.0),
+                  )
+                ],
+              ),
             ),
             SizedBox(
               height: 1,
@@ -80,19 +79,14 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                         ),
                         Row(
                           children: [
-                            Text(DateTimeUtils.getTime(from)),
-                            const HSpacer(5),
-                            const Text('to'),
-                            const HSpacer(5),
-                            Text(DateTimeUtils.getTime(to)),
+                            Text(DateTimeUtils.getTime(bookingTime)),
                             const HSpacer(10),
                             IconButton(
                                 padding: EdgeInsets.zero,
                                 constraints: const BoxConstraints(),
                                 onPressed: () => {
                                       setState(() => {
-                                            from = DateTime.now(),
-                                            to = DateTime.now()
+                                            bookingTime = DateTime.now(),
                                           })
                                     },
                                 icon:
@@ -106,7 +100,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                     height: 133.0,
                     child: Container(
                       margin: const EdgeInsets.only(
-                          bottom: 20.0, left: 16.0, right: 16.0),
+                          bottom: 30.0, left: 16.0, right: 16.0),
                       decoration:
                           BoxDecoration(border: Border.all(color: grayColor)),
                       child: Row(
@@ -122,21 +116,11 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                                   color: widget.color,
                                   onDateTimeChanged: (DateTime value) => {
                                     setState(
-                                      () => from = value,
+                                      () => bookingTime = value,
                                     )
                                   },
                                 ),
                               )),
-                          Expanded(
-                            flex: 1,
-                            child: CustomCupertinoDatePicker(
-                                color: widget.color,
-                                onDateTimeChanged: ((value) => {
-                                      setState(
-                                        () => to = value,
-                                      )
-                                    })),
-                          )
                         ],
                       ),
                     ),
@@ -185,7 +169,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(
-                        bottom: 10.0, top: 20.0, left: 16.0, right: 16.0),
+                        bottom: 10.0, top: 30.0, left: 16.0, right: 16.0),
                     child: Row(
                       children: const [
                         Icon(Icons.person_outline),
@@ -215,15 +199,14 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                               fontWeight: FontWeight.w700,
                               fontSize: 20.0)),
                       onPressed: () => {
-                        if (from.isAfter(to) || from.isAfter(DateTime.now()))
+                        if (bookingTime.isBefore(DateTime.now()))
                           {_showToast(context, 'Please choose a valid time')}
                         else
                           {
                             _bookingService.add(AddBookingModel(
                                 widget.service.id,
                                 selectedDate,
-                                from,
-                                to,
+                                bookingTime,
                                 selectedStaff,
                                 _authService.user)),
                             Navigator.pushNamed(
