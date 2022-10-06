@@ -9,11 +9,19 @@ class Setting {
 }
 
 class Country {
+  final String code;
   final String icon;
   final String name;
   final bool selected;
 
-  Country(this.icon, this.name, this.selected);
+  Country(this.icon, this.name, this.selected, this.code);
+}
+
+class ContentPreference {
+  final String key;
+  final String name;
+
+  ContentPreference(this.key, this.name);
 }
 
 List<Setting> menuSettings = [
@@ -31,12 +39,12 @@ List<Setting> menuSettings = [
 ];
 
 List<Country> listCountry = [
-  Country('assets/icons/uk.png', 'United Kingdom', true),
-  Country('assets/icons/ru.png', 'Russia', false),
-  Country('assets/icons/sp.png', 'Spain', false),
-  Country('assets/icons/be.png', 'Belgium', false),
-  Country('assets/icons/it.png', 'Italy', false),
-  Country('assets/icons/ca.png', 'Canada', false)
+  Country('assets/icons/uk.png', 'United Kingdom', true, 'uk'),
+  Country('assets/icons/ru.png', 'Russia', false, 'ru'),
+  Country('assets/icons/sp.png', 'Spain', false, 'sp'),
+  Country('assets/icons/be.png', 'Belgium', false, 'be'),
+  Country('assets/icons/it.png', 'Italy', false, 'it'),
+  Country('assets/icons/ca.png', 'Canada', false, 'ca')
 ];
 
 List<String> listTerm = [
@@ -47,8 +55,8 @@ List<String> listTerm = [
   'User Generated Content Policy'
 ];
 
-List<String> listContentPreference = [
-  'Show men’s treatments',
-  'Show women’s treatments',
-  'Show all treatments'
+List<ContentPreference> listContentPreference = [
+  ContentPreference('all', 'Show men’s treatments'),
+  ContentPreference('women', 'Show women’s treatments'),
+  ContentPreference('men', 'Show men’s treatments'),
 ];

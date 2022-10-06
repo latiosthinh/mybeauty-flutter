@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mybeauty/constants.dart';
+import 'package:mybeauty/data/index.dart';
+import 'package:mybeauty/data/models/index.dart';
 import 'package:mybeauty/models/setting.dart';
 import 'package:mybeauty/widgets/index.dart';
 
@@ -12,7 +14,17 @@ class CountryScreen extends StatefulWidget {
 }
 
 class _CountryScreenState extends State<CountryScreen> {
-  Country selected = listCountry.first;
+  late Country selected;
+  final LocalDataStorage _db = LocalDataStorage();
+
+  @override
+  void initState() {
+    selected = listCountry
+        .where((element) => element.code == _db.getActiveLanguage()?.code)
+        .first;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +55,12 @@ class _CountryScreenState extends State<CountryScreen> {
       onTap: () => {
         setState(() {
           selected = listCountry[i];
+          final country = CountryHive();
+          country.active = true;
+          country.code = selected.code;
+          country.flag = selected.icon;
+          country.name = selected.name;
+          _db.setActiveLanguage(country);
         })
       },
       child: Container(

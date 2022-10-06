@@ -18,3 +18,9 @@ samples, guidance on mobile development, and a full API reference.
 Modern native Git hooks
 
 - [Pre-Commits](https://github.com/f7deat/commit-message)
+
+### Hive
+
+Hive là một dạng lưu trữ local database.
+
+Adapter được generate bằng command: `flutter packages pub run build_runner build`

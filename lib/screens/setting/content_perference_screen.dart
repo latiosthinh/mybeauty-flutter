@@ -11,7 +11,7 @@ class ContentPreferenceScreen extends StatefulWidget {
 }
 
 class _ContentPreferenceState extends State<ContentPreferenceScreen> {
-  String _config = 'All';
+  ContentPreference _radioValue = listContentPreference[0];
 
   @override
   Widget build(BuildContext context) {
@@ -35,20 +35,20 @@ class _ContentPreferenceState extends State<ContentPreferenceScreen> {
     );
   }
 
-  Widget buildItem(String text) {
+  Widget buildItem(ContentPreference item) {
     return ListTile(
       title: Text(
-        text,
+        item.name,
         style: const TextStyle(color: orangeColor, fontSize: 18.0),
       ),
-      leading: Radio<String>(
-        onChanged: ((String? value) => {
+      leading: Radio<ContentPreference>(
+        onChanged: ((ContentPreference? value) => {
               setState(() {
-                _config = value ?? 'All';
+                _radioValue = value ?? listContentPreference[0];
               })
             }),
-        groupValue: _config,
-        value: text,
+        groupValue: _radioValue,
+        value: item,
       ),
     );
   }
