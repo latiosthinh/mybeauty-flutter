@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/data/index.dart';
+import 'package:mybeauty/data/models/country.dart';
 import 'package:mybeauty/models/setting.dart';
 import 'package:mybeauty/screens/setting/content_perference_screen.dart';
 import 'package:mybeauty/screens/setting/country_screen.dart';
@@ -87,13 +89,19 @@ class _SettingScreenState extends State<SettingScreen> {
                   Visibility(
                       visible: menuSettings[i].key == 'country' ||
                           menuSettings[i].key == 'content-preference',
-                      child: Text(
-                        menuSettings[i].key == 'country'
-                            ? _db.getActiveLanguage().name
-                            : _db.getActiveContent().id,
-                        style:
-                            const TextStyle(color: orangeColor, fontSize: 18.0),
-                      )),
+                      child: ValueListenableBuilder(
+                          valueListenable:
+                              Hive.box<CountryHive>(CountryHive.boxKey)
+                                  .listenable(),
+                          builder: (context, contactsBox, child) {
+                            return Text(
+                              menuSettings[i].key == 'country'
+                                  ? _db.getActiveLanguage().name
+                                  : _db.getActiveContent().id,
+                              style: const TextStyle(
+                                  color: orangeColor, fontSize: 18.0),
+                            );
+                          })),
                   IconButton(
                       onPressed: () => onTap(menuSettings[i].key),
                       icon: const Icon(

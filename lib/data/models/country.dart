@@ -6,14 +6,16 @@ class CountryHive extends HiveObject {
   static const String boxKey = 'country';
 
   @HiveField(0)
-  late String code;
+  final String code;
 
   @HiveField(1)
-  late String name;
+  final String name;
 
   @HiveField(2)
-  late String flag;
+  final String flag;
 
   @HiveField(3)
-  late bool active;
+  final bool active;
+
+  CountryHive(this.code, this.name, this.flag, this.active);
 }

@@ -13,6 +13,18 @@ class LocalDataStorage {
     await Hive.openBox<ContentHive>(ContentHive.boxKey);
   }
 
+  static List<CountryHive> initLanguage() {
+    final returnValue = <CountryHive>[];
+    returnValue
+        .add(CountryHive('uk', 'United Kingdom', 'assets/icons/uk.png', true));
+    returnValue.add(CountryHive('ru', 'Russia', 'assets/icons/ru.png', false));
+    returnValue.add(CountryHive('sp', 'Spain', 'assets/icons/sp.png', false));
+    returnValue.add(CountryHive('be', 'Belgium', 'assets/icons/be.png', false));
+    returnValue.add(CountryHive('it', 'Italy', 'assets/icons/it.png', false));
+    returnValue.add(CountryHive('ca', 'Canada', 'assets/icons/ca.png', false));
+    return returnValue;
+  }
+
   Future<void> setActiveLanguage(CountryHive country) async {
     final languageBox = Hive.box<CountryHive>(CountryHive.boxKey);
     languageBox.put('activeLanguage', country);
@@ -20,12 +32,7 @@ class LocalDataStorage {
 
   CountryHive getActiveLanguage() {
     final countryBox = Hive.box<CountryHive>(CountryHive.boxKey);
-    final defaultValue = CountryHive();
-    final first = listCountry.first;
-    defaultValue.active = true;
-    defaultValue.code = first.code;
-    defaultValue.flag = first.icon;
-    defaultValue.name = first.name;
+    final defaultValue = initLanguage().first;
     return countryBox.get('activeLanguage', defaultValue: defaultValue) ??
         defaultValue;
   }

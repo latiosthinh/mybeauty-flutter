@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/data/index.dart';
 import 'package:mybeauty/data/models/index.dart';
-import 'package:mybeauty/models/setting.dart';
 import 'package:mybeauty/widgets/index.dart';
 
 class CountryScreen extends StatefulWidget {
@@ -14,14 +13,13 @@ class CountryScreen extends StatefulWidget {
 }
 
 class _CountryScreenState extends State<CountryScreen> {
-  late Country selected;
+  late CountryHive selected;
   final LocalDataStorage _db = LocalDataStorage();
+  final languages = LocalDataStorage.initLanguage();
 
   @override
   void initState() {
-    selected = listCountry
-        .where((element) => element.code == _db.getActiveLanguage().code)
-        .first;
+    selected = _db.getActiveLanguage();
     super.initState();
   }
 
@@ -44,7 +42,7 @@ class _CountryScreenState extends State<CountryScreen> {
         padding: const EdgeInsets.only(left: 16, top: 20, right: 16),
         child: ListView.builder(
           itemBuilder: (context, index) => buildSettingMenu(index),
-          itemCount: listCountry.length,
+          itemCount: languages.length,
         ),
       ),
     );
@@ -54,13 +52,8 @@ class _CountryScreenState extends State<CountryScreen> {
     return GestureDetector(
       onTap: () => {
         setState(() {
-          selected = listCountry[i];
-          final country = CountryHive();
-          country.active = true;
-          country.code = selected.code;
-          country.flag = selected.icon;
-          country.name = selected.name;
-          _db.setActiveLanguage(country);
+          selected = languages[i];
+          _db.setActiveLanguage(selected);
         })
       },
       child: Container(
@@ -72,18 +65,18 @@ class _CountryScreenState extends State<CountryScreen> {
             Row(
               children: [
                 IconButton(
-                  icon: Image.asset(listCountry[i].icon),
+                  icon: Image.asset(languages[i].flag),
                   onPressed: () {},
                 ),
                 const HSpacer(10),
                 Text(
-                  listCountry[i].name,
+                  languages[i].name,
                   style: const TextStyle(fontSize: 18.0, color: orangeColor),
                 ),
               ],
             ),
             Visibility(
-              visible: listCountry[i] == selected,
+              visible: languages[i].code == selected.code,
               child: Row(
                 children: [
                   IconButton(

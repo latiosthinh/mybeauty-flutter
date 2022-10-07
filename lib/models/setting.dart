@@ -8,15 +8,6 @@ class Setting {
       {required this.icon, required this.title, required this.key});
 }
 
-class Country {
-  final String code;
-  final String icon;
-  final String name;
-  final bool selected;
-
-  Country(this.icon, this.name, this.selected, this.code);
-}
-
 class ContentPreference {
   final String key;
   final String name;
@@ -36,15 +27,6 @@ List<Setting> menuSettings = [
       icon: 'assets/icons/users.svg',
       title: 'Content preference',
       key: 'content-preference')
-];
-
-List<Country> listCountry = [
-  Country('assets/icons/uk.png', 'United Kingdom', true, 'uk'),
-  Country('assets/icons/ru.png', 'Russia', false, 'ru'),
-  Country('assets/icons/sp.png', 'Spain', false, 'sp'),
-  Country('assets/icons/be.png', 'Belgium', false, 'be'),
-  Country('assets/icons/it.png', 'Italy', false, 'it'),
-  Country('assets/icons/ca.png', 'Canada', false, 'ca')
 ];
 
 List<String> listTerm = [
