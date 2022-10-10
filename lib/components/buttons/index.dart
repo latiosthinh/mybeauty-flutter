@@ -30,22 +30,3 @@ Widget buttonCTA(Function onTap, String name, Color bg) {
         )),
   ));
 }
-
-Widget backButton(Color bgColor, Color iconColor, Function onTab,
-    [bool hasBgColor = true]) {
-  return Material(
-    borderRadius: BorderRadius.circular(8.0),
-    color: hasBgColor ? bgColor : Colors.transparent,
-    child: InkWell(
-      onTap: () => onTab(),
-      child: SizedBox(
-        height: 36.0,
-        width: 36.0,
-        child: Icon(
-          Icons.arrow_back,
-          color: iconColor,
-        ),
-      ),
-    ),
-  );
-}

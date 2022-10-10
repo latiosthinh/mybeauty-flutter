@@ -30,7 +30,6 @@ class BookingService {
         .where('staffId', isEqualTo: model.staff.id)
         .where('bookingDate', isEqualTo: model.bookingDate)
         .where('bookingTime', isGreaterThanOrEqualTo: model.bookingTime)
-        .where('bookingTime', isGreaterThanOrEqualTo: model.bookingTime)
         .get();
     if (snapshot.docs.isEmpty) {
       return false;

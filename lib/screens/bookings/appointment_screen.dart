@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mybeauty/components/buttons/index.dart';
 import 'package:mybeauty/components/index.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/models/staff.dart';
@@ -26,9 +25,7 @@ BookingService _bookingService = BookingService();
 AuthService _authService = AuthService();
 
 class _AppointmentScreenScreenState extends State<AppointmentScreen> {
-  DateTime from = DateTime.now();
-  DateTime to = DateTime.now();
-  DateTime selectedDate = initDate();
+  DateTime bookingDate = initDate();
   DateTime bookingTime = DateTime.now();
   late Staff selectedStaff;
   late bool loading = false;
@@ -49,8 +46,11 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                   top: 20, right: 16, left: 16, bottom: 30),
               child: Row(
                 children: [
-                  backButton(
-                      widget.color, whiteColor, () => {Navigator.pop(context)}),
+                  RoundedButton(
+                      bgColor: widget.color,
+                      iconColor: whiteColor,
+                      hasBgColor: false,
+                      onTap: () => {Navigator.pop(context)}),
                   const SizedBox(width: 20),
                   Text(
                     widget.service.name,
@@ -153,14 +153,13 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                         ),
                         Row(
                           children: [
-                            Text(DateTimeUtils.getDayOfWeek(selectedDate)),
+                            Text(DateTimeUtils.getDayOfWeek(bookingDate)),
                             const HSpacer(10),
                             IconButton(
                                 padding: EdgeInsets.zero,
                                 constraints: const BoxConstraints(),
                                 onPressed: () => {
-                                      setState(
-                                          () => {selectedDate = initDate()})
+                                      setState(() => {bookingDate = initDate()})
                                     },
                                 icon:
                                     SvgPicture.asset('assets/icons/cancel.svg'))
@@ -173,11 +172,11 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                     color: widget.color,
                     onSelected: (DateTime value) => {
                       setState(() => {
-                            selectedDate =
+                            bookingDate =
                                 DateTime(value.year, value.month, value.day)
                           })
                     },
-                    selected: selectedDate,
+                    selected: bookingDate,
                   ),
                   Container(
                     margin: const EdgeInsets.only(
@@ -216,7 +215,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                           });
                           final model = AddBookingModel(
                               widget.service.id,
-                              selectedDate,
+                              bookingDate,
                               bookingTime,
                               selectedStaff,
                               _authService.user);
@@ -240,7 +239,8 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
   }
 
   Future<bool> isValid(AddBookingModel model) async {
-    if (from.isAfter(to) || from.isAfter(DateTime.now())) {
+    if (bookingDate.day <= DateTime.now().day &&
+        bookingTime.isAfter(DateTime.now())) {
       _showToast(context, 'Please choose a valid time');
       return false;
     }
