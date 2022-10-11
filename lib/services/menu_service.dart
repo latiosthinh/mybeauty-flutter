@@ -5,17 +5,20 @@ class MenuService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   Future<List<MenuModel>> getMenus(int type) async {
     List<MenuModel> returnValue = [];
+    List<ServiceModel> childs = [];
     final menus = await _firestore
         .collection('menus')
         .where('type', isEqualTo: type)
         .orderBy('sort_order')
         .get();
     for (var menu in menus.docs) {
-      final services =
-          await _firestore.collection('menus/${menu.id}/services').get();
-      final childs = services.docs
-          .map((e) => ServiceModel.fromJson(e.data(), menu.id))
-          .toList();
+      final services = menu.get('menu_services');
+      childs = [];
+      for (var s in services) {
+        final ss = await _firestore.doc(s.path).get();
+        childs.add(ServiceModel(ss.id, ss.get('name'), ss.get('description'),
+            ss.get('duration').toString(), ss.get('price')));
+      }
       returnValue
           .add(MenuModel(menu.id, menu.get('name'), childs, menu.get('image')));
     }

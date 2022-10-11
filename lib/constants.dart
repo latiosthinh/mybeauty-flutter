@@ -24,6 +24,4 @@ const gardientColor = LinearGradient(colors: [
   Color.fromRGBO(244, 213, 163, 1)
 ]);
 
-const defaultPadding = 16.0;
-
 const listColour = [darkPinkColor, greenColor, orangeColor, blackColor];

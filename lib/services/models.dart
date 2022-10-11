@@ -32,6 +32,7 @@ class ServiceModel {
   ServiceModel(this.id, this.name, this.description, this.duration, this.price);
 
   factory ServiceModel.fromJson(Map<String, dynamic> json, String id) {
-    return ServiceModel(id, json['name'], json['description'], json['duration'], json['price']);
+    return ServiceModel(
+        id, json['name'], json['description'], json['duration'], json['price']);
   }
 }
