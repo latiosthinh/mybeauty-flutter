@@ -2,6 +2,11 @@
 import 'package:intl/intl.dart';
 
 class DateTimeUtils {
+  static DateTime initDate() {
+    final now = DateTime.now();
+    return DateTime(now.year, now.month, now.day);
+  }
+
   static String getMonth(DateTime dateTime) {
     var formatter = DateFormat('MMM');
     return formatter.format(dateTime);

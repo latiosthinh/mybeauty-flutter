@@ -25,15 +25,10 @@ BookingService _bookingService = BookingService();
 AuthService _authService = AuthService();
 
 class _AppointmentScreenScreenState extends State<AppointmentScreen> {
-  DateTime bookingDate = initDate();
+  DateTime bookingDate = DateTimeUtils.initDate();
   DateTime bookingTime = DateTime.now();
   late Staff selectedStaff;
   late bool loading = false;
-
-  static DateTime initDate() {
-    final now = DateTime.now();
-    return DateTime(now.year, now.month, now.day);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -159,7 +154,10 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                                 padding: EdgeInsets.zero,
                                 constraints: const BoxConstraints(),
                                 onPressed: () => {
-                                      setState(() => {bookingDate = initDate()})
+                                      setState(() => {
+                                            bookingDate =
+                                                DateTimeUtils.initDate()
+                                          })
                                     },
                                 icon:
                                     SvgPicture.asset('assets/icons/cancel.svg'))

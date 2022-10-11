@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mybeauty/screens/bookings/booking_wrapper.dart';
-import 'package:mybeauty/screens/login/login_screen.dart';
-import 'package:mybeauty/screens/setting/setting_screen.dart';
-import 'package:mybeauty/screens/beauty/beauty_screen.dart';
-import 'package:mybeauty/screens/nails/nail_screen.dart';
+import 'package:mybeauty/screens/index.dart';
 import 'package:mybeauty/components/custom_bottom_navbar.dart';
 import 'package:mybeauty/services/auth.dart';
 

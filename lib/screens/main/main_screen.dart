@@ -27,10 +27,11 @@ class _MainScreenState extends State<MainScreen> {
                   image: DecorationImage(
                       image: AssetImage('assets/images/bg-nails.png'),
                       fit: BoxFit.cover)),
-              child: buttonCTA(
-                  () => {Navigator.pushNamed(context, NailScreen.routeName)},
-                  'Nails',
-                  darkPinkColor),
+              child: ButtonCTA(
+                  onTap: () =>
+                      {Navigator.pushNamed(context, NailScreen.routeName)},
+                  text: 'Nails',
+                  bgColor: darkPinkColor),
             ),
           ),
           Expanded(
@@ -40,11 +41,11 @@ class _MainScreenState extends State<MainScreen> {
                     image: DecorationImage(
                         image: AssetImage('assets/images/bg-beauty.png'),
                         fit: BoxFit.cover)),
-                child: buttonCTA(
-                    () =>
+                child: ButtonCTA(
+                    onTap: () =>
                         {Navigator.pushNamed(context, BeautyScreen.routeName)},
-                    'Beauty',
-                    greenColor),
+                    text: 'Beauty',
+                    bgColor: greenColor),
               ))
         ],
       )),
