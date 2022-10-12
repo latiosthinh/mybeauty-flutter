@@ -237,7 +237,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
 
   Future<bool> isValid(AddBookingModel model) async {
     if (bookingDate.day <= DateTime.now().day &&
-        bookingTime.isAfter(DateTime.now())) {
+        bookingTime.isBefore(DateTime.now())) {
       _showToast(context, 'Please choose a valid time');
       return false;
     }

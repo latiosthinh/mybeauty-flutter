@@ -29,8 +29,10 @@ class BookingService {
       return false;
     }
     for (var work in snapshot.docs) {
-      if (model.bookingTime.isAfter(work.get('bookingTime')) &&
-          model.bookingTime.isBefore(DateTime.parse(work.get('bookingTime'))
+      if (model.bookingTime
+              .isAfter((work.get('bookingTime') as Timestamp).toDate()) &&
+          model.bookingTime.isBefore((work.get('bookingTime') as Timestamp)
+              .toDate()
               .add(Duration(minutes: (model.service.duration * 60).round())))) {
         return true;
       }
