@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mybeauty/models/staff.dart';
 
 class AddBookingModel {
-  final String service;
+  final ServiceModel service;
   final DateTime bookingDate;
   final DateTime bookingTime;
   final Staff staff;
@@ -26,7 +26,7 @@ class ServiceModel {
   final String id;
   final String name;
   final String description;
-  final String duration;
+  final double duration;
   final String price;
 
   ServiceModel(this.id, this.name, this.description, this.duration, this.price);

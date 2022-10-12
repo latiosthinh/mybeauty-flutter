@@ -20,7 +20,7 @@ class _BookingWrapperState extends State<BookingWrapper> {
       return AppointmentScreen(
         color: blackColor,
         service:
-            ServiceModel('hRsoLO4J3TeEERrZQpKl', 'Eyebrow', 'meta', '', ''),
+            ServiceModel('hRsoLO4J3TeEERrZQpKl', 'Eyebrow', 'meta', 1.0, ''),
       );
     }
 

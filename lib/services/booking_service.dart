@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mybeauty/utils/index.dart';
-
 import 'models.dart';
 
 class BookingService {
@@ -13,15 +11,12 @@ class BookingService {
       'userName': model.user?.displayName,
       'userPhone': model.user?.phoneNumber,
       'userEmail': model.user?.email,
-      'service': model.service,
-      'created': DateTime.now(),
+      'serviceId': model.service.id,
+      'createdDate': DateTime.now(),
       'bookingDate': model.bookingDate,
       'staffId': model.staff.id,
-      'bookingTime': model.bookingTime,
-      'staff': model.staff.id
+      'bookingTime': model.bookingTime
     });
-    Logger.log(
-        '[add booking] userId:${model.user?.email}, service: ${model.service}, staff: ${model.staff.name}, date: ${model.bookingDate.day}');
   }
 
   Future<bool> isExist(AddBookingModel model) async {
@@ -29,12 +24,17 @@ class BookingService {
         .collection(collection)
         .where('staffId', isEqualTo: model.staff.id)
         .where('bookingDate', isEqualTo: model.bookingDate)
-        .where('bookingTime', isGreaterThanOrEqualTo: model.bookingTime)
         .get();
     if (snapshot.docs.isEmpty) {
       return false;
     }
-    Logger.log('[Valid booking time] ${model.staff.id}, ${model.bookingTime}');
-    return true;
+    for (var work in snapshot.docs) {
+      if (model.bookingTime.isAfter(work.get('bookingTime')) &&
+          model.bookingTime.isBefore(DateTime.parse(work.get('bookingTime'))
+              .add(Duration(minutes: (model.service.duration * 60).round())))) {
+        return true;
+      }
+    }
+    return false;
   }
 }

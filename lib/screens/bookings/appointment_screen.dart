@@ -211,7 +211,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                             loading = true;
                           });
                           final model = AddBookingModel(
-                              widget.service.id,
+                              widget.service,
                               bookingDate,
                               bookingTime,
                               selectedStaff,
