@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mybeauty/constants.dart';
-import 'package:mybeauty/logger.dart';
-import 'package:mybeauty/screens/bookings/appointment_screen.dart';
+import 'package:mybeauty/screens/index.dart';
 import 'package:mybeauty/services/models.dart';
 import 'package:mybeauty/widgets/index.dart';
 
@@ -11,7 +10,10 @@ class ServiceComponent extends StatefulWidget {
   final bool isExpanded;
 
   const ServiceComponent(
-      {Key? key, required this.services, required this.color, required this.isExpanded})
+      {Key? key,
+      required this.services,
+      required this.color,
+      required this.isExpanded})
       : super(key: key);
 
   @override

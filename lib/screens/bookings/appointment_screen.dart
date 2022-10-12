@@ -3,10 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybeauty/components/index.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/models/staff.dart';
-import 'package:mybeauty/screens/bookings/booking_screen.dart';
+import 'package:mybeauty/screens/index.dart';
 import 'package:mybeauty/services/services.dart';
-import 'package:mybeauty/utils/datetime_utils.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mybeauty/utils/index.dart';
 import 'package:mybeauty/widgets/index.dart';
 
 class AppointmentScreen extends StatefulWidget {

@@ -6,7 +6,7 @@ import 'package:mybeauty/data/index.dart';
 import 'package:mybeauty/data/models/index.dart';
 import 'package:mybeauty/models/setting.dart';
 import 'package:mybeauty/screens/index.dart';
-import 'package:mybeauty/components/buttons/primary_button.dart';
+import 'package:mybeauty/components/index.dart';
 import 'package:mybeauty/services/auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mybeauty/widgets/index.dart';

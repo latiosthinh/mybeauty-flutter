@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mybeauty/components/buttons/primary_button.dart';
-import 'package:mybeauty/screens/home.dart';
+import 'package:mybeauty/components/index.dart';
+import 'package:mybeauty/screens/index.dart';
 import 'package:mybeauty/services/auth.dart';
 import 'package:mybeauty/constants.dart';
 import 'package:mybeauty/widgets/index.dart';

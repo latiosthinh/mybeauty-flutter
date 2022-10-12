@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mybeauty/logger.dart';
+import 'package:mybeauty/utils/index.dart';
 
 import 'models.dart';
 

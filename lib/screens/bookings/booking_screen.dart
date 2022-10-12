@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybeauty/constants.dart';
-import 'package:mybeauty/screens/import-booking/import_booking_screen.dart';
-import 'package:mybeauty/screens/login/login_screen.dart';
-import 'package:mybeauty/screens/register/register_screen.dart';
+import 'package:mybeauty/screens/index.dart';
 import 'package:mybeauty/widgets/index.dart';
 
 class BookingScreen extends StatefulWidget {
