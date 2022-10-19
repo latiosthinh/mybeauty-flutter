@@ -51,4 +51,9 @@ class LocalDataStorage {
     return contentBox.get('activeContent', defaultValue: defaultValue) ??
         defaultValue;
   }
+
+  List<MenuHive> getMenus() {
+    final menuBox = Hive.box<List<MenuHive>>(MenuHive.boxKey);
+    return menuBox.get('menuItem') ?? <MenuHive>[];
+  }
 }
