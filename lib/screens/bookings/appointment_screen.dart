@@ -42,8 +42,8 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                 children: [
                   RoundedButton(
                       bgColor: widget.color,
-                      iconColor: widget.color,
-                      hasBgColor: false,
+                      iconColor: whiteColor,
+                      hasBgColor: true,
                       onTap: () => {Navigator.pop(context)}),
                   const SizedBox(width: 20),
                   Text(
@@ -147,7 +147,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                         ),
                         Row(
                           children: [
-                            Text(DateTimeUtils.getDayOfWeek(bookingDate)),
+                            Text('${DateTimeUtils.getDayOfWeek(bookingDate)} (${DateTimeUtils.getFullDate(bookingDate)})'),
                             const HSpacer(10),
                             IconButton(
                                 padding: EdgeInsets.zero,
@@ -182,7 +182,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                       children: const [
                         Icon(Icons.person_outline),
                         HSpacer(10),
-                        Text('Team')
+                        Text('Staffs')
                       ],
                     ),
                   ),

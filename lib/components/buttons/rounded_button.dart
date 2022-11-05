@@ -5,12 +5,14 @@ class RoundedButton extends StatelessWidget {
   final Color iconColor;
   final Function onTap;
   final bool hasBgColor;
+  final IconData? icon;
   const RoundedButton({
     Key? key,
     required this.bgColor,
     required this.onTap,
     required this.iconColor,
     required this.hasBgColor,
+    this.icon
   }) : super(key: key);
 
   @override
@@ -22,8 +24,9 @@ class RoundedButton extends StatelessWidget {
         onTap: () => onTap(),
         child: SizedBox(
           height: 36.0,
+          width: 36.0,
           child: Icon(
-            Icons.arrow_back,
+            icon ?? Icons.arrow_back,
             color: iconColor,
           ),
         ),
