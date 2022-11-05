@@ -34,7 +34,7 @@ class DateTimeUtils {
 
   static List<DateTime> getWorkingDate() {
     List<DateTime> returnValue = [];
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 7; i++) {
       returnValue.add(DateTime.now().add(Duration(days: i)));
     }
     return returnValue;

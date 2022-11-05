@@ -21,6 +21,8 @@ class _CustomCupertinoDatePickerState extends State<CustomCupertinoDatePicker> {
                 dateTimePickerTextStyle: TextStyle(color: widget.color))),
         child: CupertinoDatePicker(
             mode: CupertinoDatePickerMode.time,
+            initialDateTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, DateTime.now().hour, (DateTime.now().minute % 30 * 30).toInt()),
+            minuteInterval: 30,
             use24hFormat: true,
             onDateTimeChanged: (value) => widget.onDateTimeChanged(value)));
   }

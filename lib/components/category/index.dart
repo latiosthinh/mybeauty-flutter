@@ -53,7 +53,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
             InkWell(
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
-                width: item.isExpanded ? 350 : 250,
+                width: item.isExpanded ? 500 : 250,
                 curve: Curves.easeOut,
                 height: 100,
                 child: GrayedOut(

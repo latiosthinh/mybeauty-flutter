@@ -22,7 +22,6 @@ class RoundedButton extends StatelessWidget {
         onTap: () => onTap(),
         child: SizedBox(
           height: 36.0,
-          width: 36.0,
           child: Icon(
             Icons.arrow_back,
             color: iconColor,

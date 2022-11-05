@@ -31,9 +31,8 @@ class _DateLineState extends State<DateLine> {
           border: Border(
               top: BorderSide(color: grayColor),
               bottom: BorderSide(color: grayColor))),
-      child: ListView(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: workDates.map((date) {
             return SizedBox(
                 height: 55,

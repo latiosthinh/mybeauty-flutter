@@ -42,7 +42,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                 children: [
                   RoundedButton(
                       bgColor: widget.color,
-                      iconColor: whiteColor,
+                      iconColor: widget.color,
                       hasBgColor: false,
                       onTap: () => {Navigator.pop(context)}),
                   const SizedBox(width: 20),
