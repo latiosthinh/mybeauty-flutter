@@ -11,11 +11,12 @@ class BookingService {
       'userName': model.user?.displayName,
       'userPhone': model.user?.phoneNumber,
       'userEmail': model.user?.email,
-      'serviceId': model.service.id,
       'createdDate': DateTime.now(),
       'bookingDate': model.bookingDate,
+      'bookingTime': model.bookingTime,
+      'service': _firestore.doc('services/${model.service.id}'),
+      'staff': _firestore.doc('staffs/${model.staff.id}'),
       'staffId': model.staff.id,
-      'bookingTime': model.bookingTime
     });
   }
 
