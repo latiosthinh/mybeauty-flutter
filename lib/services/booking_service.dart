@@ -20,6 +20,26 @@ class BookingService {
     });
   }
 
+  Future<List<AddBookingModel>> getBookings(String userID) async {
+    List<AddBookingModel> returnValue = [];
+    final bookings =
+        await _firestore.collection('bookings')
+          .where('userId', isEqualTo: userID)
+          .orderBy('bookingDate')
+          .get(const GetOptions(source: Source.cache));
+    for (var booking in bookings.docs) {
+      returnValue
+          .add(AddBookingModel(
+            booking.get('service'),
+            booking.get('bookingDate'),
+            booking.get('bookingTime'),
+            booking.get('staff'),
+            booking.get('user'),
+          ));
+    }
+    return returnValue;
+  }
+
   Future<bool> isExist(AddBookingModel model) async {
     final snapshot = await _firestore
         .collection(collection)

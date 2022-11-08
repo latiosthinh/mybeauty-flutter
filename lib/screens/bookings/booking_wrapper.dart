@@ -13,10 +13,12 @@ class BookingWrapper extends StatefulWidget {
   State<BookingWrapper> createState() => _BookingWrapperState();
 }
 
+AuthService _authService = AuthService();
+
 class _BookingWrapperState extends State<BookingWrapper> {
   @override
   Widget build(BuildContext context) {
-    if (AuthService().user != null) {
+    if (_authService.user != null) {
       return AppointmentScreen(
         color: blackColor,
         service:
