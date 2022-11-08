@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:mybeauty/models/staff.dart';
 
 class AddBookingModel {
@@ -33,8 +31,12 @@ class ServiceModel {
 
   ServiceModel(this.id, this.name, this.description, this.duration, this.price);
 
-  factory ServiceModel.fromJson(Map<String, dynamic> json, String id) {
+  factory ServiceModel.fromJson(Map<String, dynamic>? json, String id) {
     return ServiceModel(
-        id, json['name'], json['description'], json['duration'], json['price']);
+        id,
+        json?['name'] ?? '',
+        json?['description'] ?? '',
+        double.parse(json?['duration'].toString() ?? "0.0"),
+        json?['price'] ?? '0');
   }
 }

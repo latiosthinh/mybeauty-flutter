@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'models.dart';
+import 'package:mybeauty/models/staff.dart';
+import 'package:mybeauty/services/services.dart';
+
+AuthService _authService = AuthService();
 
 class BookingService {
   static String collection = 'bookings';
@@ -22,20 +25,22 @@ class BookingService {
 
   Future<List<AddBookingModel>> getBookings(String userID) async {
     List<AddBookingModel> returnValue = [];
-    final bookings =
-        await _firestore.collection('bookings')
-          .where('userId', isEqualTo: userID)
-          .orderBy('bookingDate')
-          .get(const GetOptions(source: Source.cache));
+    final bookings = await _firestore
+        .collection('bookings')
+        .where('userId', isEqualTo: userID)
+        .orderBy('bookingDate')
+        .get();
     for (var booking in bookings.docs) {
-      returnValue
-          .add(AddBookingModel(
-            booking.get('service'),
-            booking.get('bookingDate'),
-            booking.get('bookingTime'),
-            booking.get('staff'),
-            booking.get('user'),
-          ));
+      final service = await _firestore.doc(booking.get('service').path).get();
+      final staff = await _firestore.doc(booking.get('staff').path).get();
+      final user = _authService.user;
+      returnValue.add(AddBookingModel(
+        ServiceModel.fromJson(service.data(), booking.get('service').id),
+        (booking.data()['bookingDate'] as Timestamp).toDate(),
+        (booking.data()['bookingTime'] as Timestamp).toDate(),
+        Staff.fromJson(staff.data(), booking.get('staff').id),
+        user,
+      ));
     }
     return returnValue;
   }

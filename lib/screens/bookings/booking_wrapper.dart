@@ -18,7 +18,7 @@ AuthService _authService = AuthService();
 class _BookingWrapperState extends State<BookingWrapper> {
   @override
   Widget build(BuildContext context) {
-    if (_authService.user != null) {
+    if (_authService.user == null) {
       return AppointmentScreen(
         color: blackColor,
         service:
