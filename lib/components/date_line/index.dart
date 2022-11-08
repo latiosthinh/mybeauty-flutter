@@ -40,7 +40,7 @@ class _DateLineState extends State<DateLine> {
                 children: workDates.map((date) {
                   return SizedBox(
                       height: 55,
-                      width: 50,
+                      width: 45,
                       child: Column(
                         children: [
                           Text(
