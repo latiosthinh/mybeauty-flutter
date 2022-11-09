@@ -24,3 +24,7 @@ Modern native Git hooks
 Hive là một dạng lưu trữ local database.
 
 Adapter được generate bằng command: `flutter packages pub run build_runner build`
+
+Within the root of your project, run the following command to run code generation against the defined models:
+
+`flutter pub run build_runner build --delete-conflicting-outputs`

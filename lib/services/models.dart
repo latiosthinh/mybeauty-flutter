@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mybeauty/models/index.dart';
 import 'package:mybeauty/models/staff.dart';
 
 class AddBookingModel {
@@ -20,23 +21,4 @@ class MenuModel {
   final List<ServiceModel> services;
 
   MenuModel(this.id, this.name, this.services, this.image);
-}
-
-class ServiceModel {
-  final String id;
-  final String name;
-  final String description;
-  final double duration;
-  final String price;
-
-  ServiceModel(this.id, this.name, this.description, this.duration, this.price);
-
-  factory ServiceModel.fromJson(Map<String, dynamic>? json, String id) {
-    return ServiceModel(
-        id,
-        json?['name'] ?? '',
-        json?['description'] ?? '',
-        double.parse(json?['duration'].toString() ?? "0.0"),
-        json?['price'] ?? '0');
-  }
 }

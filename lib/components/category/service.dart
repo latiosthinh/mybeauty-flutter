@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mybeauty/constants.dart';
+import 'package:mybeauty/models/index.dart';
 import 'package:mybeauty/screens/index.dart';
-import 'package:mybeauty/services/models.dart';
 import 'package:mybeauty/widgets/index.dart';
 
 class ServiceComponent extends StatefulWidget {

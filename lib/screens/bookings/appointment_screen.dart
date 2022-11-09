@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybeauty/components/index.dart';
 import 'package:mybeauty/constants.dart';
+import 'package:mybeauty/models/index.dart';
 import 'package:mybeauty/models/staff.dart';
 import 'package:mybeauty/screens/index.dart';
 import 'package:mybeauty/services/services.dart';
@@ -147,7 +148,8 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                         ),
                         Row(
                           children: [
-                            Text('${DateTimeUtils.getDayOfWeek(bookingDate)} (${DateTimeUtils.getFullDate(bookingDate)})'),
+                            Text(
+                                '${DateTimeUtils.getDayOfWeek(bookingDate)} (${DateTimeUtils.getFullDate(bookingDate)})'),
                             const HSpacer(10),
                             IconButton(
                                 padding: EdgeInsets.zero,

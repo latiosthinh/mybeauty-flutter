@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mybeauty/models/index.dart';
 import 'package:mybeauty/models/staff.dart';
 import 'package:mybeauty/services/services.dart';
 
