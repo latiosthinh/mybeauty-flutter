@@ -61,9 +61,9 @@ class BookingService {
           model.bookingTime.isBefore((work.get('bookingTime') as Timestamp)
               .toDate()
               .add(Duration(minutes: (model.service.duration * 60).round())))) {
-        return true;
+        return false;
       }
     }
-    return false;
+    return true;
   }
 }
