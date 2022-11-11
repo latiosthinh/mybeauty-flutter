@@ -19,8 +19,7 @@ class MenuService {
         final ss = await _firestore
             .doc(s.path)
             .get(const GetOptions(source: Source.cache));
-        childs.add(ServiceModel(ss.id, ss.get('name'), ss.get('description'),
-            double.parse(ss.get('duration').toString()), ss.get('price')));
+        childs.add(ServiceModel.fromJson(ss.data(), ss.id));
       }
       returnValue
           .add(MenuModel(menu.id, menu.get('name'), childs, menu.get('image')));
