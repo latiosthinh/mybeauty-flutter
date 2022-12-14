@@ -26,7 +26,9 @@ List<Setting> menuSettings = [
   Setting(true,
       icon: 'assets/icons/users.svg',
       title: 'Content preference',
-      key: 'content-preference')
+      key: 'content-preference'),
+  Setting(true,
+      icon: 'assets/icons/users.svg', title: 'Profile', key: 'profile')
 ];
 
 List<String> listTerm = [

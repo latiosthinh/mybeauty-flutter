@@ -1,5 +1,6 @@
 import 'package:mybeauty/screens/index.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mybeauty/screens/profile/profile_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName: (context) => const SplashScreen(),
@@ -13,5 +14,6 @@ final Map<String, WidgetBuilder> routes = {
   CountryScreen.routeName: (context) => const CountryScreen(),
   TermScreen.routeName: (context) => const TermScreen(),
   ContentPreferenceScreen.routeName: (c) => const ContentPreferenceScreen(),
+  ProfileScreen.routeName: (context) => const ProfileScreen(),
   MainScreen.routeName: (context) => const MainScreen(),
 };

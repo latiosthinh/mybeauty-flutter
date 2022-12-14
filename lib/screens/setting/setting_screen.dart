@@ -7,6 +7,7 @@ import 'package:mybeauty/data/models/index.dart';
 import 'package:mybeauty/models/setting.dart';
 import 'package:mybeauty/screens/index.dart';
 import 'package:mybeauty/components/index.dart';
+import 'package:mybeauty/screens/profile/profile_screen.dart';
 import 'package:mybeauty/services/auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mybeauty/widgets/index.dart';
@@ -124,6 +125,9 @@ class _SettingScreenState extends State<SettingScreen> {
         break;
       case 'content-preference':
         Navigator.pushNamed(context, ContentPreferenceScreen.routeName);
+        break;
+      case 'profile':
+        Navigator.pushNamed(context, ProfileScreen.routeName);
         break;
       default:
     }
