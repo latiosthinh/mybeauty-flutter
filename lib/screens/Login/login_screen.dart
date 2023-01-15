@@ -3,7 +3,6 @@ import 'package:mybeauty/components/index.dart';
 import 'package:mybeauty/screens/index.dart';
 import 'package:mybeauty/services/auth.dart';
 import 'package:mybeauty/constants.dart';
-import 'package:mybeauty/widgets/index.dart';
 
 class LoginScreen extends StatefulWidget {
   static String routeName = "/login";
@@ -43,23 +42,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 margin: const EdgeInsets.only(left: 38, right: 38, top: 38),
                 child: Column(
                   children: [
-                    Flexible(
-                      child: PrimaryButton(
-                        icon: Icons.apple,
-                        background: blackColor,
-                        color: whiteColor,
-                        text: 'Sign in with Apple',
-                        func: AuthService().anonymousLogin,
-                      ),
-                    ),
-                    const VSpacer(9),
-                    PrimaryButton(
-                      icon: Icons.facebook,
-                      background: blueColor,
-                      color: whiteColor,
-                      text: 'Sign in with Facebook',
-                      func: AuthService().anonymousLogin,
-                    ),
+                    // Flexible(
+                    //   child: PrimaryButton(
+                    //     icon: Icons.apple,
+                    //     background: blackColor,
+                    //     color: whiteColor,
+                    //     text: 'Sign in with Apple',
+                    //     func: AuthService().anonymousLogin,
+                    //   ),
+                    // ),
+                    // const VSpacer(9),
+                    // PrimaryButton(
+                    //   icon: Icons.facebook,
+                    //   background: blueColor,
+                    //   color: whiteColor,
+                    //   text: 'Sign in with Facebook',
+                    //   func: AuthService().anonymousLogin,
+                    // ),
                     Container(
                       margin: const EdgeInsets.only(top: 9, bottom: 40),
                       child: PrimaryButton(
@@ -105,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         background: grayColor,
                         color: whiteColor,
                         text: 'Log in',
-                        func: AuthService().anonymousLogin,
+                        func: AuthService().signInUsingEmailPassword,
                       ),
                     ),
                     const Text(

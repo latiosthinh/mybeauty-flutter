@@ -15,6 +15,7 @@ class BookingService {
       'userName': model.user?.displayName,
       'userPhone': model.user?.phoneNumber,
       'userEmail': model.user?.email,
+      'client': _firestore.doc('clients/${model.user?.uid}'),
       'createdDate': DateTime.now(),
       'bookingDate': model.bookingDate,
       'bookingTime': model.bookingTime,

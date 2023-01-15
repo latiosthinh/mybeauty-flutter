@@ -13,6 +13,12 @@ class AddBookingModel {
       this.service, this.bookingDate, this.bookingTime, this.staff, this.user);
 }
 
+class ClientModel {
+  final User user;
+
+  ClientModel(this.user);
+}
+
 class MenuModel {
   final String id;
   final String name;

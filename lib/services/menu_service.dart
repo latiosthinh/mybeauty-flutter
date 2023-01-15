@@ -12,18 +12,25 @@ class MenuService {
         .where('type', isEqualTo: type)
         .orderBy('sort_order')
         .get();
-    for (var menu in menus.docs) {
-      final services = menu.get('menu_services');
-      childs = [];
-      for (var s in services) {
-        final ss = await _firestore
-            .doc(s.path)
-            .get(const GetOptions(source: Source.cache));
-        childs.add(ServiceModel.fromJson(ss.data(), ss.id));
+
+    if (menus.docs.isNotEmpty) {
+      for (var menu in menus.docs) {
+        final services = menu.get('menu_services');
+        childs = [];
+        for (var s in services) {
+          final ss = await _firestore
+              .doc(s.path)
+              .get(const GetOptions(source: Source.cache));
+
+          if (ss.exists) {
+            childs.add(ServiceModel.fromJson(ss.data(), ss.id));
+          }
+        }
+        returnValue
+            .add(MenuModel(menu.id, menu.get('name'), childs, menu.get('image')));
       }
-      returnValue
-          .add(MenuModel(menu.id, menu.get('name'), childs, menu.get('image')));
     }
+    
     return returnValue;
   }
 }
