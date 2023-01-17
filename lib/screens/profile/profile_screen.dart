@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mybeauty/components/buttons/primary_button.dart';
 import 'package:mybeauty/constants.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -19,7 +20,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
         buildListItem('Name'),
         buildListItem('Mail'),
         buildListItem('Phone'),
-        buildListItem('Birth')
+        buildListItem('Birth'),
+        PrimaryButton(
+            background: blackColor,
+            color: whiteColor,
+            text: 'Back',
+            func: () => {Navigator.pop(context)})
       ],
     ));
   }

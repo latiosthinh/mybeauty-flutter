@@ -23,6 +23,7 @@ class AppointmentScreen extends StatefulWidget {
 
 BookingService _bookingService = BookingService();
 AuthService _authService = AuthService();
+ClientService _clientService = ClientService();
 
 class _AppointmentScreenScreenState extends State<AppointmentScreen> {
   DateTime bookingDate = DateTimeUtils.initDate();
@@ -220,6 +221,7 @@ class _AppointmentScreenScreenState extends State<AppointmentScreen> {
                               _authService.user);
                           if (await isValid(model)) {
                             _bookingService.add(model);
+                            _clientService.addClient();
                             Navigator.pushNamed(
                                 context, BookingScreen.routeName);
                           }

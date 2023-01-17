@@ -64,7 +64,8 @@ class _BookingScreenState extends State<BookingScreen> {
                         right: BorderSide(color: pinkColor))),
                 margin: const EdgeInsets.only(top: 16.0),
                 padding: const EdgeInsets.all(10),
-                child: Column(
+                child: SingleChildScrollView(
+                    child: Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -87,8 +88,8 @@ class _BookingScreenState extends State<BookingScreen> {
                           ],
                         ),
                         Text(
-                          '${DateTimeUtils.getDayOfWeek(item.bookingDate)}, ${DateTimeUtils.getTime(item.bookingTime)}',
-                          style: const TextStyle(color: blackColor),
+                          'LP: +${item.service.price}',
+                          style: const TextStyle(color: greenColor, fontWeight: FontWeight.w700),
                         ),
                       ],
                     ),
@@ -107,13 +108,13 @@ class _BookingScreenState extends State<BookingScreen> {
                           ],
                         ),
                         Text(
-                          DateTimeUtils.getFullDate(item.bookingDate),
+                          '${DateTimeUtils.getFullDate(item.bookingDate)}, ${DateTimeUtils.getTime(item.bookingTime)}',
                           style: const TextStyle(color: blackColor),
                         ),
                       ],
                     ),
                   ],
-                ));
+                )));
           }).toList()),
         ));
   }

@@ -4,7 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mybeauty/services/services.dart';
 import 'package:mybeauty/utils/index.dart';
 
-ClientService client = ClientService();
+ClientService _clientService = ClientService();
 
 class AuthService {
   final userStream = FirebaseAuth.instance.authStateChanges();
@@ -33,7 +33,7 @@ class AuthService {
           accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
 
       await auth.signInWithCredential(authCredential);
-      client.addClient();
+      _clientService.addClient();
     } on FirebaseAuthException catch (e) {
       Logger.error(e.message);
     }
