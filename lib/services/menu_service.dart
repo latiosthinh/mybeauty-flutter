@@ -20,7 +20,7 @@ class MenuService {
         for (var s in services) {
           final ss = await _firestore
               .doc(s.path)
-              .get(const GetOptions(source: Source.cache));
+              .get();
 
           if (ss.exists) {
             childs.add(ServiceModel.fromJson(ss.data(), ss.id));
